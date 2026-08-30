@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EstudaFácil V5 📚</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+
+:root{
+--primary:#2563eb;
+--secondary:#7c3aed;
+--bg:#f4f7ff;
+--card:#fff;
+--text:#172033;
+--muted:#64748b;
+--green:#16a34a;
+--red:#dc2626;
+--yellow:#f59e0b;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:.3s;
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f8fafc;
+--muted:#cbd5e1;
+}
+
+header{
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:white;
+padding:30px 18px;
+text-align:center;
+}
+
+.logo{
+font-size:36px;
+font-weight:900;
+}
+
+header p{margin-top:8px}
+
+.container{
+max-width:950px;
+margin:auto;
+padding:18px;
+}
+
+.card{
+background:var(--card);
+border-radius:20px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+h2{
+color:var(--primary);
+margin-bottom:15px;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #cbd5e1;
+font-size:16px;
+background:var(--card);
+color:var(--text);
+}
+
+label{
+display:block;
+font-weight:bold;
+margin:12px 0 6px;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:0;
+border-radius:12px;
+background:var(--primary);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+transform:translateY(-1px);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+
+.stat{
+background:#eff6ff;
+padding:14px;
+border-radius:15px;
+text-align:center;
+}
+
+.dark .stat{
+background:#172554;
+}
+
+.stat b{
+display:block;
+font-size:23px;
+margin-top:5px;
+}
+
+.progress{
+height:13px;
+background:#e2e8f0;
+border-radius:20px;
+overflow:hidden;
+margin-top:9px;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+transition:.4s;
+}
+
+.lesson{
+line-height:1.7;
+}
+
+.example{
+background:#fef3c7;
+padding:16px;
+border-radius:14px;
+margin-top:15px;
+line-height:1.6;
+}
+
+.dark .example{
+background:#422006;
+}
+
+.question{
+background:#f8fafc;
+padding:18px;
+border-radius:15px;
+margin-top:15px;
+}
+
+.dark .question{
+background:#111827;
+}
+
+.answer{
+background:var(--card);
+color:var(--text);
+border:1px solid #cbd5e1;
+}
+
+.correct{
+background:var(--green)!important;
+color:white!important;
+}
+
+.wrong{
+background:var(--red)!important;
+color:white!important;
+}
+
+.hidden{
+display:none;
+}
+
+.message{
+margin-top:15px;
+padding:14px;
+border-radius:12px;
+background:#ecfdf5;
+}
+
+.badges{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.badge{
+padding:18px;
+background:#eef2ff;
+border-radius:15px;
+text-align:center;
+}
+
+.dark .badge{
+background:#312e81;
+}
+
+.menu-title{
+margin-top:5px;
+margin-bottom:10px;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:30px;
+color:var(--muted);
+}
+
+@media(max-width:650px){
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.badges{
+grid-template-columns:1fr;
+}
+
+.logo{
+font-size:30px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">📚 EstudaFácil</div>
+<p>Seu estudo começa aqui 🚀</p>
+</header>
+
+<div class="container">
+
+<!-- PERFIL -->
+
+<div class="card">
+
+<h2>👤 Seu perfil</h2>
+
+<label>Como podemos te chamar?</label>
+
+<input
+id="name"
+placeholder="Digite seu nome"
+oninput="saveName()">
+
+</div>
+
+
+<!-- STATUS -->
+
+<div class="card">
+
+<div class="stats">
+
+<div class="stat">
+⭐ XP
+<b id="xp">0</b>
+</div>
+
+<div class="stat">
+🏆 Nível
+<b id="level">1</b>
+</div>
+
+<div class="stat">
+🔥 Sequência
+<b id="streak">0</b>
+</div>
+
+<div class="stat">
+🎯 Meta
+<b id="goal">0%</b>
+</div>
+
+</div>
+
+<br>
+
+<b>Próximo nível</b>
+
+<div class="progress">
+<div class="progress-bar" id="progress"></div>
+</div>
+
+</div>
+
+
+<!-- ESCOLHA -->
+
+<div class="card">
+
+<h2>🎯 Escolha seu estudo</h2>
+
+<label>Ano escolar</label>
+
+<select id="year">
+
+<option>6º ano</option>
+<option>7º ano</option>
+<option>8º ano</option>
+<option>9º ano</option>
+<option>1º Ensino Médio</option>
+<option>2º Ensino Médio</option>
+<option>3º Ensino Médio</option>
+
+</select>
+
+
+<label>Matéria</label>
+
+<select id="subject" onchange="loadTopics()">
+
+<option value="math">🧮 Matemática</option>
+<option value="portuguese">📖 Português</option>
+<option value="history">🏛️ História</option>
+<option value="geography">🌎 Geografia</option>
+<option value="science">🔬 Ciências</option>
+<option value="english">🇺🇸 Inglês</option>
+
+</select>
+
+
+<label>Assunto</label>
+
+<select id="topic"></select>
+
+
+<button onclick="startStudy()">
+🚀 Começar a estudar
+</button>
+
+</div>
+
+
+<!-- PESQUISA -->
+
+<div class="card">
+
+<h2>🔎 Procurar assunto</h2>
+
+<input
+id="search"
+placeholder="Ex.: frações, células, verbos...">
+
+<button onclick="searchTopic()">
+🔎 Pesquisar
+</button>
+
+<p id="searchResult"></p>
+
+</div>
+
+
+<!-- MENU -->
+
+<div class="card">
+
+<h2>📚 Central de estudos</h2>
+
+<div class="grid">
+
+<button onclick="showLesson()">📖 Aula</button>
+
+<button onclick="showExercises()">✏️ Exercícios</button>
+
+<button onclick="showQuiz()">🧠 Quiz</button>
+
+<button onclick="showExam()">📝 Simulado</button>
+
+<button onclick="showGoals()">🎯 Minha meta</button>
+
+<button onclick="showAchievements()">🏅 Conquistas</button>
+
+<button onclick="toggleDark()">🌙 Modo escuro</button>
+
+<button onclick="resetData()">🔄 Resetar progresso</button>
+
+</div>
+
+</div>
+
+
+<!-- CONTEÚDO -->
+
+<div class="card hidden" id="content">
+
+<h2 id="contentTitle"></h2>
+
+<div id="contentBody"></div>
+
+</div>
+
+
+<!-- CONQUISTAS -->
+
+<div class="card hidden" id="achievementBox">
+
+<h2>🏅 Conquistas</h2>
+
+<div class="badges">
+
+<div class="badge">
+🌱<br>
+Primeiro passo
+</div>
+
+<div class="badge">
+📚<br>
+10 XP
+</div>
+
+<div class="badge">
+🔥<br>
+Sequência de estudos
+</div>
+
+<div class="badge">
+🏆<br>
+100 XP
+</div>
+
+<div class="badge">
+🧠<br>
+Mestre do quiz
+</div>
+
+<div class="badge">
+🎯<br>
+Meta concluída
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+📚 EstudaFácil V5
+<br>
+Estudar pode ser simples, divertido e gratuito.
+</footer>
+
+
+<script>
+
+/* =========================
+BANCO DE ASSUNTOS
+========================= */
+
+const topics={
+
+math:[
+"Operações básicas",
+"Frações",
+"Números decimais",
+"Porcentagem",
+"Equações",
+"Geometria"
+],
+
+portuguese:[
+"Interpretação de texto",
+"Substantivos",
+"Adjetivos",
+"Verbos",
+"Pontuação",
+"Sinônimos e antônimos"
+],
+
+history:[
+"Brasil Colonial",
+"Independência do Brasil",
+"Revolução Francesa",
+"Revolução Industrial",
+"Antiguidade"
+],
+
+geography:[
+"Mapas e localização",
+"Clima",
+"Relevo",
+"População",
+"Continentes"
+],
+
+science:[
+"Células",
+"Corpo humano",
+"Sistema Solar",
+"Animais",
+"Matéria e energia"
+],
+
+english:[
+"Verb to be",
+"Pronomes",
+"Números",
+"Cores",
+"Simple Present"
+]
+
+};
+
+
+/* =========================
+AULAS
+========================= */
+
+const lessons={
+
+"Frações":`
+<div class="lesson">
+
+<h3>📖 O que são frações?</h3>
+
+<p>
+Frações representam partes de um todo.
+</p>
+
+<p>
+O número de cima é o
+<b>numerador</b>.
+</p>
+
+<p>
+O número de baixo é o
+<b>denominador</b>.
+</p>
+
+<div class="example">
+
+💡 <b>Exemplo</b>
+
+<br><br>
+
+Na fração <b>3/4</b>,
+temos 3 partes de um total de 4.
+
+</div>
+
+</div>
+`,
+
+"Porcentagem":`
+<div class="lesson">
+
+<h3>📖 Porcentagem</h3>
+
+<p>
+Porcentagem representa uma parte de 100.
+</p>
+
+<div class="example">
+
+💡 <b>Exemplo</b>
+
+<br><br>
+
+50% significa 50 de cada 100.
+
+<br><br>
+
+50% de 100 = 50.
+
+</div>
+
+</div>
+`,
+
+"Números decimais":`
+<div class="lesson">
+
+<h3>📖 Números decimais</h3>
+
+<p>
+Números decimais representam partes de uma unidade.
+</p>
+
+<div class="example">
+
+💡 Exemplo:
+
+<br><br>
+
+0,5 representa cinco décimos.
+
+</div>
+
+</div>
+`,
+
+"Substantivos":`
+<div class="lesson">
+
+<h3>📖 Substantivos</h3>
+
+<p>
+Substantivos são palavras que dão nome
+a pessoas, lugares, animais, objetos,
+sentimentos e muito mais.
+</p>
+
+<div class="example">
+
+💡 Exemplos:
+
+<br><br>
+
+casa • cachorro • escola • alegria
+
+</div>
+
+</div>
+`,
+
+"Adjetivos":`
+<div class="lesson">
+
+<h3>📖 Adjetivos</h3>
+
+<p>
+Adjetivos caracterizam os substantivos.
+</p>
+
+<div class="example">
+
+💡 Exemplo:
+
+<br><br>
+
+"casa grande"
+
+<br><br>
+
+<b>Grande</b> é o adjetivo.
+
+</div>
+
+</div>
+`,
+
+"Células":`
+<div class="lesson">
+
+<h3>🔬 Células</h3>
+
+<p>
+A célula é a unidade básica dos seres vivos.
+</p>
+
+<div class="example">
+
+💡 Alguns organismos possuem uma única célula,
+enquanto outros possuem muitas.
+
+</div>
+
+</div>
+`,
+
+"Sistema Solar":`
+<div class="lesson">
+
+<h3>🌎 Sistema Solar</h3>
+
+<p>
+O Sistema Solar é formado pelo Sol e pelos
+corpos celestes que orbitam ao seu redor.
+</p>
+
+<div class="example">
+
+💡 Os oito planetas são:
+
+<br><br>
+
+Mercúrio • Vênus • Terra • Marte •
+Júpiter • Saturno • Urano • Netuno
+
+</div>
+
+</div>
+`,
+
+"Verb to be":`
+<div class="lesson">
+
+<h3>🇺🇸 Verb to be</h3>
+
+<p>
+O verbo <b>to be</b> pode significar
+"ser" ou "estar".
+</p>
+
+<div class="example">
+
+I am
+
+<br>
+
+You are
+
+<br>
+
+He is
+
+</div>
+
+</div>
+`
+
+};
+
+
+/* =========================
+DADOS
+========================= */
+
+let xp=
+Number(localStorage.getItem("v5xp"))||0;
+
+let streak=
+Number(localStorage.getItem("v5streak"))||0;
+
+
+/* =========================
+ATUALIZAR STATUS
+========================= */
+
+function updateStats(){
+
+document.getElementById("xp").innerText=xp;
+
+document.getElementById("level").innerText=
+Math.floor(xp/100)+1;
+
+document.getElementById("streak").innerText=streak;
+
+document.getElementById("goal").innerText=
+Math.min(xp%100,100)+"%";
+
+document.getElementById("progress").style.width=
+(xp%100)+"%";
+
+localStorage.setItem("v5xp",xp);
+
+localStorage.setItem("v5streak",streak);
+
+}
+
+
+/* =========================
+NOME
+========================= */
+
+function saveName(){
+
+localStorage.setItem(
+"v5name",
+document.getElementById("name").value
+);
+
+}
+
+document.getElementById("name").value=
+localStorage.getItem("v5name")||"";
+
+
+/* =========================
+ASSUNTOS
+========================= */
+
+function loadTopics(){
+
+const subject=
+document.getElementById("subject").value;
+
+const select=
+document.getElementById("topic");
+
+select.innerHTML="";
+
+topics[subject].forEach(t=>{
+
+let option=
+document.createElement("option");
+
+option.value=t;
+option.textContent=t;
+
+select.appendChild(option);
+
+});
+
+}
+
+loadTopics();
+updateStats();
+
+
+/* =========================
+COMEÇAR
+========================= */
+
+function startStudy(){
+
+document.getElementById("content")
+.classList.remove("hidden");
+
+showLesson();
+
+}
+
+
+/* =========================
+AULA
+========================= */
+
+function showLesson(){
+
+const topic=
+document.getElementById("topic").value;
+
+document.getElementById("contentTitle")
+.innerText="📖 "+topic;
+
+document.getElementById("contentBody")
+.innerHTML=
+
+lessons[topic]||
+
+`
+<div class="lesson">
+
+<h3>📚 ${topic}</h3>
+
+<p>
+Estamos preparando uma aula completa
+para este assunto.
+</p>
+
+<p>
+Enquanto isso, procure o conteúdo no
+seu material escolar e use os exercícios
+abaixo para praticar.
+</p>
+
+</div>
+`;
+
+document.getElementById("content")
+.classList.remove("hidden");
+
+scroll();
+
+}
+
+
+/* =========================
+EXERCÍCIOS
+========================= */
+
+function showExercises(){
+
+document.getElementById("contentTitle")
+.innerText="✏️ Exercícios";
+
+document.getElementById("contentBody")
+.innerHTML=`
+
+<p>
+Tente responder sem olhar a resposta.
+</p>
+
+<div class="question">
+
+<b>1. Quanto é 25 + 37?</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+62
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+52
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+72
+</button>
+
+</div>
+
+
+<div class="question">
+
+<b>2. Quanto é 8 × 7?</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+56
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+48
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+64
+</button>
+
+</div>
+
+
+<div class="question">
+
+<b>3. Quanto é 100 ÷ 4?</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+25
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+20
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+30
+</button>
+
+</div>
+
+`;
+
+document.getElementById("content")
+.classList.remove("hidden");
+
+scroll();
+
+}
+
+
+/* =========================
+RESPOSTA
+========================= */
+
+function answer(button,correct){
+
+if(button.dataset.done)return;
+
+button.dataset.done="yes";
+
+if(correct){
+
+button.classList.add("correct");
+
+button.innerText=
+"✅ Acertou! +10 XP";
+
+xp+=10;
+
+streak++;
+
+}else{
+
+button.classList.add("wrong");
+
+button.innerText=
+"❌ Errou";
+
+streak=0;
+
+}
+
+updateStats();
+
+}
+
+
+/* =========================
+QUIZ
+========================= */
+
+function showQuiz(){
+
+document.getElementById("contentTitle")
+.innerText="🧠 Quiz";
+
+document.getElementById("contentBody")
+.innerHTML=`
+
+<p>
+Valendo <b>20 XP</b>!
+</p>
+
+<div class="question">
+
+<b>
+Quanto é 12 × 5?
+</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+60
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+50
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+70
+</button>
+
+</div>
+
+`;
+
+document.getElementById("content")
+.classList.remove("hidden");
+
+scroll();
+
+}
+
+
+/* =========================
+SIMULADO
+========================= */
+
+function showExam(){
+
+document.getElementById("contentTitle")
+.innerText="📝 Simulado";
+
+document.getElementById("contentBody")
+.innerHTML=`
+
+<p>
+Faça as três questões!
+</p>
+
+<div class="question">
+
+<b>1. 15 + 20 = ?</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+35
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+30
+</button>
+
+</div>
+
+
+<div class="question">
+
+<b>2. 9 × 6 = ?</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+54
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+45
+</button>
+
+</div>
+
+
+<div class="question">
+
+<b>3. 100 ÷ 5 = ?</b>
+
+<button class="answer"
+onclick="answer(this,true)">
+20
+</button>
+
+<button class="answer"
+onclick="answer(this,false)">
+25
+</button>
+
+</div>
+
+`;
+
+document.getElementById("content")
+.classList.remove("hidden");
+
+scroll();
+
+}
+
+
+/* =========================
+PESQUISA
+========================= */
+
+function searchTopic(){
+
+const search=
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+const result=
+document.getElementById("searchResult");
+
+if(!search){
+
+result.innerText=
+"⚠️ Digite um assunto.";
+
+return;
+
+}
+
+for(let subject in topics){
+
+for(let topic of topics[subject]){
+
+if(topic.toLowerCase().includes(search)){
+
+document.getElementById("subject")
+.value=subject;
+
+loadTopics();
+
+document.getElementById("topic")
+.value=topic;
+
+result.innerText=
+"✅ Encontramos: "+topic;
+
+showLesson();
+
+return;
+
+}
+
+}
+
+}
+
+result.innerText=
+"❌ Assunto não encontrado.";
+
+}
+
+
+/* =========================
+METAS
+========================= */
+
+function showGoals(){
+
+document.getElementById("content")
+.classList.remove("hidden");
+
+document.getElementById("contentTitle")
+.innerText="🎯 Minha meta";
+
+document.getElementById("contentBody")
+.innerHTML=`
+
+<div class="lesson">
+
+<h3>
+Sua meta é chegar a 100 XP.
+</h3>
+
+<br>
+
+<p>
+XP atual:
+<b>${xp}</b>
+</p>
+
+<br>
+
+<p>
+Faltam:
+<b>${Math.max(0,100-xp)}</b>
+XP para completar a meta.
+</p>
+
+</div>
+
+`;
+
+scroll();
+
+}
+
+
+/* =========================
+CONQUISTAS
+========================= */
+
+function showAchievements(){
+
+document.getElementById("achievementBox")
+.classList.remove("hidden");
+
+document.getElementById("achievementBox")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+MODO ESCURO
+========================= */
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+localStorage.setItem(
+"v5dark",
+document.body.classList.contains("dark")
+);
+
+}
+
+if(localStorage.getItem("v5dark")==="true"){
+
+document.body.classList.add("dark");
+
+}
+
+
+/* =========================
+RESETAR
+========================= */
+
+function resetData(){
+
+if(confirm("Tem certeza que deseja zerar seu progresso?")){
+
+xp=0;
+streak=0;
+
+updateStats();
+
+}
+
+}
+
+
+/* =========================
+ROLAGEM
+========================= */
+
+function scroll(){
+
+document.getElementById("content")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+  </html>
