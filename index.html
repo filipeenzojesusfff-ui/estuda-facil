@@ -3,10 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>EstudaFácil V5 📚</title>
+<title>EstudaFácil V6 📚</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif
+}
 
 :root{
 --primary:#2563eb;
@@ -17,33 +22,55 @@
 --muted:#64748b;
 --green:#16a34a;
 --red:#dc2626;
---yellow:#f59e0b;
 }
 
-body{background:var(--bg);color:var(--text);transition:.3s}
-body.dark{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#cbd5e1}
+body{
+background:var(--bg);
+color:var(--text);
+transition:.3s
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f8fafc;
+--muted:#cbd5e1
+}
 
 header{
 background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:white;
+color:#fff;
 padding:30px 18px;
-text-align:center;
+text-align:center
 }
 
-.logo{font-size:36px;font-weight:900}
-header p{margin-top:8px}
+.logo{
+font-size:36px;
+font-weight:900
+}
 
-.container{max-width:950px;margin:auto;padding:18px}
+header p{
+margin-top:8px
+}
+
+.container{
+max-width:950px;
+margin:auto;
+padding:18px
+}
 
 .card{
 background:var(--card);
 border-radius:20px;
 padding:20px;
 margin-bottom:18px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+box-shadow:0 5px 20px rgba(0,0,0,.08)
 }
 
-h2{color:var(--primary);margin-bottom:15px}
+h2{
+color:var(--primary);
+margin-bottom:15px
+}
 
 input,select{
 width:100%;
@@ -52,10 +79,14 @@ border-radius:12px;
 border:1px solid #cbd5e1;
 font-size:16px;
 background:var(--card);
-color:var(--text);
+color:var(--text)
 }
 
-label{display:block;font-weight:bold;margin:12px 0 6px}
+label{
+display:block;
+font-weight:bold;
+margin:12px 0 6px
+}
 
 button{
 width:100%;
@@ -67,97 +98,145 @@ background:var(--primary);
 color:white;
 font-size:16px;
 font-weight:bold;
-cursor:pointer;
+cursor:pointer
 }
 
-button:hover{opacity:.9;transform:translateY(-1px)}
+button:hover{
+opacity:.9
+}
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px
+}
 
 .stat{
 background:#eff6ff;
 padding:14px;
 border-radius:15px;
-text-align:center;
+text-align:center
 }
 
-.dark .stat{background:#172554}
+.dark .stat{
+background:#172554
+}
 
-.stat b{display:block;font-size:23px;margin-top:5px}
+.stat b{
+display:block;
+font-size:23px;
+margin-top:5px
+}
 
 .progress{
 height:13px;
 background:#e2e8f0;
 border-radius:20px;
 overflow:hidden;
-margin-top:9px;
+margin-top:9px
 }
 
 .progress-bar{
 height:100%;
-width:0%;
+width:0;
 background:linear-gradient(90deg,var(--primary),var(--secondary));
-transition:.4s;
+transition:.4s
 }
 
-.lesson{line-height:1.7}
+.lesson{
+line-height:1.7
+}
 
 .example{
 background:#fef3c7;
 padding:16px;
 border-radius:14px;
 margin-top:15px;
-line-height:1.6;
+line-height:1.6
 }
 
-.dark .example{background:#422006}
+.dark .example{
+background:#422006
+}
 
 .question{
 background:#f8fafc;
 padding:18px;
 border-radius:15px;
-margin-top:15px;
+margin-top:15px
 }
 
-.dark .question{background:#111827}
+.dark .question{
+background:#111827
+}
 
 .answer{
 background:var(--card);
 color:var(--text);
-border:1px solid #cbd5e1;
+border:1px solid #cbd5e1
 }
 
-.correct{background:var(--green)!important;color:white!important}
-.wrong{background:var(--red)!important;color:white!important}
-.hidden{display:none}
-
-.message{
-margin-top:15px;
-padding:14px;
-border-radius:12px;
-background:#ecfdf5;
+.correct{
+background:var(--green)!important;
+color:white!important
 }
 
-.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wrong{
+background:var(--red)!important;
+color:white!important
+}
+
+.hidden{
+display:none
+}
+
+.badges{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px
+}
 
 .badge{
 padding:18px;
 background:#eef2ff;
 border-radius:15px;
-text-align:center;
+text-align:center
 }
 
-.dark .badge{background:#312e81}
+.dark .badge{
+background:#312e81
+}
 
-footer{text-align:center;padding:30px;color:var(--muted)}
+footer{
+text-align:center;
+padding:30px;
+color:var(--muted)
+}
 
 @media(max-width:650px){
-.stats{grid-template-columns:repeat(2,1fr)}
-.grid{grid-template-columns:1fr}
-.badges{grid-template-columns:1fr}
-.logo{font-size:30px}
+
+.stats{
+grid-template-columns:repeat(2,1fr)
+}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.badges{
+grid-template-columns:1fr
+}
+
+.logo{
+font-size:30px
+}
+
 }
 </style>
 </head>
@@ -171,7 +250,10 @@ footer{text-align:center;padding:30px;color:var(--muted)}
 
 <div class="container">
 
+<!-- PERFIL -->
+
 <div class="card">
+
 <h2>👤 Seu perfil</h2>
 
 <label>Como podemos te chamar?</label>
@@ -179,9 +261,12 @@ footer{text-align:center;padding:30px;color:var(--muted)}
 <input
 id="name"
 placeholder="Digite seu nome"
-oninput="saveName">
+oninput="saveName()">
 
 </div>
+
+
+<!-- STATUS -->
 
 <div class="card">
 
@@ -219,6 +304,7 @@ oninput="saveName">
 
 </div>
 
+
 <!-- ESCOLHA -->
 
 <div class="card">
@@ -226,8 +312,6 @@ oninput="saveName">
 <h2>🎯 Escolha seu estudo</h2>
 
 <label>Ano escolar</label>
-
-<!-- ANOS ATUALIZADOS -->
 
 <select id="year">
 
@@ -247,6 +331,7 @@ oninput="saveName">
 
 </select>
 
+
 <label>Matéria</label>
 
 <select id="subject" onchange="loadTopics()">
@@ -260,15 +345,20 @@ oninput="saveName">
 
 </select>
 
+
 <label>Assunto</label>
 
 <select id="topic"></select>
+
 
 <button onclick="startStudy()">
 🚀 Começar a estudar
 </button>
 
 </div>
+
+
+<!-- PESQUISA -->
 
 <div class="card">
 
@@ -286,6 +376,9 @@ placeholder="Ex.: frações, células, verbos...">
 
 </div>
 
+
+<!-- MENU -->
+
 <div class="card">
 
 <h2>📚 Central de estudos</h2>
@@ -293,17 +386,27 @@ placeholder="Ex.: frações, células, verbos...">
 <div class="grid">
 
 <button onclick="showLesson()">📖 Aula</button>
+
 <button onclick="showExercises()">✏️ Exercícios</button>
+
 <button onclick="showQuiz()">🧠 Quiz</button>
+
 <button onclick="showExam()">📝 Simulado</button>
+
 <button onclick="showGoals()">🎯 Minha meta</button>
+
 <button onclick="showAchievements()">🏅 Conquistas</button>
+
 <button onclick="toggleDark()">🌙 Modo escuro</button>
+
 <button onclick="resetData()">🔄 Resetar progresso</button>
 
 </div>
 
 </div>
+
+
+<!-- CONTEÚDO -->
 
 <div class="card hidden" id="content">
 
@@ -313,32 +416,68 @@ placeholder="Ex.: frações, células, verbos...">
 
 </div>
 
+
+<!-- CONQUISTAS -->
+
 <div class="card hidden" id="achievementBox">
 
 <h2>🏅 Conquistas</h2>
 
 <div class="badges">
 
-<div class="badge">🌱<br>Primeiro passo</div>
-<div class="badge">📚<br>10 XP</div>
-<div class="badge">🔥<br>Sequência de estudos</div>
-<div class="badge">🏆<br>100 XP</div>
-<div class="badge">🧠<br>Mestre do quiz</div>
-<div class="badge">🎯<br>Meta concluída</div>
+<div class="badge">
+🌱<br>
+Primeiro passo
+</div>
 
+<div class="badge">
+📚<br>
+10 XP
+</div>
+
+<div class="badge">
+🔥<br>
+Sequência
+</div>
+
+<div class="badge">
+🏆<br>
+100 XP
+</div>
+
+<div class="badge">
+🧠<br>
+Mestre do quiz
+</div>
+
+<div class="badge">
+🎯<br>
+Meta concluída
 </div>
 
 </div>
 
 </div>
+
+</div>
+
 
 <footer>
-📚 EstudaFácil V5
+
+📚 EstudaFácil V6
+
 <br>
+
 Estudar pode ser simples, divertido e gratuito.
+
 </footer>
 
+
 <script>
+
+/* =========================
+BANCO DE ASSUNTOS
+========================= */
 
 const topics={
 
@@ -394,96 +533,287 @@ english:[
 
 };
 
+
+/* =========================
+AULAS
+========================= */
+
 const lessons={
 
+
+"Operações básicas":`
+
+<h3>🧮 Operações básicas</h3>
+
+<p>
+As quatro operações são:
+adição, subtração, multiplicação e divisão.
+</p>
+
+<div class="example">
+
+💡 <b>Exemplos:</b>
+
+<br><br>
+
+25 + 17 = 42
+
+<br>
+
+30 - 12 = 18
+
+<br>
+
+6 × 4 = 24
+
+<br>
+
+20 ÷ 5 = 4
+
+</div>
+
+<p>
+📌 Dica: organize os números e confira
+sua resposta fazendo a operação inversa
+quando possível.
+</p>
+
+`,
+
+
+
 "Frações":`
-<div class="lesson">
 
-<h3>📖 O que são frações?</h3>
+<h3>➗ Frações</h3>
 
 <p>
-Frações representam partes de um todo.
+Uma fração representa partes de um todo.
 </p>
 
 <p>
-O número de cima é o <b>numerador</b>.
+O número de cima é o
+<b>numerador</b>.
 </p>
 
 <p>
-O número de baixo é o <b>denominador</b>.
-</p>
-
-<div class="example">
-
-💡 <b>Exemplo</b>
-
-<br><br>
-
-Na fração <b>3/4</b>,
-temos 3 partes de um total de 4.
-
-</div>
-
-</div>
-`,
-
-"Porcentagem":`
-<div class="lesson">
-
-<h3>📖 Porcentagem</h3>
-
-<p>
-Porcentagem representa uma parte de 100.
+O número de baixo é o
+<b>denominador</b>.
 </p>
 
 <div class="example">
 
-💡 <b>Exemplo</b>
+💡 Em <b>3/4</b>:
 
 <br><br>
 
-50% significa 50 de cada 100.
+3 = numerador
+
+<br>
+
+4 = denominador
 
 <br><br>
 
-50% de 100 = 50.
+Isso representa três partes
+de um total dividido em quatro
+partes iguais.
 
 </div>
 
-</div>
+<p>
+📌 Frações com o mesmo denominador
+podem ser somadas mantendo o denominador.
+</p>
+
 `,
+
+
 
 "Números decimais":`
-<div class="lesson">
 
-<h3>📖 Números decimais</h3>
+<h3>🔢 Números decimais</h3>
 
 <p>
-Números decimais representam partes de uma unidade.
+Números decimais representam partes
+de uma unidade e usam a vírgula para
+separar a parte inteira da parte decimal.
 </p>
 
 <div class="example">
 
-💡 Exemplo:
+💡 <b>Exemplo:</b>
 
 <br><br>
 
-0,5 representa cinco décimos.
+2,5 significa 2 unidades e 5 décimos.
 
 </div>
 
-</div>
+<p>
+📌 Ao somar números decimais,
+alinhe as vírgulas.
+</p>
+
 `,
 
-"Substantivos":`
-<div class="lesson">
 
-<h3>📖 Substantivos</h3>
+
+"Porcentagem":`
+
+<h3>💯 Porcentagem</h3>
+
+<p>
+Porcentagem significa uma parte de 100.
+</p>
+
+<div class="example">
+
+💡 <b>Exemplo:</b>
+
+<br><br>
+
+25% = 25/100 = 0,25
+
+<br><br>
+
+25% de 200 = 50
+
+</div>
+
+<p>
+📌 Para encontrar uma porcentagem,
+transforme o percentual em uma fração
+de 100 ou em decimal.
+</p>
+
+`,
+
+
+
+"Equações":`
+
+<h3>🧩 Equações</h3>
+
+<p>
+Uma equação é uma igualdade que contém
+uma incógnita.
+</p>
+
+<p>
+O objetivo é descobrir o valor que torna
+a igualdade verdadeira.
+</p>
+
+<div class="example">
+
+💡 <b>Exemplo:</b>
+
+<br><br>
+
+x + 5 = 12
+
+<br><br>
+
+x = 12 - 5
+
+<br><br>
+
+<b>x = 7</b>
+
+</div>
+
+<p>
+📌 O objetivo é deixar a incógnita sozinha
+de um lado da igualdade.
+</p>
+
+`,
+
+
+
+"Geometria":`
+
+<h3>📐 Geometria</h3>
+
+<p>
+A geometria estuda formas, medidas,
+posições e propriedades das figuras.
+</p>
+
+<div class="example">
+
+💡 Um retângulo com 5 cm de comprimento
+e 3 cm de largura:
+
+<br><br>
+
+Área = 5 × 3
+
+<br>
+
+Área = <b>15 cm²</b>
+
+</div>
+
+<p>
+📌 Perímetro é a soma dos lados.
+</p>
+
+<p>
+📌 Área mede a superfície.
+</p>
+
+`,
+
+
+
+"Interpretação de texto":`
+
+<h3>📖 Interpretação de texto</h3>
+
+<p>
+Interpretar um texto é compreender
+suas informações, ideias e intenções.
+</p>
+
+<div class="example">
+
+💡 Procure:
+
+<br><br>
+
+• O assunto principal
+
+<br>
+
+• As informações importantes
+
+<br>
+
+• As palavras que conectam as ideias
+
+<br>
+
+• A intenção do autor
+
+</div>
+
+<p>
+📌 Leia o texto inteiro antes de responder.
+</p>
+
+`,
+
+
+
+"Substantivos":`
+
+<h3>📝 Substantivos</h3>
 
 <p>
 Substantivos são palavras que dão nome
-a pessoas, lugares, animais, objetos,
-sentimentos e muito mais.
+a pessoas, animais, lugares, objetos,
+sentimentos e ideias.
 </p>
 
 <div class="example">
@@ -492,20 +822,37 @@ sentimentos e muito mais.
 
 <br><br>
 
-casa • cachorro • escola • alegria
+casa
+
+<br>
+
+escola
+
+<br>
+
+cachorro
+
+<br>
+
+alegria
+
+<br>
+
+Brasil
 
 </div>
 
-</div>
 `,
 
-"Adjetivos":`
-<div class="lesson">
 
-<h3>📖 Adjetivos</h3>
+
+"Adjetivos":`
+
+<h3>📝 Adjetivos</h3>
 
 <p>
-Adjetivos caracterizam os substantivos.
+Adjetivos caracterizam ou atribuem
+uma qualidade ao substantivo.
 </p>
 
 <div class="example">
@@ -514,44 +861,427 @@ Adjetivos caracterizam os substantivos.
 
 <br><br>
 
-"casa grande"
+<b>casa grande</b>
 
 <br><br>
 
-<b>Grande</b> é o adjetivo.
+"Grande" é o adjetivo porque
+caracteriza a casa.
 
 </div>
 
-</div>
 `,
 
-"Células":`
-<div class="lesson">
 
-<h3>🔬 Células</h3>
+
+"Verbos":`
+
+<h3>🔤 Verbos</h3>
 
 <p>
-A célula é a unidade básica dos seres vivos.
+Verbos indicam ações, estados ou
+acontecimentos.
 </p>
 
 <div class="example">
 
-💡 Alguns organismos possuem uma única célula,
-enquanto outros possuem muitas.
+💡 Exemplos:
+
+<br><br>
+
+correr
+
+<br>
+
+estudar
+
+<br>
+
+ser
+
+<br>
+
+acontecer
 
 </div>
-
-</div>
-`,
-
-"Sistema Solar":`
-<div class="lesson">
-
-<h3>🌎 Sistema Solar</h3>
 
 <p>
-O Sistema Solar é formado pelo Sol e pelos
-corpos celestes que orbitam ao seu redor.
+Os verbos também podem indicar
+passado, presente e futuro.
+</p>
+
+`,
+
+
+
+"Pontuação":`
+
+<h3>✍️ Pontuação</h3>
+
+<p>
+A pontuação ajuda a organizar frases
+e textos.
+</p>
+
+<div class="example">
+
+💡 Exemplos:
+
+<br><br>
+
+<b>.</b> Ponto final
+
+<br>
+
+<b>?</b> Pergunta
+
+<br>
+
+<b>!</b> Exclamação
+
+<br>
+
+<b>,</b> Vírgula
+
+</div>
+
+`,
+
+
+
+"Sinônimos e antônimos":`
+
+<h3>🔤 Sinônimos e antônimos</h3>
+
+<p>
+Sinônimos são palavras com sentidos
+semelhantes.
+</p>
+
+<p>
+Antônimos são palavras com sentidos
+opostos.
+</p>
+
+<div class="example">
+
+💡 Feliz e contente = sinônimos
+
+<br><br>
+
+Feliz e triste = antônimos
+
+</div>
+
+`,
+
+
+
+"Brasil Colonial":`
+
+<h3>🏛️ Brasil Colonial</h3>
+
+<p>
+O período colonial corresponde à época
+em que o território brasileiro esteve
+sob domínio português.
+</p>
+
+<div class="example">
+
+💡 A colonização envolveu exploração
+econômica, formação de povoados e
+diferentes formas de trabalho.
+
+</div>
+
+`,
+
+
+
+"Independência do Brasil":`
+
+<h3>🇧🇷 Independência do Brasil</h3>
+
+<p>
+A Independência do Brasil foi declarada
+em 1822, quando o Brasil rompeu
+politicamente com Portugal.
+</p>
+
+<div class="example">
+
+💡 O processo envolveu conflitos,
+interesses políticos e econômicos.
+
+</div>
+
+`,
+
+
+
+"Revolução Francesa":`
+
+<h3>🇫🇷 Revolução Francesa</h3>
+
+<p>
+A Revolução Francesa começou em 1789
+e provocou profundas mudanças políticas
+e sociais.
+</p>
+
+<div class="example">
+
+💡 Entre suas causas estavam
+desigualdades sociais, dificuldades
+econômicas e críticas ao sistema
+político da época.
+
+</div>
+
+`,
+
+
+
+"Revolução Industrial":`
+
+<h3>🏭 Revolução Industrial</h3>
+
+<p>
+A Revolução Industrial transformou
+a produção com máquinas, fábricas
+e novas formas de trabalho.
+</p>
+
+<div class="example">
+
+💡 Ela começou na Grã-Bretanha
+no século XVIII e depois se espalhou
+para outras regiões.
+
+</div>
+
+`,
+
+
+
+"Antiguidade":`
+
+<h3>🏺 Antiguidade</h3>
+
+<p>
+A Antiguidade inclui importantes
+sociedades como Egito, Mesopotâmia,
+Grécia e Roma.
+</p>
+
+<div class="example">
+
+💡 Essas sociedades desenvolveram
+formas de organização política,
+escrita, religião, arte e conhecimento.
+
+</div>
+
+`,
+
+
+
+"Mapas e localização":`
+
+<h3>🗺️ Mapas e localização</h3>
+
+<p>
+Mapas representam espaços e podem
+mostrar cidades, países, relevo,
+rios e outros elementos.
+</p>
+
+<div class="example">
+
+💡 Legenda, escala e orientação
+ajudam a interpretar um mapa.
+
+</div>
+
+`,
+
+
+
+"Clima":`
+
+<h3>☁️ Clima</h3>
+
+<p>
+Clima é o conjunto das condições
+atmosféricas observadas em uma região
+durante longos períodos.
+</p>
+
+<div class="example">
+
+💡 Temperatura, umidade e precipitação
+são elementos importantes para estudar
+o clima.
+
+</div>
+
+`,
+
+
+
+"Relevo":`
+
+<h3>⛰️ Relevo</h3>
+
+<p>
+Relevo é o conjunto das formas
+da superfície terrestre.
+</p>
+
+<div class="example">
+
+💡 Exemplos:
+
+<br><br>
+
+Montanhas
+
+<br>
+
+Planaltos
+
+<br>
+
+Planícies
+
+<br>
+
+Depressões
+
+</div>
+
+`,
+
+
+
+"População":`
+
+<h3>👥 População</h3>
+
+<p>
+População é o conjunto de pessoas
+que vive em determinado espaço.
+</p>
+
+<div class="example">
+
+💡 Densidade demográfica relaciona
+a quantidade de habitantes com a área
+de um território.
+
+</div>
+
+`,
+
+
+
+"Continentes":`
+
+<h3>🌎 Continentes</h3>
+
+<p>
+Continentes são grandes porções
+de terras emersas.
+</p>
+
+<div class="example">
+
+💡 Uma divisão comum considera:
+
+<br><br>
+
+África
+
+<br>
+
+América
+
+<br>
+
+Antártida
+
+<br>
+
+Ásia
+
+<br>
+
+Europa
+
+<br>
+
+Oceania
+
+</div>
+
+`,
+
+
+
+"Células":`
+
+<h3>🔬 Células</h3>
+
+<p>
+A célula é a unidade básica
+dos seres vivos.
+</p>
+
+<div class="example">
+
+💡 Existem organismos formados
+por uma célula e organismos
+formados por muitas células.
+
+</div>
+
+`,
+
+
+
+"Corpo humano":`
+
+<h3>🫀 Corpo humano</h3>
+
+<p>
+O corpo humano é formado por sistemas
+que trabalham em conjunto.
+</p>
+
+<div class="example">
+
+💡 O sistema digestório participa
+da digestão dos alimentos.
+
+<br><br>
+
+O sistema respiratório participa
+das trocas gasosas.
+
+</div>
+
+`,
+
+
+
+"Sistema Solar":`
+
+<h3>☀️ Sistema Solar</h3>
+
+<p>
+O Sistema Solar é formado pelo Sol
+e pelos corpos que orbitam ao seu redor.
 </p>
 
 <div class="example">
@@ -560,45 +1290,240 @@ corpos celestes que orbitam ao seu redor.
 
 <br><br>
 
-Mercúrio • Vênus • Terra • Marte •
+Mercúrio • Vênus • Terra • Marte
+
+<br>
+
 Júpiter • Saturno • Urano • Netuno
 
 </div>
 
-</div>
 `,
 
+
+
+"Animais":`
+
+<h3>🐾 Animais</h3>
+
+<p>
+Os animais são seres vivos com grande
+diversidade de formas, hábitos e ambientes.
+</p>
+
+<div class="example">
+
+💡 Os animais podem ser classificados
+de diferentes maneiras, considerando
+características do corpo e do modo de vida.
+
+</div>
+
+`,
+
+
+
+"Matéria e energia":`
+
+<h3>⚡ Matéria e energia</h3>
+
+<p>
+Matéria é aquilo que possui massa
+e ocupa espaço.
+</p>
+
+<p>
+Energia está relacionada à capacidade
+de produzir transformações.
+</p>
+
+<div class="example">
+
+💡 Calor, movimento e eletricidade
+são exemplos de manifestações de energia.
+
+</div>
+
+`,
+
+
+
 "Verb to be":`
-<div class="lesson">
 
 <h3>🇺🇸 Verb to be</h3>
 
 <p>
-O verbo <b>to be</b> pode significar
+O verbo "to be" pode significar
 "ser" ou "estar".
 </p>
 
 <div class="example">
 
-I am
+💡
 
-<br>
+I am = eu sou / eu estou
 
-You are
+<br><br>
 
-<br>
+You are = você é / você está
 
-He is
+<br><br>
+
+He is = ele é / ele está
 
 </div>
 
+`,
+
+
+
+"Pronomes":`
+
+<h3>🇺🇸 Pronomes em inglês</h3>
+
+<p>
+Pronomes pessoais representam pessoas
+na frase.
+</p>
+
+<div class="example">
+
+💡
+
+I = eu
+
+<br>
+
+You = você / vocês
+
+<br>
+
+He = ele
+
+<br>
+
+She = ela
+
+<br>
+
+We = nós
+
+<br>
+
+They = eles / elas
+
 </div>
+
+`,
+
+
+
+"Números":`
+
+<h3>🔢 Números em inglês</h3>
+
+<p>
+Aprender números ajuda em datas,
+idades, horários e quantidades.
+</p>
+
+<div class="example">
+
+💡
+
+one = 1
+
+<br>
+
+two = 2
+
+<br>
+
+three = 3
+
+<br>
+
+ten = 10
+
+</div>
+
+`,
+
+
+
+"Cores":`
+
+<h3>🎨 Cores em inglês</h3>
+
+<p>
+As cores aparecem muito em descrições
+e conversas.
+</p>
+
+<div class="example">
+
+💡
+
+red = vermelho
+
+<br>
+
+blue = azul
+
+<br>
+
+green = verde
+
+<br>
+
+yellow = amarelo
+
+</div>
+
+`,
+
+
+
+"Simple Present":`
+
+<h3>🇺🇸 Simple Present</h3>
+
+<p>
+O Simple Present é usado principalmente
+para hábitos, rotinas e fatos.
+</p>
+
+<div class="example">
+
+💡
+
+I study every day.
+
+<br><br>
+
+Eu estudo todos os dias.
+
+</div>
+
 `
 
 };
 
-let xp=Number(localStorage.getItem("v5xp"))||0;
-let streak=Number(localStorage.getItem("v5streak"))||0;
+
+/* =========================
+DADOS
+========================= */
+
+let xp=
+Number(localStorage.getItem("v6xp"))||0;
+
+let streak=
+Number(localStorage.getItem("v6streak"))||0;
+
+
+/* =========================
+ATUALIZAR STATUS
+========================= */
 
 function updateStats(){
 
@@ -607,7 +1532,8 @@ document.getElementById("xp").innerText=xp;
 document.getElementById("level").innerText=
 Math.floor(xp/100)+1;
 
-document.getElementById("streak").innerText=streak;
+document.getElementById("streak").innerText=
+streak;
 
 document.getElementById("goal").innerText=
 Math.min(xp%100,100)+"%";
@@ -615,22 +1541,33 @@ Math.min(xp%100,100)+"%";
 document.getElementById("progress").style.width=
 (xp%100)+"%";
 
-localStorage.setItem("v5xp",xp);
-localStorage.setItem("v5streak",streak);
+localStorage.setItem("v6xp",xp);
+
+localStorage.setItem("v6streak",streak);
 
 }
+
+
+/* =========================
+NOME
+========================= */
 
 function saveName(){
 
 localStorage.setItem(
-"v5name",
+"v6name",
 document.getElementById("name").value
 );
 
 }
 
 document.getElementById("name").value=
-localStorage.getItem("v5name")||"";
+localStorage.getItem("v6name")||"";
+
+
+/* =========================
+ASSUNTOS
+========================= */
 
 function loadTopics(){
 
@@ -644,9 +1581,11 @@ select.innerHTML="";
 
 topics[subject].forEach(t=>{
 
-let option=document.createElement("option");
+let option=
+document.createElement("option");
 
 option.value=t;
+
 option.textContent=t;
 
 select.appendChild(option);
@@ -656,16 +1595,24 @@ select.appendChild(option);
 }
 
 loadTopics();
+
 updateStats();
 
-function startStudy(){
 
-document.getElementById("content")
-.classList.remove("hidden");
+/* =========================
+COMEÇAR
+========================= */
+
+function startStudy(){
 
 showLesson();
 
 }
+
+
+/* =========================
+AULA
+========================= */
 
 function showLesson(){
 
@@ -678,26 +1625,18 @@ document.getElementById("contentTitle")
 document.getElementById("contentBody")
 .innerHTML=
 
-lessons[topic]||
+`<div class="lesson">
+${lessons[topic]||
 
 `
-<div class="lesson">
-
 <h3>📚 ${topic}</h3>
 
 <p>
-Estamos preparando uma aula completa
-para este assunto.
+Esta aula será ampliada em uma próxima atualização.
 </p>
 
-<p>
-Enquanto isso, procure o conteúdo no
-seu material escolar e use os exercícios
-abaixo para praticar.
-</p>
-
-</div>
-`;
+`}
+</div>`;
 
 document.getElementById("content")
 .classList.remove("hidden");
@@ -705,6 +1644,11 @@ document.getElementById("content")
 scroll();
 
 }
+
+
+/* =========================
+EXERCÍCIOS
+========================= */
 
 function showExercises(){
 
@@ -715,12 +1659,14 @@ document.getElementById("contentBody")
 .innerHTML=`
 
 <p>
-Tente responder sem olhar a resposta.
+Responda e ganhe XP!
 </p>
 
 <div class="question">
 
-<b>1. Quanto é 25 + 37?</b>
+<b>
+1. Quanto é 25 + 37?
+</b>
 
 <button class="answer"
 onclick="answer(this,true)">
@@ -739,9 +1685,12 @@ onclick="answer(this,false)">
 
 </div>
 
+
 <div class="question">
 
-<b>2. Quanto é 8 × 7?</b>
+<b>
+2. Quanto é 8 × 7?
+</b>
 
 <button class="answer"
 onclick="answer(this,true)">
@@ -760,9 +1709,12 @@ onclick="answer(this,false)">
 
 </div>
 
+
 <div class="question">
 
-<b>3. Quanto é 100 ÷ 4?</b>
+<b>
+3. Quanto é 100 ÷ 4?
+</b>
 
 <button class="answer"
 onclick="answer(this,true)">
@@ -790,9 +1742,15 @@ scroll();
 
 }
 
+
+/* =========================
+RESPOSTA
+========================= */
+
 function answer(button,correct){
 
-if(button.dataset.done)return;
+if(button.dataset.done)
+return;
 
 button.dataset.done="yes";
 
@@ -800,16 +1758,19 @@ if(correct){
 
 button.classList.add("correct");
 
-button.innerText="✅ Acertou! +10 XP";
+button.innerText=
+"✅ Acertou! +10 XP";
 
 xp+=10;
+
 streak++;
 
 }else{
 
 button.classList.add("wrong");
 
-button.innerText="❌ Errou";
+button.innerText=
+"❌ Errou";
 
 streak=0;
 
@@ -818,6 +1779,11 @@ streak=0;
 updateStats();
 
 }
+
+
+/* =========================
+QUIZ
+========================= */
 
 function showQuiz(){
 
@@ -828,7 +1794,7 @@ document.getElementById("contentBody")
 .innerHTML=`
 
 <p>
-Valendo <b>20 XP</b>!
+Valendo XP!
 </p>
 
 <div class="question">
@@ -863,217 +1829,9 @@ scroll();
 
 }
 
-function showExam(){
 
-document.getElementById("contentTitle")
-.innerText="📝 Simulado";
+/* =========================
+SIMULADO
+========================= */
 
-document.getElementById("contentBody")
-.innerHTML=`
-
-<p>
-Faça as três questões!
-</p>
-
-<div class="question">
-
-<b>1. 15 + 20 = ?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-35
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-30
-</button>
-
-</div>
-
-<div class="question">
-
-<b>2. 9 × 6 = ?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-54
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-45
-</button>
-
-</div>
-
-<div class="question">
-
-<b>3. 100 ÷ 5 = ?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-20
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-25
-</button>
-
-</div>
-
-`;
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-scroll();
-
-}
-
-function searchTopic(){
-
-const search=
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
-
-const result=
-document.getElementById("searchResult");
-
-if(!search){
-
-result.innerText="⚠️ Digite um assunto.";
-
-return;
-
-}
-
-for(let subject in topics){
-
-for(let topic of topics[subject]){
-
-if(topic.toLowerCase().includes(search)){
-
-document.getElementById("subject")
-.value=subject;
-
-loadTopics();
-
-document.getElementById("topic")
-.value=topic;
-
-result.innerText=
-"✅ Encontramos: "+topic;
-
-showLesson();
-
-return;
-
-}
-
-}
-
-}
-
-result.innerText="❌ Assunto não encontrado.";
-
-}
-
-function showGoals(){
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-document.getElementById("contentTitle")
-.innerText="🎯 Minha meta";
-
-document.getElementById("contentBody")
-.innerHTML=`
-
-<div class="lesson">
-
-<h3>
-Sua meta é chegar a 100 XP.
-</h3>
-
-<br>
-
-<p>
-XP atual:
-<b>${xp}</b>
-</p>
-
-<br>
-
-<p>
-Faltam:
-<b>${Math.max(0,100-xp)}</b>
-XP para completar a meta.
-</p>
-
-</div>
-
-`;
-
-scroll();
-
-}
-
-function showAchievements(){
-
-document.getElementById("achievementBox")
-.classList.remove("hidden");
-
-document.getElementById("achievementBox")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
-localStorage.setItem(
-"v5dark",
-document.body.classList.contains("dark")
-);
-
-}
-
-if(localStorage.getItem("v5dark")==="true"){
-
-document.body.classList.add("dark");
-
-}
-
-function resetData(){
-
-if(confirm("Tem certeza que deseja zerar seu progresso?")){
-
-xp=0;
-streak=0;
-
-updateStats();
-
-}
-
-}
-
-function scroll(){
-
-document.getElementById("content")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-</script>
-
-</body>
-</html>
+function show
