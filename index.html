@@ -2,249 +2,164 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>EstudaFácil V5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EstudaFácil</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-
-:root{
---primary:#2563eb;
---secondary:#7c3aed;
---bg:#f4f7ff;
---card:#fff;
---text:#172033;
---muted:#64748b;
---green:#16a34a;
---red:#dc2626;
---yellow:#f59e0b;
+*{
+    box-sizing:border-box;
 }
 
 body{
-background:var(--bg);
-color:var(--text);
-transition:.3s;
-}
-
-body.dark{
---bg:#0f172a;
---card:#1e293b;
---text:#f8fafc;
---muted:#cbd5e1;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
 }
 
 header{
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:white;
-padding:30px 18px;
-text-align:center;
+    background:linear-gradient(135deg,#1769ff,#6c3cff);
+    color:white;
+    text-align:center;
+    padding:35px 15px;
 }
 
-.logo{
-font-size:36px;
-font-weight:900;
+header h1{
+    margin:0;
+    font-size:35px;
 }
 
-header p{margin-top:8px}
+header p{
+    font-size:17px;
+}
 
 .container{
-max-width:950px;
-margin:auto;
-padding:18px;
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
 }
 
-.card{
-background:var(--card);
-border-radius:20px;
-padding:20px;
-margin-bottom:18px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+.search{
+    display:flex;
+    gap:10px;
+    margin:-10px auto 25px;
+    max-width:750px;
+}
+
+.search input{
+    flex:1;
+    padding:15px;
+    border:0;
+    border-radius:14px;
+    font-size:16px;
+    box-shadow:0 4px 15px #0002;
+}
+
+.search button{
+    border:0;
+    border-radius:14px;
+    padding:0 20px;
+    background:#172033;
+    color:white;
+    font-weight:bold;
 }
 
 h2{
-color:var(--primary);
-margin-bottom:15px;
+    margin-top:25px;
 }
 
-input,select{
-width:100%;
-padding:14px;
-border-radius:12px;
-border:1px solid #cbd5e1;
-font-size:16px;
-background:var(--card);
-color:var(--text);
+.anos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
 }
 
-label{
-display:block;
-font-weight:bold;
-margin:12px 0 6px;
+.ano{
+    background:white;
+    border:2px solid transparent;
+    border-radius:16px;
+    padding:18px;
+    cursor:pointer;
+    box-shadow:0 4px 14px #0001;
+    text-align:left;
 }
 
-button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border:0;
-border-radius:12px;
-background:var(--primary);
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+.ano:hover{
+    border-color:#1769ff;
+    transform:translateY(-2px);
 }
 
-button:hover{
-opacity:.9;
-transform:translateY(-1px);
+.ano strong{
+    display:block;
+    font-size:18px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+.ano small{
+    color:#667085;
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
+.painel{
+    background:white;
+    border-radius:20px;
+    padding:22px;
+    margin-top:25px;
+    box-shadow:0 5px 18px #0001;
 }
 
-.stat{
-background:#eff6ff;
-padding:14px;
-border-radius:15px;
-text-align:center;
+.materias{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
 }
 
-.dark .stat{
-background:#172554;
+.materia{
+    background:#f7f9ff;
+    border:1px solid #e1e6ef;
+    padding:18px;
+    border-radius:16px;
 }
 
-.stat b{
-display:block;
-font-size:23px;
-margin-top:5px;
+.materia h3{
+    margin-top:0;
 }
 
-.progress{
-height:13px;
-background:#e2e8f0;
-border-radius:20px;
-overflow:hidden;
-margin-top:9px;
+.materia p{
+    color:#596579;
+    line-height:1.5;
 }
 
-.progress-bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,var(--primary),var(--secondary));
-transition:.4s;
+.botao{
+    background:#1769ff;
+    color:white;
+    border:0;
+    border-radius:10px;
+    padding:10px 15px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.lesson{
-line-height:1.7;
-}
-
-.example{
-background:#fef3c7;
-padding:16px;
-border-radius:14px;
-margin-top:15px;
-line-height:1.6;
-}
-
-.dark .example{
-background:#422006;
-}
-
-.question{
-background:#f8fafc;
-padding:18px;
-border-radius:15px;
-margin-top:15px;
-}
-
-.dark .question{
-background:#111827;
-}
-
-.answer{
-background:var(--card);
-color:var(--text);
-border:1px solid #cbd5e1;
-}
-
-.correct{
-background:var(--green)!important;
-color:white!important;
-}
-
-.wrong{
-background:var(--red)!important;
-color:white!important;
-}
-
-.hidden{
-display:none;
-}
-
-.message{
-margin-top:15px;
-padding:14px;
-border-radius:12px;
-background:#ecfdf5;
-}
-
-.badges{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-}
-
-.badge{
-padding:18px;
-background:#eef2ff;
-border-radius:15px;
-text-align:center;
-}
-
-.dark .badge{
-background:#312e81;
-}
-
-.menu-title{
-margin-top:5px;
-margin-bottom:10px;
-font-weight:bold;
+.dica{
+    background:#eef5ff;
+    padding:15px;
+    border-radius:14px;
+    margin-top:20px;
 }
 
 footer{
-text-align:center;
-padding:30px;
-color:var(--muted);
+    text-align:center;
+    padding:30px;
+    color:#667085;
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
+    header h1{
+        font-size:28px;
+    }
 
-.stats{
-grid-template-columns:repeat(2,1fr);
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.badges{
-grid-template-columns:1fr;
-}
-
-.logo{
-font-size:30px;
-}
-
+    .search button{
+        padding:0 13px;
+    }
 }
 </style>
 </head>
@@ -252,1066 +167,515 @@ font-size:30px;
 <body>
 
 <header>
-<div class="logo">📚 EstudaFácil</div>
-<p>Seu estudo começa aqui 🚀</p>
+
+<h1>📚 EstudaFácil</h1>
+
+<p>
+Estude do 1º ano do Ensino Fundamental ao 3º ano do Ensino Médio!
+</p>
+
 </header>
 
-<div class="container">
+<main class="container">
 
-<!-- PERFIL -->
-
-<div class="card">
-
-<h2>👤 Seu perfil</h2>
-
-<label>Como podemos te chamar?</label>
+<div class="search">
 
 <input
-id="name"
-placeholder="Digite seu nome"
-oninput="saveName()">
+id="pesquisa"
+type="search"
+placeholder="🔎 Pesquise uma matéria..."
+>
 
-</div>
-
-
-<!-- STATUS -->
-
-<div class="card">
-
-<div class="stats">
-
-<div class="stat">
-⭐ XP
-<b id="xp">0</b>
-</div>
-
-<div class="stat">
-🏆 Nível
-<b id="level">1</b>
-</div>
-
-<div class="stat">
-🔥 Sequência
-<b id="streak">0</b>
-</div>
-
-<div class="stat">
-🎯 Meta
-<b id="goal">0%</b>
-</div>
-
-</div>
-
-<br>
-
-<b>Próximo nível</b>
-
-<div class="progress">
-<div class="progress-bar" id="progress"></div>
-</div>
-
-</div>
-
-
-<!-- ESCOLHA -->
-
-<div class="card">
-
-<h2>🎯 Escolha seu estudo</h2>
-
-<label>Ano escolar</label>
-
-<select id="year">
-
-<option>6º ano</option>
-<option>7º ano</option>
-<option>8º ano</option>
-<option>9º ano</option>
-<option>1º Ensino Médio</option>
-<option>2º Ensino Médio</option>
-<option>3º Ensino Médio</option>
-
-</select>
-
-
-<label>Matéria</label>
-
-<select id="subject" onchange="loadTopics()">
-
-<option value="math">🧮 Matemática</option>
-<option value="portuguese">📖 Português</option>
-<option value="history">🏛️ História</option>
-<option value="geography">🌎 Geografia</option>
-<option value="science">🔬 Ciências</option>
-<option value="english">🇺🇸 Inglês</option>
-
-</select>
-
-
-<label>Assunto</label>
-
-<select id="topic"></select>
-
-
-<button onclick="startStudy()">
-🚀 Começar a estudar
+<button onclick="pesquisar()">
+Buscar
 </button>
 
 </div>
 
+<h2>🎓 Escolha seu ano</h2>
 
-<!-- PESQUISA -->
+<section class="anos" id="anos"></section>
 
-<div class="card">
+<section id="conteudo"></section>
 
-<h2>🔎 Procurar assunto</h2>
-
-<input
-id="search"
-placeholder="Ex.: frações, células, verbos...">
-
-<button onclick="searchTopic()">
-🔎 Pesquisar
-</button>
-
-<p id="searchResult"></p>
-
-</div>
-
-
-<!-- MENU -->
-
-<div class="card">
-
-<h2>📚 Central de estudos</h2>
-
-<div class="grid">
-
-<button onclick="showLesson()">📖 Aula</button>
-
-<button onclick="showExercises()">✏️ Exercícios</button>
-
-<button onclick="showQuiz()">🧠 Quiz</button>
-
-<button onclick="showExam()">📝 Simulado</button>
-
-<button onclick="showGoals()">🎯 Minha meta</button>
-
-<button onclick="showAchievements()">🏅 Conquistas</button>
-
-<button onclick="toggleDark()">🌙 Modo escuro</button>
-
-<button onclick="resetData()">🔄 Resetar progresso</button>
-
-</div>
-
-</div>
-
-
-<!-- CONTEÚDO -->
-
-<div class="card hidden" id="content">
-
-<h2 id="contentTitle"></h2>
-
-<div id="contentBody"></div>
-
-</div>
-
-
-<!-- CONQUISTAS -->
-
-<div class="card hidden" id="achievementBox">
-
-<h2>🏅 Conquistas</h2>
-
-<div class="badges">
-
-<div class="badge">
-🌱<br>
-Primeiro passo
-</div>
-
-<div class="badge">
-📚<br>
-10 XP
-</div>
-
-<div class="badge">
-🔥<br>
-Sequência de estudos
-</div>
-
-<div class="badge">
-🏆<br>
-100 XP
-</div>
-
-<div class="badge">
-🧠<br>
-Mestre do quiz
-</div>
-
-<div class="badge">
-🎯<br>
-Meta concluída
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+</main>
 
 <footer>
-📚 EstudaFácil V5
-<br>
-Estudar pode ser simples, divertido e gratuito.
-</footer>
 
+<b>EstudaFácil</b> 📚  
+<br>
+Seu lugar para estudar!
+
+</footer>
 
 <script>
 
-/* =========================
-BANCO DE ASSUNTOS
-========================= */
+const anos = {
 
-const topics={
-
-math:[
-"Operações básicas",
-"Frações",
-"Números decimais",
-"Porcentagem",
-"Equações",
-"Geometria"
+"1º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Arte"
 ],
 
-portuguese:[
-"Interpretação de texto",
-"Substantivos",
-"Adjetivos",
-"Verbos",
-"Pontuação",
-"Sinônimos e antônimos"
+"2º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Arte"
 ],
 
-history:[
-"Brasil Colonial",
-"Independência do Brasil",
-"Revolução Francesa",
-"Revolução Industrial",
-"Antiguidade"
+"3º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Arte"
 ],
 
-geography:[
-"Mapas e localização",
-"Clima",
-"Relevo",
-"População",
-"Continentes"
+"4º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Arte"
 ],
 
-science:[
-"Células",
-"Corpo humano",
-"Sistema Solar",
-"Animais",
-"Matéria e energia"
+"5º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Inglês",
+"Arte"
 ],
 
-english:[
-"Verb to be",
-"Pronomes",
-"Números",
-"Cores",
-"Simple Present"
+"6º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Inglês",
+"Educação Física",
+"Arte"
+],
+
+"7º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Inglês",
+"Educação Física",
+"Arte"
+],
+
+"8º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Inglês",
+"Educação Física",
+"Arte"
+],
+
+"9º ano":[
+"Português",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Inglês",
+"Educação Física",
+"Arte"
+],
+
+"1º ano do Ensino Médio":[
+"Língua Portuguesa",
+"Matemática",
+"Biologia",
+"Física",
+"Química",
+"História",
+"Geografia",
+"Inglês",
+"Filosofia",
+"Sociologia"
+],
+
+"2º ano do Ensino Médio":[
+"Língua Portuguesa",
+"Matemática",
+"Biologia",
+"Física",
+"Química",
+"História",
+"Geografia",
+"Inglês",
+"Filosofia",
+"Sociologia"
+],
+
+"3º ano do Ensino Médio":[
+"Língua Portuguesa",
+"Matemática",
+"Biologia",
+"Física",
+"Química",
+"História",
+"Geografia",
+"Inglês",
+"Filosofia",
+"Sociologia"
 ]
 
 };
 
 
-/* =========================
-AULAS
-========================= */
+const assuntos = {
 
-const lessons={
+"Matemática":
+"Operações, frações, porcentagem, equações e geometria.",
 
-"Frações":`
-<div class="lesson">
+"Português":
+"Leitura, interpretação, gramática, ortografia e produção de texto.",
 
-<h3>📖 O que são frações?</h3>
+"Língua Portuguesa":
+"Interpretação, gramática, literatura e redação.",
 
-<p>
-Frações representam partes de um todo.
-</p>
+"Ciências":
+"Seres vivos, corpo humano, matéria, energia e meio ambiente.",
 
-<p>
-O número de cima é o
-<b>numerador</b>.
-</p>
+"História":
+"Antiguidade, Idade Média, Brasil e acontecimentos do mundo.",
 
-<p>
-O número de baixo é o
-<b>denominador</b>.
-</p>
+"Geografia":
+"Mapas, relevo, clima, população e espaço geográfico.",
 
-<div class="example">
+"Inglês":
+"Vocabulário, verbos, leitura e conversação.",
 
-💡 <b>Exemplo</b>
+"Biologia":
+"Células, genética, evolução, ecologia e corpo humano.",
 
-<br><br>
+"Física":
+"Movimento, força, energia, eletricidade e ondas.",
 
-Na fração <b>3/4</b>,
-temos 3 partes de um total de 4.
+"Química":
+"Átomos, matéria, tabela periódica e reações químicas.",
 
-</div>
+"Filosofia":
+"Ética, conhecimento, pensamento e sociedade.",
 
-</div>
-`,
+"Sociologia":
+"Cultura, sociedade, cidadania e trabalho.",
 
-"Porcentagem":`
-<div class="lesson">
+"Educação Física":
+"Esportes, jogos, saúde, dança e atividades físicas.",
 
-<h3>📖 Porcentagem</h3>
-
-<p>
-Porcentagem representa uma parte de 100.
-</p>
-
-<div class="example">
-
-💡 <b>Exemplo</b>
-
-<br><br>
-
-50% significa 50 de cada 100.
-
-<br><br>
-
-50% de 100 = 50.
-
-</div>
-
-</div>
-`,
-
-"Números decimais":`
-<div class="lesson">
-
-<h3>📖 Números decimais</h3>
-
-<p>
-Números decimais representam partes de uma unidade.
-</p>
-
-<div class="example">
-
-💡 Exemplo:
-
-<br><br>
-
-0,5 representa cinco décimos.
-
-</div>
-
-</div>
-`,
-
-"Substantivos":`
-<div class="lesson">
-
-<h3>📖 Substantivos</h3>
-
-<p>
-Substantivos são palavras que dão nome
-a pessoas, lugares, animais, objetos,
-sentimentos e muito mais.
-</p>
-
-<div class="example">
-
-💡 Exemplos:
-
-<br><br>
-
-casa • cachorro • escola • alegria
-
-</div>
-
-</div>
-`,
-
-"Adjetivos":`
-<div class="lesson">
-
-<h3>📖 Adjetivos</h3>
-
-<p>
-Adjetivos caracterizam os substantivos.
-</p>
-
-<div class="example">
-
-💡 Exemplo:
-
-<br><br>
-
-"casa grande"
-
-<br><br>
-
-<b>Grande</b> é o adjetivo.
-
-</div>
-
-</div>
-`,
-
-"Células":`
-<div class="lesson">
-
-<h3>🔬 Células</h3>
-
-<p>
-A célula é a unidade básica dos seres vivos.
-</p>
-
-<div class="example">
-
-💡 Alguns organismos possuem uma única célula,
-enquanto outros possuem muitas.
-
-</div>
-
-</div>
-`,
-
-"Sistema Solar":`
-<div class="lesson">
-
-<h3>🌎 Sistema Solar</h3>
-
-<p>
-O Sistema Solar é formado pelo Sol e pelos
-corpos celestes que orbitam ao seu redor.
-</p>
-
-<div class="example">
-
-💡 Os oito planetas são:
-
-<br><br>
-
-Mercúrio • Vênus • Terra • Marte •
-Júpiter • Saturno • Urano • Netuno
-
-</div>
-
-</div>
-`,
-
-"Verb to be":`
-<div class="lesson">
-
-<h3>🇺🇸 Verb to be</h3>
-
-<p>
-O verbo <b>to be</b> pode significar
-"ser" ou "estar".
-</p>
-
-<div class="example">
-
-I am
-
-<br>
-
-You are
-
-<br>
-
-He is
-
-</div>
-
-</div>
-`
+"Arte":
+"Artes visuais, música, teatro, dança e cultura."
 
 };
 
 
-/* =========================
-DADOS
-========================= */
+const icones = {
 
-let xp=
-Number(localStorage.getItem("v5xp"))||0;
+"Matemática":"➗",
+"Português":"📝",
+"Língua Portuguesa":"📝",
+"Ciências":"🔬",
+"História":"🏛️",
+"Geografia":"🌎",
+"Inglês":"🇬🇧",
+"Biologia":"🧬",
+"Física":"⚡",
+"Química":"🧪",
+"Filosofia":"💭",
+"Sociologia":"👥",
+"Educação Física":"⚽",
+"Arte":"🎨"
 
-let streak=
-Number(localStorage.getItem("v5streak"))||0;
+};
 
 
-/* =========================
-ATUALIZAR STATUS
-========================= */
+const anosDiv = document.getElementById("anos");
 
-function updateStats(){
 
-document.getElementById("xp").innerText=xp;
+for(let ano in anos){
 
-document.getElementById("level").innerText=
-Math.floor(xp/100)+1;
+    const botao = document.createElement("button");
 
-document.getElementById("streak").innerText=streak;
+    botao.className = "ano";
 
-document.getElementById("goal").innerText=
-Math.min(xp%100,100)+"%";
+    botao.innerHTML =
+    "<strong>"+ano+"</strong>" +
+    "<small>"+anos[ano].length+" matérias</small>";
 
-document.getElementById("progress").style.width=
-(xp%100)+"%";
+    botao.onclick = function(){
+        mostrarAno(ano);
+    };
 
-localStorage.setItem("v5xp",xp);
+    anosDiv.appendChild(botao);
+}
 
-localStorage.setItem("v5streak",streak);
+
+function mostrarAno(ano){
+
+    const conteudo =
+    document.getElementById("conteudo");
+
+    conteudo.innerHTML = `
+
+    <div class="painel">
+
+    <h2>📘 ${ano}</h2>
+
+    <p>
+    Escolha uma matéria para começar a estudar.
+    </p>
+
+    <div class="materias">
+
+    ${anos[ano].map(materia => `
+
+    <div class="materia">
+
+        <h3>
+        ${icones[materia] || "📚"}
+        ${materia}
+        </h3>
+
+        <p>
+        ${assuntos[materia] || "Conteúdos para estudar e revisar."}
+        </p>
+
+        <button
+        class="botao"
+        onclick="estudar('${materia}','${ano}')">
+
+        📖 Estudar
+
+        </button>
+
+    </div>
+
+    `).join("")}
+
+    </div>
+
+    <div class="dica">
+
+    💡 <b>Dica:</b>
+    Estude um assunto por vez e depois faça exercícios
+    para testar seus conhecimentos.
+
+    </div>
+
+    </div>
+
+    `;
 
 }
 
 
-/* =========================
-NOME
-========================= */
+function estudar(materia,ano){
 
-function saveName(){
+    document.getElementById("conteudo").innerHTML = `
 
-localStorage.setItem(
-"v5name",
-document.getElementById("name").value
-);
+    <div class="painel">
+
+    <button
+    class="botao"
+    onclick="mostrarAno('${ano}')">
+
+    ← Voltar
+
+    </button>
+
+    <h2>
+    ${icones[materia] || "📚"}
+    ${materia}
+    </h2>
+
+    <p>
+    <b>Ano:</b> ${ano}
+    </p>
+
+    <h3>📚 O que estudar?</h3>
+
+    <p>
+    ${assuntos[materia] ||
+    "Revise os principais conteúdos da matéria."}
+    </p>
+
+    <div class="dica">
+
+    🧠 <b>Área de exercícios</b>
+
+    <p>
+    Em breve você poderá responder exercícios,
+    fazer quizzes e acompanhar seu progresso.
+    </p>
+
+    <button
+    class="botao"
+    onclick="alert('Muito bem! Continue estudando! 📚🎉')">
+
+    Começar revisão
+
+    </button>
+
+    </div>
+
+    </div>
+
+    `;
 
 }
 
-document.getElementById("name").value=
-localStorage.getItem("v5name")||"";
+
+function pesquisar(){
+
+    const texto =
+    document.getElementById("pesquisa")
+    .value
+    .toLowerCase()
+    .trim();
+
+    if(!texto){
+
+        alert("Digite uma matéria para pesquisar.");
+
+        return;
+    }
+
+    let resultados = [];
+
+    for(let ano in anos){
+
+        anos[ano].forEach(materia => {
+
+            const assunto =
+            assuntos[materia] || "";
+
+            if(
+                materia.toLowerCase().includes(texto) ||
+                assunto.toLowerCase().includes(texto)
+            ){
+
+                resultados.push({
+                    ano:ano,
+                    materia:materia
+                });
+
+            }
+
+        });
+
+    }
+
+    let html = `
+
+    <div class="painel">
+
+    <h2>🔎 Resultados</h2>
+
+    `;
+
+    if(resultados.length === 0){
+
+        html += `
+
+        <p>
+        ❌ Nenhum resultado encontrado.
+        </p>
+
+        <p>
+        Tente pesquisar por:
+        <b>matemática, história, português,
+        biologia ou física.</b>
+        </p>
+
+        `;
+
+    }else{
+
+        html += `<div class="materias">`;
+
+        resultados.forEach(resultado => {
+
+            html += `
+
+            <div class="materia">
+
+            <h3>
+            ${icones[resultado.materia] || "📚"}
+            ${resultado.materia}
+            </h3>
+
+            <p>
+            ${resultado.ano}
+            </p>
+
+            <button
+            class="botao"
+            onclick="estudar(
+            '${resultado.materia}',
+            '${resultado.ano}'
+            )">
+
+            📖 Estudar
+
+            </button>
+
+            </div>
+
+            `;
+
+        });
+
+        html += `</div>`;
+
+    }
+
+    html += `</div>`;
+
+    document.getElementById("conteudo").innerHTML = html;
+
+}
 
 
-/* =========================
-ASSUNTOS
-========================= */
+document
+.getElementById("pesquisa")
+.addEventListener("keydown",function(event){
 
-function loadTopics(){
+    if(event.key === "Enter"){
 
-const subject=
-document.getElementById("subject").value;
+        pesquisar();
 
-const select=
-document.getElementById("topic");
-
-select.innerHTML="";
-
-topics[subject].forEach(t=>{
-
-let option=
-document.createElement("option");
-
-option.value=t;
-option.textContent=t;
-
-select.appendChild(option);
+    }
 
 });
 
-}
 
-loadTopics();
-updateStats();
+/* Abre o 6º ano inicialmente */
 
-
-/* =========================
-COMEÇAR
-========================= */
-
-function startStudy(){
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-showLesson();
-
-}
-
-
-/* =========================
-AULA
-========================= */
-
-function showLesson(){
-
-const topic=
-document.getElementById("topic").value;
-
-document.getElementById("contentTitle")
-.innerText="📖 "+topic;
-
-document.getElementById("contentBody")
-.innerHTML=
-
-lessons[topic]||
-
-`
-<div class="lesson">
-
-<h3>📚 ${topic}</h3>
-
-<p>
-Estamos preparando uma aula completa
-para este assunto.
-</p>
-
-<p>
-Enquanto isso, procure o conteúdo no
-seu material escolar e use os exercícios
-abaixo para praticar.
-</p>
-
-</div>
-`;
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-scroll();
-
-}
-
-
-/* =========================
-EXERCÍCIOS
-========================= */
-
-function showExercises(){
-
-document.getElementById("contentTitle")
-.innerText="✏️ Exercícios";
-
-document.getElementById("contentBody")
-.innerHTML=`
-
-<p>
-Tente responder sem olhar a resposta.
-</p>
-
-<div class="question">
-
-<b>1. Quanto é 25 + 37?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-62
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-52
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-72
-</button>
-
-</div>
-
-
-<div class="question">
-
-<b>2. Quanto é 8 × 7?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-56
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-48
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-64
-</button>
-
-</div>
-
-
-<div class="question">
-
-<b>3. Quanto é 100 ÷ 4?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-25
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-20
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-30
-</button>
-
-</div>
-
-`;
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-scroll();
-
-}
-
-
-/* =========================
-RESPOSTA
-========================= */
-
-function answer(button,correct){
-
-if(button.dataset.done)return;
-
-button.dataset.done="yes";
-
-if(correct){
-
-button.classList.add("correct");
-
-button.innerText=
-"✅ Acertou! +10 XP";
-
-xp+=10;
-
-streak++;
-
-}else{
-
-button.classList.add("wrong");
-
-button.innerText=
-"❌ Errou";
-
-streak=0;
-
-}
-
-updateStats();
-
-}
-
-
-/* =========================
-QUIZ
-========================= */
-
-function showQuiz(){
-
-document.getElementById("contentTitle")
-.innerText="🧠 Quiz";
-
-document.getElementById("contentBody")
-.innerHTML=`
-
-<p>
-Valendo <b>20 XP</b>!
-</p>
-
-<div class="question">
-
-<b>
-Quanto é 12 × 5?
-</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-60
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-50
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-70
-</button>
-
-</div>
-
-`;
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-scroll();
-
-}
-
-
-/* =========================
-SIMULADO
-========================= */
-
-function showExam(){
-
-document.getElementById("contentTitle")
-.innerText="📝 Simulado";
-
-document.getElementById("contentBody")
-.innerHTML=`
-
-<p>
-Faça as três questões!
-</p>
-
-<div class="question">
-
-<b>1. 15 + 20 = ?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-35
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-30
-</button>
-
-</div>
-
-
-<div class="question">
-
-<b>2. 9 × 6 = ?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-54
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-45
-</button>
-
-</div>
-
-
-<div class="question">
-
-<b>3. 100 ÷ 5 = ?</b>
-
-<button class="answer"
-onclick="answer(this,true)">
-20
-</button>
-
-<button class="answer"
-onclick="answer(this,false)">
-25
-</button>
-
-</div>
-
-`;
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-scroll();
-
-}
-
-
-/* =========================
-PESQUISA
-========================= */
-
-function searchTopic(){
-
-const search=
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
-
-const result=
-document.getElementById("searchResult");
-
-if(!search){
-
-result.innerText=
-"⚠️ Digite um assunto.";
-
-return;
-
-}
-
-for(let subject in topics){
-
-for(let topic of topics[subject]){
-
-if(topic.toLowerCase().includes(search)){
-
-document.getElementById("subject")
-.value=subject;
-
-loadTopics();
-
-document.getElementById("topic")
-.value=topic;
-
-result.innerText=
-"✅ Encontramos: "+topic;
-
-showLesson();
-
-return;
-
-}
-
-}
-
-}
-
-result.innerText=
-"❌ Assunto não encontrado.";
-
-}
-
-
-/* =========================
-METAS
-========================= */
-
-function showGoals(){
-
-document.getElementById("content")
-.classList.remove("hidden");
-
-document.getElementById("contentTitle")
-.innerText="🎯 Minha meta";
-
-document.getElementById("contentBody")
-.innerHTML=`
-
-<div class="lesson">
-
-<h3>
-Sua meta é chegar a 100 XP.
-</h3>
-
-<br>
-
-<p>
-XP atual:
-<b>${xp}</b>
-</p>
-
-<br>
-
-<p>
-Faltam:
-<b>${Math.max(0,100-xp)}</b>
-XP para completar a meta.
-</p>
-
-</div>
-
-`;
-
-scroll();
-
-}
-
-
-/* =========================
-CONQUISTAS
-========================= */
-
-function showAchievements(){
-
-document.getElementById("achievementBox")
-.classList.remove("hidden");
-
-document.getElementById("achievementBox")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-/* =========================
-MODO ESCURO
-========================= */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
-localStorage.setItem(
-"v5dark",
-document.body.classList.contains("dark")
-);
-
-}
-
-if(localStorage.getItem("v5dark")==="true"){
-
-document.body.classList.add("dark");
-
-}
-
-
-/* =========================
-RESETAR
-========================= */
-
-function resetData(){
-
-if(confirm("Tem certeza que deseja zerar seu progresso?")){
-
-xp=0;
-streak=0;
-
-updateStats();
-
-}
-
-}
-
-
-/* =========================
-ROLAGEM
-========================= */
-
-function scroll(){
-
-document.getElementById("content")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
+mostrarAno("6º ano");
 
 </script>
 
 </body>
-  </html>
+</html>
