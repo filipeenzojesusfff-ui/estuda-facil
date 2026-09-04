@@ -3,901 +3,1152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EstudaFácil V8.2</title>
+
+<title>EstudaFácil V8.3</title>
 
 <style>
+
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-    color:#222;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#222;
 }
 
 header{
-    background:#2563eb;
-    color:white;
-    padding:22px 15px;
-    text-align:center;
+background:#2563eb;
+color:white;
+text-align:center;
+padding:25px 15px;
 }
 
 header h1{
-    margin:0 0 8px;
-    font-size:30px;
+margin:0;
+font-size:30px;
 }
 
 header p{
-    margin:0;
+margin:8px 0 0;
+font-size:16px;
 }
 
 .container{
-    max-width:900px;
-    margin:auto;
-    padding:15px;
+max-width:900px;
+margin:auto;
+padding:15px;
 }
 
 .card{
-    background:white;
-    padding:20px;
-    margin:15px 0;
-    border-radius:18px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:18px;
+box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+h2{
+margin-top:0;
 }
 
 label{
-    display:block;
-    font-weight:bold;
-    margin-top:14px;
-    margin-bottom:7px;
+display:block;
+font-weight:bold;
+margin-top:14px;
+margin-bottom:7px;
 }
 
-input,select{
-    width:100%;
-    padding:14px;
-    border:1px solid #ccc;
-    border-radius:12px;
-    font-size:16px;
-    background:white;
+input,
+select{
+width:100%;
+padding:14px;
+border:1px solid #ccc;
+border-radius:12px;
+font-size:16px;
+background:white;
 }
 
 button{
-    width:100%;
-    padding:15px;
-    margin-top:11px;
-    border:0;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:15px;
+margin-top:10px;
+border:0;
+border-radius:12px;
+background:#2563eb;
+color:white;
+font-size:17px;
+font-weight:bold;
 }
 
 button:active{
-    transform:scale(.99);
+transform:scale(.98);
 }
 
 .info{
-    background:#eef4ff;
-    padding:17px;
-    border-radius:13px;
-    line-height:1.6;
-    font-size:17px;
+background:#eef4ff;
+padding:17px;
+border-radius:13px;
+line-height:1.6;
+font-size:17px;
 }
 
 .question{
-    background:#f8fafc;
-    padding:17px;
-    margin-top:15px;
-    border-radius:13px;
-    border:1px solid #ddd;
+background:#f8fafc;
+padding:17px;
+margin-top:15px;
+border-radius:14px;
+border:1px solid #ddd;
+}
+
+.question button{
+background:#2563eb;
 }
 
 .correct{
-    background:#16a34a !important;
+background:#16a34a !important;
 }
 
 .wrong{
-    background:#dc2626 !important;
+background:#dc2626 !important;
 }
 
 .progress{
-    height:18px;
-    background:#ddd;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:8px;
+height:18px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
 }
 
 .progress-bar{
-    height:100%;
-    background:#22c55e;
-    width:0%;
+height:100%;
+width:0%;
+background:#22c55e;
+transition:.3s;
+}
+
+.xpbox{
+font-size:18px;
+line-height:1.7;
 }
 
 .small{
-    font-size:14px;
-    opacity:.75;
+font-size:14px;
+opacity:.75;
 }
 
 .dark{
-    background:#121212;
-    color:#eee;
+background:#111;
+color:#eee;
 }
 
 .dark .card{
-    background:#1e1e1e;
-    color:#eee;
-}
-
-.dark .info{
-    background:#292929;
-}
-
-.dark .question{
-    background:#242424;
-    border-color:#444;
+background:#1e1e1e;
 }
 
 .dark input,
 .dark select{
-    background:#292929;
-    color:white;
-    border-color:#555;
+background:#292929;
+color:white;
+border-color:#555;
+}
+
+.dark .info{
+background:#292929;
+}
+
+.dark .question{
+background:#242424;
+border-color:#444;
 }
 
 footer{
-    text-align:center;
-    padding:25px;
-    opacity:.7;
+text-align:center;
+padding:25px;
+opacity:.7;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>📚 EstudaFácil V8.2</h1>
-    <p>Aprenda, pratique e prepare-se para suas provas!</p>
+
+<h1>📚 EstudaFácil V8.3</h1>
+
+<p>Aprenda • Pratique • Teste seus conhecimentos</p>
+
 </header>
+
 
 <div class="container">
 
-<div class="card">
 
-    <label>👤 Seu nome</label>
-    <input id="nome" placeholder="Digite seu nome">
-
-    <label>🎓 Ano escolar</label>
-
-    <select id="ano">
-        <option>1º ano</option>
-        <option>2º ano</option>
-        <option>3º ano</option>
-        <option>4º ano</option>
-        <option>5º ano</option>
-        <option>6º ano</option>
-        <option>7º ano</option>
-        <option>8º ano</option>
-        <option>9º ano</option>
-        <option>1º Ensino Médio</option>
-        <option>2º Ensino Médio</option>
-        <option>3º Ensino Médio</option>
-    </select>
-
-    <label>📚 Matéria</label>
-
-    <select id="materia" onchange="carregarAssuntos()">
-        <option value="Matemática">Matemática</option>
-        <option value="Português">Português</option>
-        <option value="História">História</option>
-        <option value="Geografia">Geografia</option>
-        <option value="Ciências">Ciências</option>
-        <option value="Inglês">Inglês</option>
-    </select>
-
-    <label>📖 Assunto</label>
-
-    <select id="assunto">
-        <option>Números naturais</option>
-    </select>
-
-</div>
+<!-- PERFIL -->
 
 <div class="card">
 
-    <h2>📊 Seu progresso</h2>
+<h2>👤 Seu perfil</h2>
 
-    <p>⭐ XP: <span id="xp">0</span></p>
-    <p>🏆 Nível: <span id="nivel">1</span></p>
-    <p>🔥 Sequência: <span id="streak">0</span> dias</p>
+<label>Seu nome</label>
 
-    <div class="progress">
-        <div class="progress-bar" id="barra"></div>
-    </div>
+<input
+id="nome"
+placeholder="Digite seu nome"
+oninput="salvarNome()"
+>
 
-    <p class="small">
-        Ganhe XP estudando e respondendo exercícios.
-    </p>
+<label>🎓 Ano escolar</label>
+
+<select id="ano">
+
+<option>1º ano</option>
+<option>2º ano</option>
+<option>3º ano</option>
+<option>4º ano</option>
+<option>5º ano</option>
+<option>6º ano</option>
+<option>7º ano</option>
+<option>8º ano</option>
+<option>9º ano</option>
+<option>1º Ensino Médio</option>
+<option>2º Ensino Médio</option>
+<option>3º Ensino Médio</option>
+
+</select>
+
+
+<label>📚 Matéria</label>
+
+<select
+id="materia"
+onchange="carregarAssuntos()"
+>
+
+<option value="Matemática">Matemática</option>
+<option value="Português">Português</option>
+<option value="História">História</option>
+<option value="Geografia">Geografia</option>
+<option value="Ciências">Ciências</option>
+<option value="Inglês">Inglês</option>
+
+</select>
+
+
+<label>📖 Assunto</label>
+
+<select id="assunto"></select>
 
 </div>
+
+
+
+<!-- PROGRESSO -->
 
 <div class="card">
 
-    <h2>🎯 O que você quer fazer?</h2>
+<h2>🏆 Seu progresso</h2>
 
-    <button onclick="mostrarComoFunciona()">
-        📚 Como funciona?
-    </button>
+<div class="xpbox">
 
-    <button onclick="mostrarLicao()">
-        📖 Estudar lição
-    </button>
+⭐ XP: <span id="xp">0</span>
 
-    <button onclick="mostrarExercicios()">
-        ✏️ Exercícios
-    </button>
+<br>
 
-    <button onclick="mostrarQuiz()">
-        🧠 Quiz
-    </button>
+🏆 Nível: <span id="nivel">1</span>
 
-    <button onclick="mostrarSimulado()">
-        🎯 Simulado
-    </button>
+<br>
 
-    <button onclick="modoEscuro()">
-        🌙 Modo escuro
-    </button>
-
-    <button onclick="limparProgresso()">
-        🗑️ Limpar progresso
-    </button>
+🔥 Sequência: <span id="streak">0</span>
 
 </div>
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="barra"
+></div>
+
+</div>
+
+<p class="small">
+
+A cada 100 XP você sobe de nível.
+
+</p>
+
+</div>
+
+
+
+<!-- AÇÕES -->
 
 <div class="card">
 
-    <h2>🔎 Pesquisar</h2>
+<h2>🎯 Estudar</h2>
 
-    <input
-        id="pesquisa"
-        placeholder="Digite um assunto..."
-    >
+<button onclick="mostrarComoFunciona()">
+📚 Como funciona?
+</button>
 
-    <button onclick="pesquisar()">
-        Pesquisar
-    </button>
+<button onclick="mostrarLicao()">
+📖 Estudar lição
+</button>
+
+<button onclick="mostrarExercicios()">
+✏️ Exercícios
+</button>
+
+<button onclick="mostrarQuiz()">
+🧠 Quiz
+</button>
+
+<button onclick="mostrarSimulado()">
+🎯 Simulado
+</button>
+
+<button onclick="modoEscuro()">
+🌙 Modo escuro
+</button>
+
+<button onclick="limparProgresso()">
+🗑️ Limpar progresso
+</button>
 
 </div>
+
+
+
+<!-- PESQUISA -->
 
 <div class="card">
 
-    <div id="conteudo">
+<h2>🔎 Pesquisar</h2>
 
-        <h2>👋 Bem-vindo ao EstudaFácil!</h2>
+<input
+id="pesquisa"
+placeholder="Ex.: frações, verbos, Egito..."
+>
 
-        <p>
-            Escolha uma matéria e um assunto para começar.
-        </p>
+<button onclick="pesquisar()">
+🔎 Pesquisar
+</button>
 
-    </div>
+</div>
+
+
+
+<!-- CONTEÚDO -->
+
+<div class="card">
+
+<div id="conteudo">
+
+<h2>👋 Bem-vindo!</h2>
+
+<p>
+
+Escolha uma matéria e um assunto para começar.
+
+</p>
 
 </div>
 
 </div>
+
+
+</div>
+
 
 <footer>
-    📚 EstudaFácil — Aprender pode ser fácil!
+
+📚 EstudaFácil V8.3
+
 </footer>
+
+
 
 <script>
 
+
+/* =================================================
+   ASSUNTOS
+================================================= */
+
 var assuntos = {
 
+
 "Matemática":[
+
 "Números naturais",
+
 "Adição e subtração",
+
 "Multiplicação e divisão",
+
 "Frações",
+
 "Números decimais",
+
 "Porcentagem",
+
 "Equações",
+
 "Geometria"
+
 ],
+
 
 "Português":[
+
 "Substantivos",
+
 "Adjetivos",
+
 "Verbos",
+
 "Pronomes",
+
 "Pontuação",
+
 "Interpretação de texto",
+
 "Sinônimos e antônimos",
+
 "Ortografia"
+
 ],
+
 
 "História":[
+
 "Pré-História",
+
 "Egito Antigo",
+
 "Grécia Antiga",
+
 "Roma Antiga",
+
 "Idade Média",
+
 "Brasil Colonial",
+
 "Independência do Brasil",
+
 "República"
+
 ],
+
 
 "Geografia":[
+
 "Mapas",
+
 "Coordenadas geográficas",
+
 "Continentes",
+
 "Oceanos",
+
 "Clima",
+
 "Relevo",
+
 "População",
+
 "Urbanização"
+
 ],
+
 
 "Ciências":[
+
 "Seres vivos",
+
 "Corpo humano",
+
 "Sistema digestório",
+
 "Sistema respiratório",
+
 "Animais",
+
 "Plantas",
+
 "Ecossistemas",
+
 "Planetas"
+
 ],
 
+
 "Inglês":[
+
 "Greetings",
+
 "Numbers",
+
 "Colors",
+
 "Family",
+
 "Days of the week",
+
 "Months",
+
 "Verb to be",
+
 "Simple Present"
+
 ]
 
 };
 
 
-/* =========================
+
+/* =================================================
    EXPLICAÇÕES
-========================= */
+================================================= */
 
 var explicacoes = {
 
+
 "Números naturais":
-"Números naturais são usados principalmente para contar e ordenar. Exemplos: 0, 1, 2, 3, 4, 5 e assim por diante.",
+
+"Números naturais são usados principalmente para contar e ordenar. Exemplos: 0, 1, 2, 3, 4 e 5.",
+
 
 "Adição e subtração":
-"Adição é uma operação usada para juntar quantidades. Subtração é usada para retirar uma quantidade ou descobrir a diferença entre dois números.",
+
+"Adição é usada para juntar quantidades. Subtração é usada para retirar uma quantidade ou descobrir a diferença entre números.",
+
 
 "Multiplicação e divisão":
-"Multiplicação representa grupos de quantidades iguais. Divisão é usada para repartir uma quantidade em partes iguais ou descobrir quantas vezes um número cabe em outro.",
+
+"Multiplicação representa grupos iguais. Divisão serve para repartir uma quantidade em partes iguais ou descobrir quantas vezes um número cabe em outro.",
+
 
 "Frações":
-"Frações representam partes de um todo. O número de cima é chamado de numerador e o número de baixo é chamado de denominador.",
+
+"Frações representam partes de um todo. O número de cima é o numerador e o número de baixo é o denominador.",
+
 
 "Números decimais":
-"Números decimais possuem uma parte inteira e uma parte decimal. No Brasil usamos a vírgula para separar essas partes. Exemplo: 2,5.",
+
+"Números decimais possuem uma parte inteira e uma parte decimal. No Brasil usamos a vírgula. Exemplo: 2,5.",
+
 
 "Porcentagem":
-"Porcentagem representa uma parte de 100. Por exemplo, 50% significa 50 partes em cada 100.",
+
+"Porcentagem representa uma parte de 100. Por exemplo, 25% significa 25 partes em cada 100.",
+
 
 "Equações":
-"Uma equação é uma igualdade que possui uma ou mais incógnitas. O objetivo é descobrir o valor que torna a igualdade verdadeira.",
+
+"Equações são igualdades que possuem uma incógnita. O objetivo é descobrir o valor que torna a igualdade verdadeira.",
+
 
 "Geometria":
-"Geometria é a área da Matemática que estuda formas, tamanhos, posições e propriedades das figuras. Exemplos: quadrado, triângulo, círculo e retângulo.",
+
+"Geometria estuda figuras, formas, tamanhos, posições, ângulos, áreas e outras propriedades matemáticas.",
 
 
 "Substantivos":
-"Substantivos são palavras usadas para nomear pessoas, animais, objetos, lugares, sentimentos e outras coisas. Exemplos: menino, cachorro, escola e alegria.",
+
+"Substantivos são palavras que dão nome a pessoas, animais, objetos, lugares, sentimentos e outras coisas.",
+
 
 "Adjetivos":
-"Adjetivos são palavras que caracterizam os substantivos. Exemplos: casa grande, menino inteligente e carro vermelho.",
+
+"Adjetivos caracterizam os substantivos. Exemplos: casa grande, carro vermelho e aluno inteligente.",
+
 
 "Verbos":
-"Verbos indicam ações, estados ou acontecimentos. Exemplos: estudar, correr, dormir, ser e estar.",
+
+"Verbos indicam ações, estados ou acontecimentos. Exemplos: correr, estudar, dormir, ser e estar.",
+
 
 "Pronomes":
-"Pronomes são palavras que podem substituir ou acompanhar substantivos. Exemplos: eu, você, ele, ela, nós e eles.",
+
+"Pronomes podem substituir ou acompanhar substantivos. Exemplos: eu, você, ele, ela, nós e eles.",
+
 
 "Pontuação":
-"Os sinais de pontuação ajudam a organizar as frases e indicar pausas, perguntas, emoções e outras informações. Exemplos: ponto final, vírgula, interrogação e exclamação.",
+
+"Os sinais de pontuação organizam as frases. Exemplos: ponto final, vírgula, ponto de interrogação e exclamação.",
+
 
 "Interpretação de texto":
-"Interpretar um texto significa compreender suas informações, identificar a ideia principal e entender o que o autor quis comunicar.",
+
+"Interpretar um texto significa compreender suas informações, identificar ideias principais e entender a mensagem apresentada.",
+
 
 "Sinônimos e antônimos":
-"Sinônimos são palavras com significado igual ou parecido. Antônimos são palavras com significados opostos. Exemplo: feliz e alegre são sinônimos; feliz e triste são antônimos.",
+
+"Sinônimos possuem significado igual ou parecido. Antônimos possuem significados opostos.",
+
 
 "Ortografia":
-"Ortografia é o conjunto de regras que orienta a maneira correta de escrever as palavras de uma língua.",
+
+"Ortografia reúne as regras que orientam a escrita correta das palavras.",
 
 
 "Pré-História":
-"A Pré-História corresponde ao período anterior ao surgimento da escrita. Ela é estudada por meio de vestígios deixados pelos seres humanos.",
+
+"É o período anterior ao surgimento da escrita. Conhecemos esse período por meio de vestígios encontrados pelos pesquisadores.",
+
 
 "Egito Antigo":
-"O Egito Antigo desenvolveu-se principalmente às margens do rio Nilo. A sociedade egípcia possuía faraós, agricultores, artesãos, sacerdotes e outros grupos.",
+
+"O Egito Antigo desenvolveu-se principalmente às margens do rio Nilo. Sua sociedade possuía faraós, agricultores, artesãos, sacerdotes e outros grupos.",
+
 
 "Grécia Antiga":
-"A Grécia Antiga era formada por várias cidades-Estado. Atenas ficou conhecida pela democracia, enquanto Esparta possuía uma sociedade fortemente ligada à atividade militar.",
+
+"A Grécia Antiga era formada por várias cidades-Estado. Atenas ficou conhecida pela democracia e Esparta por sua organização militar.",
+
 
 "Roma Antiga":
-"Roma Antiga passou por diferentes períodos, incluindo a Monarquia, a República e o Império. Roma tornou-se uma das maiores potências do mundo antigo.",
+
+"Roma passou pela Monarquia, República e Império e tornou-se uma das maiores potências do mundo antigo.",
+
 
 "Idade Média":
-"A Idade Média ocorreu aproximadamente entre o século V e o século XV. Na Europa, foi marcada pelo feudalismo, pela influência da Igreja e pelo desenvolvimento de reinos.",
+
+"A Idade Média ocorreu aproximadamente entre os séculos V e XV. Na Europa, teve feudalismo, reinos e forte influência da Igreja.",
+
 
 "Brasil Colonial":
-"O período colonial brasileiro começou após a chegada dos portugueses e foi marcado pela exploração econômica, pela colonização e pelo trabalho de indígenas e africanos escravizados.",
+
+"O Brasil Colonial foi marcado pela colonização portuguesa, exploração econômica e utilização de trabalho indígena e africano escravizado.",
+
 
 "Independência do Brasil":
-"A Independência do Brasil ocorreu em 1822, quando o Brasil rompeu seus vínculos políticos com Portugal. O processo teve participação de diferentes grupos da sociedade.",
+
+"A Independência do Brasil ocorreu em 1822, quando o Brasil rompeu seus vínculos políticos com Portugal.",
+
 
 "República":
-"República é uma forma de governo em que o chefe de Estado não ocupa o cargo por hereditariedade. No Brasil, a República foi proclamada em 1889.",
+
+"A República foi proclamada no Brasil em 1889. Nesse sistema, o chefe de Estado não ocupa o cargo por hereditariedade.",
 
 
 "Mapas":
-"Mapas são representações reduzidas de lugares da superfície terrestre. Eles podem mostrar países, cidades, rios, estradas, relevo e muitas outras informações.",
+
+"Mapas representam lugares da superfície terrestre de forma reduzida. Podem mostrar cidades, países, rios, estradas e outros elementos.",
+
 
 "Coordenadas geográficas":
-"Coordenadas geográficas são usadas para localizar pontos na Terra. Elas utilizam principalmente latitude e longitude.",
+
+"Latitude e longitude são utilizadas para localizar pontos na superfície terrestre.",
+
 
 "Continentes":
-"Os continentes são grandes extensões de terras emersas. Dependendo do modelo utilizado, estudamos seis ou sete continentes.",
+
+"Continentes são grandes extensões de terras emersas. O modelo mais usado no Brasil considera América, Europa, Ásia, África, Oceania e Antártida.",
+
 
 "Oceanos":
-"Oceanos são grandes massas de água salgada que cobrem grande parte da superfície terrestre. Os principais são Pacífico, Atlântico, Índico, Glacial Ártico e Glacial Antártico.",
+
+"Oceanos são grandes massas de água salgada. Entre eles estão os oceanos Pacífico, Atlântico, Índico, Ártico e Antártico.",
+
 
 "Clima":
-"Clima é o conjunto das condições atmosféricas observadas em uma região durante longos períodos. Temperatura e umidade são alguns dos elementos estudados.",
+
+"Clima é o conjunto das condições atmosféricas observadas em uma região durante longos períodos.",
+
 
 "Relevo":
-"Relevo é o conjunto das diferentes formas da superfície terrestre. Exemplos: montanhas, planaltos, planícies e depressões.",
+
+"Relevo é o conjunto das formas da superfície terrestre, como montanhas, planaltos, planícies e depressões.",
+
 
 "População":
-"População é o conjunto de pessoas que vivem em determinado lugar. A Geografia estuda sua distribuição, crescimento, idade e outros aspectos.",
+
+"População é o conjunto de pessoas que vivem em determinado lugar. A Geografia estuda sua distribuição e características.",
+
 
 "Urbanização":
+
 "Urbanização é o processo de crescimento das cidades e do aumento da população vivendo em áreas urbanas.",
 
 
 "Seres vivos":
-"Seres vivos possuem características como organização celular, metabolismo, crescimento e reprodução. Animais, plantas, fungos e muitos microrganismos são exemplos.",
+
+"Seres vivos apresentam características como organização celular, metabolismo, crescimento e reprodução.",
+
 
 "Corpo humano":
-"O corpo humano é formado por células, tecidos, órgãos e sistemas que trabalham juntos para manter o organismo funcionando.",
+
+"O corpo humano possui células, tecidos, órgãos e sistemas que trabalham juntos para manter o organismo funcionando.",
+
 
 "Sistema digestório":
-"O sistema digestório participa da digestão dos alimentos e da absorção de nutrientes. Ele envolve órgãos como boca, estômago e intestinos.",
+
+"O sistema digestório participa da digestão dos alimentos e da absorção de nutrientes.",
+
 
 "Sistema respiratório":
-"O sistema respiratório permite a entrada de oxigênio e a eliminação de gás carbônico. Pulmões e vias respiratórias fazem parte desse sistema.",
+
+"O sistema respiratório permite a entrada de oxigênio e a eliminação de gás carbônico.",
+
 
 "Animais":
-"Animais são seres vivos que pertencem ao reino Animalia. Existem diversos grupos, como mamíferos, aves, répteis, anfíbios, peixes e muitos invertebrados.",
+
+"Animais são seres vivos do reino Animalia. Existem muitos grupos, incluindo mamíferos, aves, répteis, anfíbios, peixes e invertebrados.",
+
 
 "Plantas":
-"Plantas são seres vivos que, em geral, produzem seu próprio alimento por meio da fotossíntese. Elas possuem estruturas como raízes, caules e folhas.",
+
+"Plantas são seres vivos que geralmente produzem seu próprio alimento por meio da fotossíntese.",
+
 
 "Ecossistemas":
-"Ecossistema é o conjunto formado pelos seres vivos e pelos elementos não vivos de determinado ambiente, incluindo as relações entre eles.",
+
+"Ecossistema é formado pelos seres vivos e pelos elementos não vivos de determinado ambiente e suas relações.",
+
 
 "Planetas":
-"Planetas são corpos celestes que orbitam estrelas. No Sistema Solar existem oito planetas: Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano e Netuno.",
+
+"Planetas são corpos celestes que orbitam estrelas. O Sistema Solar possui oito planetas.",
 
 
 "Greetings":
-"Greetings significa cumprimentos em inglês. Alguns exemplos são Hello, Hi, Good morning, Good afternoon e Good evening.",
+
+"Greetings significa cumprimentos. Exemplos: Hello, Hi, Good morning, Good afternoon e Good evening.",
+
 
 "Numbers":
-"Numbers significa números. Alguns números em inglês são: one, two, three, four, five, six, seven, eight, nine e ten.",
+
+"Numbers significa números. Exemplos: one, two, three, four, five e six.",
+
 
 "Colors":
-"Colors significa cores. Alguns exemplos são red (vermelho), blue (azul), green (verde), yellow (amarelo) e black (preto).",
+
+"Colors significa cores. Red é vermelho, blue é azul, green é verde e yellow é amarelo.",
+
 
 "Family":
-"Family significa família. Alguns exemplos são mother (mãe), father (pai), brother (irmão), sister (irmã) e parents (pais).",
+
+"Family significa família. Mother é mãe, father é pai, brother é irmão e sister é irmã.",
+
 
 "Days of the week":
-"Os dias da semana em inglês são Monday, Tuesday, Wednesday, Thursday, Friday, Saturday e Sunday.",
+
+"Os dias da semana são Monday, Tuesday, Wednesday, Thursday, Friday, Saturday e Sunday.",
+
 
 "Months":
-"Os meses do ano em inglês são January, February, March, April, May, June, July, August, September, October, November e December.",
+
+"Os meses são January, February, March, April, May, June, July, August, September, October, November e December.",
+
 
 "Verb to be":
-"O verbo to be pode significar ser ou estar. Suas formas mais comuns no presente são am, is e are.",
+
+"O verbo to be pode significar ser ou estar. No presente, suas formas principais são am, is e are.",
+
 
 "Simple Present":
-"O Simple Present é usado principalmente para falar sobre hábitos, rotinas, fatos e situações que acontecem regularmente."
+
+"O Simple Present é usado principalmente para falar de hábitos, rotinas, fatos e situações que acontecem regularmente."
+
 };
 
 
-/* =========================
-   CARREGAR ASSUNTOS
-========================= */
 
-function carregarAssuntos(){
+/* =================================================
+   BANCO DE EXERCÍCIOS
+================================================= */
 
-    var materia = document.getElementById("materia").value;
+var exercicios = {
 
-    var select = document.getElementById("assunto");
 
-    select.innerHTML = "";
+"Números naturais":[
 
-    var lista = assuntos[materia];
+["Qual número vem depois do 9?",["8","10","11"],1],
 
-    for(var i = 0; i < lista.length; i++){
+["Qual é o maior número?",["12","20","15"],1],
 
-        var option = document.createElement("option");
+["Qual número vem antes do 50?",["49","51","40"],0]
 
-        option.value = lista[i];
+],
 
-        option.textContent = lista[i];
 
-        select.appendChild(option);
-    }
+"Adição e subtração":[
 
-}
+["Quanto é 25 + 15?",["30","40","50"],1],
 
+["Quanto é 50 - 20?",["20","30","40"],1],
 
-/* =========================
-   PROGRESSO
-========================= */
+["Quanto é 100 + 25?",["115","125","135"],1]
 
-var xp = Number(localStorage.getItem("xp")) || 0;
+],
 
-var streak = Number(localStorage.getItem("streak")) || 0;
 
+"Multiplicação e divisão":[
 
-function atualizarProgresso(){
+["Quanto é 5 × 5?",["20","25","30"],1],
 
-    document.getElementById("xp").textContent = xp;
+["Quanto é 20 ÷ 4?",["4","5","6"],1],
 
-    var nivel = Math.floor(xp / 100) + 1;
+["Quanto é 8 × 3?",["21","24","27"],1]
 
-    document.getElementById("nivel").textContent = nivel;
+],
 
-    document.getElementById("streak").textContent = streak;
 
-    var progresso = xp % 100;
+"Frações":[
 
-    document.getElementById("barra").style.width =
-        progresso + "%";
+["Qual fração representa uma metade?",["1/2","1/3","2/3"],0],
 
-    localStorage.setItem("xp",xp);
+["Na fração 3/4, qual é o numerador?",["3","4","7"],0],
 
-    localStorage.setItem("streak",streak);
-}
+["Qual fração é maior?",["1/2","1/4","1/8"],0]
 
+],
 
-function ganharXP(valor){
 
-    xp += valor;
+"Números decimais":[
 
-    atualizarProgresso();
-}
+["Qual número é maior?",["2,5","2,3","2,1"],0],
 
+["Quanto é 1,5 + 1,5?",["2","3","4"],1],
 
-/* =========================
-   COMO FUNCIONA
-========================= */
+["Qual número é menor?",["0,5","0,8","1,2"],0]
 
-function mostrarComoFunciona(){
+],
 
-    var materia =
-        document.getElementById("materia").value;
 
-    var assunto =
-        document.getElementById("assunto").value;
+"Porcentagem":[
 
-    var explicacao =
-        explicacoes[assunto];
+["Quanto é 50% de 100?",["25","50","75"],1],
 
-    if(!explicacao){
+["Quanto é 10% de 200?",["10","20","30"],1],
 
-        explicacao =
-            "A explicação deste assunto será adicionada em uma próxima atualização.";
+["25% significa:",["25 de 100","50 de 100","75 de 100"],0]
 
-    }
+],
 
-    document.getElementById("conteudo").innerHTML =
 
-        "<h2>📚 Como funciona?</h2>" +
+"Equações":[
 
-        "<h3>" +
-        materia +
-        " — " +
-        assunto +
-        "</h3>" +
+["Se x + 5 = 10, quanto vale x?",["3","5","10"],1],
 
-        "<div class='info'>" +
+["Se x - 2 = 8, quanto vale x?",["6","10","12"],1],
 
-        "<strong>📖 Explicação:</strong><br><br>" +
+["Se 2x = 10, quanto vale x?",["2","5","10"],1]
 
-        explicacao +
+],
 
-        "</div>";
 
-}
+"Geometria":[
 
+["Quantos lados tem um triângulo?",["2","3","4"],1],
 
-/* =========================
-   LIÇÃO
-========================= */
+["Quantos lados tem um quadrado?",["3","4","5"],1],
 
-function mostrarLicao(){
+["Qual figura possui quatro lados iguais?",["Triângulo","Quadrado","Círculo"],1]
 
-    var materia =
-        document.getElementById("materia").value;
+],
 
-    var assunto =
-        document.getElementById("assunto").value;
 
-    var explicacao =
-        explicacoes[assunto];
 
-    if(!explicacao){
+"Substantivos":[
 
-        explicacao =
-            "Conteúdo em preparação.";
+["Qual palavra é um substantivo?",["correr","casa","bonito"],1],
 
-    }
+["Qual palavra nomeia uma pessoa?",["menino","rápido","correr"],0],
 
-    document.getElementById("conteudo").innerHTML =
+["Qual é um substantivo?",["escola","estudar","feliz"],0]
 
-        "<h2>📖 Lição</h2>" +
+],
 
-        "<h3>" +
-        materia +
-        " — " +
-        assunto +
-        "</h3>" +
 
-        "<div class='info'>" +
+"Adjetivos":[
 
-        explicacao +
+["Qual palavra é um adjetivo?",["bonito","casa","correr"],0],
 
-        "</div>" +
+["Em 'cachorro grande', qual é o adjetivo?",["cachorro","grande","o"],1],
 
-        "<br>" +
+["Qual palavra caracteriza algo?",["azul","mesa","correr"],0]
 
-        "<p>💡 Leia a explicação com atenção e depois pratique com os exercícios.</p>";
+],
 
-}
 
+"Verbos":[
 
-/* =========================
-   QUESTÕES
-========================= */
+["Qual palavra é um verbo?",["correr","azul","casa"],0],
 
-function criarQuestao(pergunta,opcoes,correta){
+["Qual palavra indica uma ação?",["estudar","mesa","bonito"],0],
 
-    var html = "";
+["Qual é um verbo?",["pular","feliz","escola"],0]
 
-    html += "<div class='question'>";
+],
 
-    html += "<h3>" +
-        pergunta +
-        "</h3>";
 
-    for(var i = 0; i < opcoes.length; i++){
+"Pronomes":[
 
-        var certo = (i === correta);
+["Qual é um pronome?",["eu","casa","bonito"],0],
 
-        html +=
-            "<button onclick='responder(this," +
-            certo +
-            ")'>" +
-            opcoes[i] +
-            "</button>";
+["Qual palavra pode substituir 'Maria'?",["ela","mesa","azul"],0],
 
-    }
+["Qual é um pronome pessoal?",["nós","correr","feliz"],0]
 
-    html += "</div>";
+],
 
-    return html;
-}
 
+"Pontuação":[
 
-function responder(botao,correto){
+["Qual sinal termina normalmente uma frase declarativa?",[".","?","!"],0],
 
-    if(botao.getAttribute("data-respondido") === "1"){
-        return;
-    }
+["Qual sinal usamos em uma pergunta?",[".","?","!"],1],
 
-    botao.setAttribute("data-respondido","1");
+["Qual sinal pode indicar surpresa?",[".","?","!"],2]
 
-    if(correto){
+],
 
-        botao.classList.add("correct");
 
-        botao.textContent += " ✅";
+"Interpretação de texto":[
 
-        ganharXP(10);
+["Interpretar um texto significa:",["Compreendê-lo","Apagá-lo","Ignorá-lo"],0],
 
-    }else{
+["A ideia principal é:",["O assunto central","Uma palavra qualquer","O título sempre"],0],
 
-        botao.classList.add("wrong");
+["Para entender um texto devemos:",["Ler com atenção","Ignorar as informações","Ler somente uma palavra"],0]
 
-        botao.textContent += " ❌";
+],
 
-    }
 
-}
+"Sinônimos e antônimos":[
 
+["Feliz e alegre são:",["Antônimos","Sinônimos","Verbos"],1],
 
-/* =========================
-   EXERCÍCIOS
-========================= */
+["Grande e pequeno são:",["Sinônimos","Antônimos","Substantivos"],1],
 
-function mostrarExercicios(){
+["Bonito e belo são:",["Sinônimos","Antônimos","Pronomes"],0]
 
-    var assunto =
-        document.getElementById("assunto").value;
+],
 
-    var html =
-        "<h2>✏️ Exercícios</h2>" +
 
-        "<h3>" +
-        assunto +
-        "</h3>";
+"Ortografia":[
 
+["Qual está escrita corretamente?",["Casa","Caza","Kasa"],0],
 
-    if(assunto === "Números naturais"){
+["Qual está correta?",["Escola","Iscola","Eskola"],0],
 
-        html += criarQuestao(
-            "Qual número vem depois do 9?",
-            ["8","10","11"],
-            1
-        );
+["Qual está correta?",["Amanhã","Amanhan","Amã"],0]
 
-        html += criarQuestao(
-            "Qual é o maior número?",
-            ["15","9","12"],
-            0
-        );
+],
 
-    }
 
-    else if(assunto === "Adição e subtração"){
 
-        html += criarQuestao(
-            "Quanto é 25 + 15?",
-            ["30","40","50"],
-            1
-        );
+"Pré-História":[
 
-        html += criarQuestao(
-            "Quanto é 50 - 20?",
-            ["20","30","40"],
-            1
-        );
+["A Pré-História ocorreu antes:",["Da escrita","Da agricultura","Do fogo"],0],
 
-    }
+["Um vestígio pode ser:",["Uma ferramenta antiga","Um celular","Um carro moderno"],0],
 
-    else if(assunto === "Multiplicação e divisão"){
+["O estudo da Pré-História usa:",["Vestígios","Internet","Televisão"],0]
 
-        html += criarQuestao(
-            "Quanto é 5 × 5?",
-            ["20","25","30"],
-            1
-        );
+],
 
-        html += criarQuestao(
-            "Quanto é 20 ÷ 4?",
-            ["4","5","6"],
-            1
-        );
 
-    }
+"Egito Antigo":[
 
-    else if(assunto === "Frações"){
+["O Egito desenvolveu-se próximo ao rio:",["Nilo","Amazonas","Tâmisa"],0],
 
-        html += criarQuestao(
-            "Qual fração representa uma metade?",
-            ["1/2","2/2","1/3"],
-            0
-        );
+["O governante do Egito era chamado:",["Faraó","Cônsul","Senador"],0],
 
-        html += criarQuestao(
-            "Na fração 3/4, qual é o numerador?",
-            ["3","4","7"],
-            0
-        );
+["As pirâmides estão relacionadas ao:",["Egito Antigo","Brasil Colonial","Império Romano"],0]
 
-    }
+],
 
-    else if(assunto === "Números decimais"){
 
-        html += criarQuestao(
-            "Qual número é maior?",
-            ["2,5","2,3","2,1"],
-            0
-        );
+"Grécia Antiga":[
 
-        html += criarQuestao(
-            "Quanto é 1,5 + 1,5?",
-            ["2","3","4"],
-            1
-        );
+["A Grécia Antiga possuía:",["Cidades-Estado","Estados Unidos","Colônias brasileiras"],0],
 
-    }
+["A democracia ficou especialmente associada a:",["Atenas","Esparta","Roma"],0],
 
-    else if(assunto === "Substantivos"){
+["Esparta era conhecida por sua organização:",["Militar","Industrial","Digital"],0]
 
-        html += criarQuestao(
-            "Qual palavra é um substantivo?",
-            ["correr","casa","bonito"],
-            1
-        );
+],
 
-    }
 
-    else if(assunto === "Adjetivos"){
+"Roma Antiga":[
 
-        html += criarQuestao(
-            "Qual palavra é um adjetivo?",
-            ["bonito","casa","correr"],
-            0
-        );
+["Roma passou por:",["Monarquia, República e Império","Somente República","Somente Império"],0],
 
-    }
+["Roma ficava na:",["Península Itálica","América do Sul","Ásia Oriental"],0],
 
-    else if(assunto === "Verbos"){
+["O Império Romano foi uma grande potência da:",["Antiguidade","Idade Contemporânea","Pré-História"],0]
 
-        html += criarQuestao(
-            "Qual palavra é um verbo?",
-            ["correr","azul","casa"],
-            0
-        );
+],
 
-    }
 
-    else if(assunto === "Greetings"){
+"Idade Média":[
 
-        html += criarQuestao(
-            "O que significa Hello?",
-            ["Tchau","Olá","Obrigado"],
-            1
-        );
+["A Idade Média ocorreu aproximadamente entre:",["Séculos V e XV","Séculos I e II","Séculos XVIII e XIX"],0],
 
-    }
+["Uma característica da Europa medieval foi:",["Feudalismo","Internet","Industrialização"],0],
 
-    else if(assunto === "Colors"){
+["A Igreja teve grande influência na:",["Sociedade medieval europeia","Pré-História","Era espacial"],0]
 
-        html += criarQuestao(
-            "O que significa Blue?",
-            ["Azul","Verde","Amarelo"],
-            0
-        );
+],
 
-    }
 
-    else{
+"Brasil Colonial":[
 
-        html +=
-            "<div class='info'>" +
+["O Brasil Colonial teve forte presença de:",["Portugal","Japão","Canadá"],0],
 
-            "Os exercícios deste assunto estão sendo preparados. 📚" +
+["A colonização começou após a chegada dos:",["Portugueses","Romanos","Gregos"],0],
 
-            "<br><br>" +
+["A economia colonial utilizou também trabalho de africanos:",["Escravizados","Turistas","Diplomatas"],0]
 
-            "Enquanto isso, leia a explicação e pratique o conteúdo." +
+],
 
-            "</div>";
 
-    }
+"Independência do Brasil":[
 
-    document.getElementById("conteudo").innerHTML = html;
+["A Independência do Brasil ocorreu em:",["1822","1500","1889"],0],
+
+["O Brasil rompeu seus vínculos políticos com:",["Portugal","Espanha","França"],0],
+
+["A Independência ocorreu no século:",["XIX","XV","XX"],0]
+
+],
+
+
+"República":[
+
+["A República brasileira foi proclamada em:",["1889","1822","1500"],0],
+
+["A República começou no Brasil após o fim da:",["Monarquia","Pré-História","Idade Média"],0],
+
+["O Brasil é atualmente uma:",["República","Monarquia","Colônia"],0]
+
+],
+
+
+
+"Mapas":[
+
+["Mapas representam:",["Lugares","Somente pessoas","Somente animais"],0],
+
+["Um mapa pode mostrar:",["Cidades","Somente planetas","Somente estrelas"],0],
+
+["Mapas possuem uma representação:",["Reduzida","Gigante sempre","Sem escala"],0]
+
+],
+
+
+"Coordenadas geográficas":[
+
+["Latitude e longitude servem para:",["Localizar lugares","Medir dinheiro","Contar pessoas"],0],
+
+["A latitude é medida a partir do:",["Equador","Meridiano de Greenwich","Polo Norte apenas"],0],
+
+["A longitude está relacionada aos:",["Meridianos","Paralelos apenas","Continentes"],0]
+
+],
+
+
+"Continentes":[
+
+["Qual é um continente?",["África","Atlântico","Pacífico"],0],
+
+["O Brasil fica na:",["América","Europa","Ásia"],0],
+
+["A Antártida é:",["Um continente","Um oceano","Um país"],0]
+
+],
+
+
+"Oceanos":[
+
+["Qual é um oceano?",["Atlântico","Brasil","África"],0],
+
+["O maior oceano é o:",["Pacífico","Atlântico","Índico"],0],
+
+["Oceanos possuem principalmente:",["Água salgada","Água doce","Areia"],0]
+
+],
+
+
+"Clima":[
+
+["Clima é observado durante:",["Longos períodos","Apenas um minuto","Uma única hora"],0],
+
+["Temperatura é um elemento do:",["Clima","Relevo","Mapa"],0],
+
+["O clima pode variar entre:",["Regiões","Somente países","Somente oceanos"],0]
+
+],
+
+
+"Relevo":[
+
+["Qual é uma forma de relevo?",["Montanha","Rio","Nuvem"],0],
+
+["Planície é uma forma de:",["Relevo","Clima","População"],0],
+
+["O relevo representa:",["Formas da superfície terrestre","Somente rios","Somente oceanos"],0]
+
+],
+
+
+"População":[
+
+["População é o conjunto de:",["Pessoas","Animais selvagens","Rios"],0],
+
+["A Geografia estuda a distribuição da:",["População","Chuva apenas","Lua"],0],
+
+["Crescimento populacional está relacionado à:",["População","Relevo apenas","Longitude apenas"],0]
+
+],
+
+
+"Urbanização":[
+
+["Urbanização está relacionada ao crescimento das:",["Cidades","Florestas","Montanhas"],0],
+
+["Área urbana é uma área:",["De cidades","Somente rural","Desabitada sempre"],0],
+
+["Urbanização pode aumentar a população:",["Urbana","Marinha","Polar"],0]
+
+],
+
+
+
+"Seres vivos":[
+
+["Qual é um ser vivo?",["Cachorro","Pedra","Mesa"],0],
+
+["Seres vivos podem:",["Reproduzir-se","Nunca crescer","Ser todos iguais"],0],
+
+["Plantas são:",["Seres vivos","Objetos","Minerais"],0]
+
+],
+
+
+"Corpo humano":[
+
+["O corpo humano possui:",["Órgãos e sistemas","Somente ossos","Somente músculos"],0],
+
+["O coração faz parte do sistema:",["Circulatório","Digestório","Respiratório"],0],
+
+["O corpo é formado por:",["Células","Somente água","Somente ossos"],0]
+
+],
+
+
+"Sistema digestório":[
+
+["O sistema digestório participa da:",["Digestão","Respiração","Audição"],0],
+
+["A digestão começa n
