@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EstudaFácil</title>
+<title>EstudaFácil V8</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -14,25 +15,26 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f2f5f9;
-    color: #222;
+    background: #f1f5f9;
+    color: #1f2937;
     transition: 0.3s;
 }
 
 header {
     background: #2563eb;
     color: white;
-    padding: 22px;
     text-align: center;
+    padding: 25px 15px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 header p {
     margin: 8px 0 0;
+    font-size: 17px;
 }
 
 .container {
@@ -43,141 +45,159 @@ header p {
 
 .card {
     background: white;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 18px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 22px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
 }
 
-h2 {
+.card h2 {
     margin-top: 0;
+    font-size: 27px;
 }
 
 label {
     display: block;
     font-weight: bold;
-    margin-top: 12px;
-    margin-bottom: 6px;
+    margin-top: 15px;
+    margin-bottom: 7px;
 }
 
 input,
 select {
     width: 100%;
-    padding: 13px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
+    padding: 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 17px;
     background: white;
+    color: #111827;
 }
 
 button {
     border: none;
-    border-radius: 10px;
-    padding: 13px 16px;
-    margin: 6px 4px 6px 0;
-    font-size: 15px;
-    cursor: pointer;
-    background: #2563eb;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 6px 5px 6px 0;
+    font-size: 16px;
     color: white;
+    background: #2563eb;
+    cursor: pointer;
 }
 
 button:hover {
     opacity: 0.9;
 }
 
-.button-green {
+.btn-green {
     background: #16a34a;
 }
 
-.button-orange {
-    background: #ea580c;
-}
-
-.button-purple {
+.btn-purple {
     background: #7c3aed;
 }
 
-.button-dark {
+.btn-orange {
+    background: #ea580c;
+}
+
+.btn-dark {
     background: #374151;
 }
 
-.button-red {
+.btn-red {
     background: #dc2626;
 }
 
 .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 
 .stat {
-    background: #eef4ff;
-    border-radius: 12px;
-    padding: 15px;
+    background: #eff6ff;
+    padding: 16px;
     text-align: center;
+    border-radius: 13px;
 }
 
 .stat strong {
     display: block;
-    font-size: 23px;
+    font-size: 25px;
     margin-bottom: 5px;
 }
 
 .progress {
     width: 100%;
-    height: 15px;
-    background: #ddd;
+    height: 16px;
+    background: #dbeafe;
     border-radius: 20px;
     overflow: hidden;
+    margin-top: 15px;
 }
 
 .progress-bar {
-    height: 100%;
     width: 0%;
+    height: 100%;
     background: #2563eb;
     transition: 0.4s;
 }
 
 .actions {
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
-#conteudo {
-    min-height: 100px;
-    line-height: 1.6;
+.explanation {
+    background: #eff6ff;
+    border-left: 6px solid #2563eb;
+    padding: 18px;
+    border-radius: 12px;
+    line-height: 1.7;
+}
+
+.example {
+    background: #fef3c7;
+    border-left: 6px solid #f59e0b;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 15px;
+    line-height: 1.7;
 }
 
 .question {
     background: #f8fafc;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 12px 0;
+    padding: 18px;
+    border-radius: 14px;
+    margin: 15px 0;
 }
 
-.answer-result {
+.question h3 {
+    margin-top: 0;
+}
+
+.resultado {
     font-weight: bold;
     margin-top: 10px;
 }
 
-.search-box {
+.search {
     display: flex;
     gap: 8px;
 }
 
-.search-box input {
+.search input {
     flex: 1;
 }
 
-.search-box button {
+.search button {
     margin: 0;
 }
 
 footer {
     text-align: center;
-    padding: 25px;
-    color: #666;
+    padding: 30px;
+    color: #64748b;
 }
 
 /* MODO ESCURO */
@@ -202,199 +222,285 @@ body.dark .stat {
     background: #374151;
 }
 
+body.dark .explanation {
+    background: #1e3a5f;
+}
+
+body.dark .example {
+    background: #4a3b18;
+}
+
 body.dark .question {
     background: #374151;
 }
 
 body.dark footer {
-    color: #aaa;
+    color: #9ca3af;
 }
 
 @media (max-width: 650px) {
+
     .stats {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    header h1 {
-        font-size: 25px;
-    }
-
-    .search-box {
+    .search {
         flex-direction: column;
     }
+
+    .search button {
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
     <h1>📚 EstudaFácil</h1>
-    <p>Aprenda, pratique e prepare-se para suas provas!</p>
+
+    <p>
+        Aprenda, pratique e prepare-se para suas provas!
+    </p>
+
 </header>
+
 
 <div class="container">
 
-    <div class="card">
-        <h2>👤 Seu perfil</h2>
 
-        <label>Seu nome</label>
-        <input id="nome" type="text" placeholder="Digite seu nome">
+<!-- PERFIL -->
 
-        <label>Ano escolar</label>
+<div class="card">
 
-        <select id="ano">
-            <option value="1º ano">1º ano</option>
-            <option value="2º ano">2º ano</option>
-            <option value="3º ano">3º ano</option>
-            <option value="4º ano">4º ano</option>
-            <option value="5º ano">5º ano</option>
-            <option value="6º ano">6º ano</option>
-            <option value="7º ano">7º ano</option>
-            <option value="8º ano">8º ano</option>
-            <option value="9º ano">9º ano</option>
-            <option value="1º ano do Ensino Médio">1º ano do Ensino Médio</option>
-            <option value="2º ano do Ensino Médio">2º ano do Ensino Médio</option>
-            <option value="3º ano do Ensino Médio">3º ano do Ensino Médio</option>
-        </select>
-    </div>
+    <h2>👤 Seu perfil</h2>
+
+    <label>Seu nome</label>
+
+    <input
+        id="nome"
+        type="text"
+        placeholder="Digite seu nome"
+    >
+
+    <label>Ano escolar</label>
+
+    <select id="ano">
+
+        <option>1º ano</option>
+        <option>2º ano</option>
+        <option>3º ano</option>
+        <option>4º ano</option>
+        <option>5º ano</option>
+        <option>6º ano</option>
+        <option>7º ano</option>
+        <option>8º ano</option>
+        <option>9º ano</option>
+
+        <option>1º ano do Ensino Médio</option>
+        <option>2º ano do Ensino Médio</option>
+        <option>3º ano do Ensino Médio</option>
+
+    </select>
+
+</div>
 
 
-    <div class="card">
-        <h2>📊 Seu progresso</h2>
+<!-- PROGRESSO -->
 
-        <div class="stats">
+<div class="card">
 
-            <div class="stat">
-                <strong id="xp">0</strong>
-                XP
-            </div>
+    <h2>📊 Seu progresso</h2>
 
-            <div class="stat">
-                <strong id="nivel">1</strong>
-                Nível
-            </div>
+    <div class="stats">
 
-            <div class="stat">
-                <strong id="sequencia">0</strong>
-                🔥 Dias
-            </div>
-
-            <div class="stat">
-                <strong id="meta">100</strong>
-                Meta XP
-            </div>
-
+        <div class="stat">
+            <strong id="xp">0</strong>
+            XP
         </div>
 
-        <br>
-
-        <div class="progress">
-            <div class="progress-bar" id="barra"></div>
+        <div class="stat">
+            <strong id="nivel">1</strong>
+            Nível
         </div>
-    </div>
 
+        <div class="stat">
+            <strong id="sequencia">0</strong>
+            🔥 Dias
+        </div>
 
-    <div class="card">
-
-        <h2>📚 Escolha o que estudar</h2>
-
-        <label>Matéria</label>
-
-        <select id="materia">
-
-            <option value="Matemática">➗ Matemática</option>
-            <option value="Português">📖 Português</option>
-            <option value="História">🏛️ História</option>
-            <option value="Geografia">🌎 Geografia</option>
-            <option value="Ciências">🔬 Ciências</option>
-            <option value="Inglês">🇺🇸 Inglês</option>
-
-        </select>
-
-
-        <label>Assunto</label>
-
-        <select id="assunto">
-            <option value="">Carregando assuntos...</option>
-        </select>
-
-
-        <div class="actions">
-
-            <button onclick="mostrarLicao()">
-                📖 Estudar lição
-            </button>
-
-            <button class="button-green" onclick="mostrarExercicios()">
-                ✏️ Exercícios
-            </button>
-
-            <button class="button-purple" onclick="mostrarQuiz()">
-                🧠 Quiz
-            </button>
-
-            <button class="button-orange" onclick="mostrarSimulado()">
-                🎯 Simulado
-            </button>
-
-            <button class="button-dark" onclick="modoEscuro()">
-                🌙 Modo escuro
-            </button>
-
-            <button class="button-red" onclick="zerarProgresso()">
-                🗑️ Limpar progresso
-            </button>
-
+        <div class="stat">
+            <strong>100</strong>
+            Meta XP
         </div>
 
     </div>
 
+    <div class="progress">
 
-    <div class="card">
-
-        <h2>🔎 Procurar assunto</h2>
-
-        <div class="search-box">
-
-            <input
-                id="pesquisa"
-                type="text"
-                placeholder="Ex.: frações, verbos, Brasil..."
-            >
-
-            <button onclick="pesquisar()">
-                🔍 Pesquisar
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <h2 id="tituloConteudo">📚 Conteúdo</h2>
-
-        <div id="conteudo">
-            Escolha uma matéria e um assunto para começar.
-        </div>
+        <div
+            class="progress-bar"
+            id="barra"
+        ></div>
 
     </div>
 
 </div>
 
 
+<!-- ESCOLHA -->
+
+<div class="card">
+
+    <h2>📚 Escolha o que estudar</h2>
+
+    <label>Matéria</label>
+
+    <select id="materia">
+
+        <option value="Matemática">
+            ➗ Matemática
+        </option>
+
+        <option value="Português">
+            📖 Português
+        </option>
+
+        <option value="História">
+            🏛️ História
+        </option>
+
+        <option value="Geografia">
+            🌎 Geografia
+        </option>
+
+        <option value="Ciências">
+            🔬 Ciências
+        </option>
+
+        <option value="Inglês">
+            🇺🇸 Inglês
+        </option>
+
+    </select>
+
+
+    <label>Assunto</label>
+
+    <select id="assunto">
+        <option>Carregando...</option>
+    </select>
+
+
+    <div class="actions">
+
+        <button onclick="mostrarComoFunciona()">
+            📚 Como funciona?
+        </button>
+
+        <button
+            class="btn-green"
+            onclick="mostrarExercicios()"
+        >
+            ✏️ Exercícios
+        </button>
+
+        <button
+            class="btn-purple"
+            onclick="mostrarQuiz()"
+        >
+            🧠 Quiz
+        </button>
+
+        <button
+            class="btn-orange"
+            onclick="mostrarSimulado()"
+        >
+            🎯 Simulado
+        </button>
+
+        <button
+            class="btn-dark"
+            onclick="modoEscuro()"
+        >
+            🌙 Modo escuro
+        </button>
+
+        <button
+            class="btn-red"
+            onclick="zerarProgresso()"
+        >
+            🗑️ Limpar progresso
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PESQUISA -->
+
+<div class="card">
+
+    <h2>🔎 Procurar assunto</h2>
+
+    <div class="search">
+
+        <input
+            id="pesquisa"
+            placeholder="Ex.: frações, verbos, células..."
+        >
+
+        <button onclick="pesquisar()">
+            🔍 Pesquisar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CONTEÚDO -->
+
+<div class="card">
+
+    <h2 id="tituloConteudo">
+        📚 Conteúdo
+    </h2>
+
+    <div id="conteudo">
+
+        Escolha uma matéria e um assunto
+        para começar a estudar.
+
+    </div>
+
+</div>
+
+
+</div>
+
+
 <footer>
-    📚 EstudaFácil — Estude de forma simples e gratuita.
+
+    📚 EstudaFácil<br>
+    Estude de forma simples e gratuita.
+
 </footer>
 
 
 <script>
 
-/* =========================
-   ASSUNTOS
-========================= */
+/* ==================================================
+   LISTA DE ASSUNTOS
+================================================== */
 
 const assuntos = {
 
@@ -494,478 +600,496 @@ const assuntos = {
 };
 
 
-/* =========================
+/* ==================================================
    ELEMENTOS
-========================= */
+================================================== */
 
-const materia = document.getElementById("materia");
-const assunto = document.getElementById("assunto");
-const ano = document.getElementById("ano");
-const nome = document.getElementById("nome");
+const materia =
+    document.getElementById("materia");
 
-const xpElemento = document.getElementById("xp");
-const nivelElemento = document.getElementById("nivel");
-const sequenciaElemento = document.getElementById("sequencia");
-const barra = document.getElementById("barra");
+const assunto =
+    document.getElementById("assunto");
 
-const conteudo = document.getElementById("conteudo");
-const tituloConteudo = document.getElementById("tituloConteudo");
+const ano =
+    document.getElementById("ano");
+
+const nome =
+    document.getElementById("nome");
+
+const conteudo =
+    document.getElementById("conteudo");
+
+const tituloConteudo =
+    document.getElementById("tituloConteudo");
 
 
-/* =========================
+/* ==================================================
    CARREGAR ASSUNTOS
-========================= */
+================================================== */
 
 function carregarAssuntos() {
 
-    const materiaEscolhida = materia.value;
+    const materiaEscolhida =
+        materia.value;
 
     assunto.innerHTML = "";
 
-    const lista = assuntos[materiaEscolhida];
+    const lista =
+        assuntos[materiaEscolhida];
 
-    if (!lista || lista.length === 0) {
+    if (!lista) {
 
-        const opcao = document.createElement("option");
-
-        opcao.textContent = "Nenhum assunto encontrado";
-
-        assunto.appendChild(opcao);
+        assunto.innerHTML =
+            "<option>Nenhum assunto</option>";
 
         return;
     }
 
     lista.forEach(function(item) {
 
-        const opcao = document.createElement("option");
+        const option =
+            document.createElement("option");
 
-        opcao.value = item;
-        opcao.textContent = item;
+        option.value = item;
 
-        assunto.appendChild(opcao);
+        option.textContent = item;
+
+        assunto.appendChild(option);
 
     });
 
 }
 
 
-/* =========================
-   XP
-========================= */
+/* ==================================================
+   EXPLICAÇÕES
+================================================== */
 
-let xp = Number(localStorage.getItem("estudaXP")) || 0;
+function obterExplicacao(materiaNome, assuntoNome) {
 
-let sequencia =
-    Number(localStorage.getItem("estudaSequencia")) || 0;
+    if (
+        materiaNome === "Matemática" &&
+        assuntoNome === "Multiplicação e divisão"
+    ) {
+
+        return {
+            titulo: "➗ Multiplicação e divisão",
+
+            texto:
+            "Multiplicação é uma forma de somar a mesma quantidade várias vezes. " +
+            "Já a divisão serve para repartir uma quantidade em partes iguais ou descobrir " +
+            "quantas vezes um número cabe em outro.",
+
+            exemplo:
+            "Exemplo: 4 × 3 = 12, porque 4 + 4 + 4 = 12. " +
+            "Na divisão, 12 ÷ 3 = 4, porque podemos separar 12 em 3 grupos iguais de 4."
+        };
+
+    }
 
 
-function atualizarProgresso() {
+    if (
+        materiaNome === "Matemática" &&
+        assuntoNome === "Frações"
+    ) {
 
-    const nivel = Math.floor(xp / 100) + 1;
+        return {
+            titulo: "🍕 Frações",
 
-    xpElemento.textContent = xp;
+            texto:
+            "Uma fração representa uma parte de um todo. " +
+            "O número de cima é chamado de numerador e mostra quantas partes estamos considerando. " +
+            "O número de baixo é o denominador e mostra em quantas partes iguais o todo foi dividido.",
 
-    nivelElemento.textContent = nivel;
+            exemplo:
+            "Exemplo: 3/4 significa que um todo foi dividido em 4 partes iguais " +
+            "e estamos considerando 3 dessas partes."
+        };
 
-    sequenciaElemento.textContent = sequencia;
+    }
 
-    const progresso = xp % 100;
 
-    barra.style.width = progresso + "%";
+    if (
+        materiaNome === "Matemática" &&
+        assuntoNome === "Porcentagem"
+    ) {
+
+        return {
+            titulo: "💯 Porcentagem",
+
+            texto:
+            "Porcentagem representa uma parte de 100. " +
+            "O símbolo usado para representar porcentagem é %. " +
+            "Ela aparece em descontos, aumentos, pesquisas e muitas outras situações.",
+
+            exemplo:
+            "Exemplo: 50% significa 50 partes de cada 100. " +
+            "50% de 100 = 50."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Matemática" &&
+        assuntoNome === "Números naturais"
+    ) {
+
+        return {
+            titulo: "🔢 Números naturais",
+
+            texto:
+            "Os números naturais são usados para contar e ordenar. " +
+            "Eles aparecem em situações do nosso dia a dia, como quantidade de pessoas, " +
+            "objetos e posições.",
+
+            exemplo:
+            "Exemplos: 0, 1, 2, 3, 4, 5, 6..."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Português" &&
+        assuntoNome === "Verbos"
+    ) {
+
+        return {
+            titulo: "📖 Verbos",
+
+            texto:
+            "Verbos são palavras que podem indicar ações, estados ou acontecimentos. " +
+            "Eles podem mudar de acordo com o tempo e com a pessoa que realiza a ação.",
+
+            exemplo:
+            "Exemplo: Eu estudo. Eu estudei. Eu estudarei."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Português" &&
+        assuntoNome === "Substantivos"
+    ) {
+
+        return {
+            titulo: "📖 Substantivos",
+
+            texto:
+            "Substantivos são palavras usadas para nomear pessoas, animais, lugares, objetos, " +
+            "sentimentos e muitas outras coisas.",
+
+            exemplo:
+            "Exemplos: aluno, cachorro, escola, Brasil, alegria e computador."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Geografia" &&
+        assuntoNome === "Latitude e longitude"
+    ) {
+
+        return {
+            titulo: "🌎 Latitude e longitude",
+
+            texto:
+            "Latitude e longitude são usadas para localizar lugares na superfície da Terra. " +
+            "A latitude indica a posição ao norte ou ao sul do Equador. " +
+            "A longitude indica a posição a leste ou a oeste do Meridiano de Greenwich.",
+
+            exemplo:
+            "Exemplo: coordenadas geográficas podem indicar exatamente a localização de um lugar."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Ciências" &&
+        assuntoNome === "Sistema Solar"
+    ) {
+
+        return {
+            titulo: "🪐 Sistema Solar",
+
+            texto:
+            "O Sistema Solar é formado pelo Sol e pelos corpos celestes que ficam sob sua influência gravitacional. " +
+            "Entre seus planetas estão Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano e Netuno.",
+
+            exemplo:
+            "A Terra é o terceiro planeta a partir do Sol."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Ciências" &&
+        assuntoNome === "Células"
+    ) {
+
+        return {
+            titulo: "🔬 Células",
+
+            texto:
+            "A célula é a unidade básica dos seres vivos. " +
+            "Alguns seres vivos possuem apenas uma célula, enquanto outros possuem muitas células.",
+
+            exemplo:
+            "O corpo humano é formado por uma enorme quantidade de células especializadas."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "História" &&
+        assuntoNome === "Independência do Brasil"
+    ) {
+
+        return {
+            titulo: "🇧🇷 Independência do Brasil",
+
+            texto:
+            "A Independência do Brasil foi declarada em 7 de setembro de 1822. " +
+            "O processo marcou a separação política do Brasil em relação a Portugal.",
+
+            exemplo:
+            "A data de 7 de setembro é lembrada todos os anos como o Dia da Independência do Brasil."
+        };
+
+    }
+
+
+    if (
+        materiaNome === "Inglês" &&
+        assuntoNome === "Greetings"
+    ) {
+
+        return {
+            titulo: "🇺🇸 Greetings",
+
+            texto:
+            "Greetings são cumprimentos usados para iniciar uma conversa em inglês. " +
+            "Eles podem ser usados em situações formais ou informais.",
+
+            exemplo:
+            "Hello = Olá.  Hi = Oi.  Good morning = Bom dia.  Good afternoon = Boa tarde."
+        };
+
+    }
+
+
+    return {
+
+        titulo:
+        "📚 " + assuntoNome,
+
+        texto:
+        "Neste conteúdo você vai aprender os principais conceitos relacionados a " +
+        assuntoNome + ". " +
+        "A ideia é entender como o assunto funciona antes de começar os exercícios.",
+
+        exemplo:
+        "Leia a explicação com atenção e depois pratique para verificar o que você aprendeu."
+    };
 
 }
 
 
-function ganharXP(valor) {
+/* ==================================================
+   COMO FUNCIONA
+================================================== */
 
-    xp += valor;
+function mostrarComoFunciona() {
 
-    localStorage.setItem("estudaXP", xp);
-
-    atualizarProgresso();
-
-}
-
-
-/* =========================
-   PERFIL
-========================= */
-
-nome.value =
-    localStorage.getItem("estudaNome") || "";
-
-nome.addEventListener("input", function() {
-
-    localStorage.setItem(
-        "estudaNome",
-        nome.value
-    );
-
-});
-
-
-/* =========================
-   LIÇÃO
-========================= */
-
-function mostrarLicao() {
-
-    const materiaEscolhida = materia.value;
-
-    const assuntoEscolhido = assunto.value;
-
-    const anoEscolhido = ano.value;
+    const explicacao =
+        obterExplicacao(
+            materia.value,
+            assunto.value
+        );
 
     tituloConteudo.textContent =
-        "📖 Lição — " + assuntoEscolhido;
+        "📚 Como funciona?";
 
-    let texto = "";
+    conteudo.innerHTML =
 
-    if (assuntoEscolhido === "Frações") {
+        "<div class='explanation'>" +
 
-        texto =
-        "<h3>➗ Frações</h3>" +
-        "<p>Uma fração representa uma parte de um todo.</p>" +
-        "<p>Ela possui numerador e denominador.</p>" +
-        "<p>Exemplo: em 3/4, o número 3 é o numerador e o 4 é o denominador.</p>";
+        "<h2>" +
+        explicacao.titulo +
+        "</h2>" +
 
-    }
+        "<p>" +
+        explicacao.texto +
+        "</p>" +
 
-    else if (assuntoEscolhido === "Porcentagem") {
+        "</div>" +
 
-        texto =
-        "<h3>💯 Porcentagem</h3>" +
-        "<p>Porcentagem representa uma parte de 100.</p>" +
-        "<p>50% significa 50 de cada 100.</p>" +
-        "<p>Exemplo: 50% de 100 é 50.</p>";
+        "<div class='example'>" +
 
-    }
+        "<strong>💡 Exemplo:</strong>" +
 
-    else if (assuntoEscolhido === "Verbos") {
+        "<p>" +
+        explicacao.exemplo +
+        "</p>" +
 
-        texto =
-        "<h3>📖 Verbos</h3>" +
-        "<p>Verbos são palavras que indicam ações, estados ou fenômenos.</p>" +
-        "<p>Exemplos: correr, estudar, brincar, ser e estar.</p>";
+        "</div>" +
 
-    }
+        "<p>" +
+        "📌 Você está estudando este conteúdo no " +
+        "<strong>" +
+        ano.value +
+        "</strong>." +
+        "</p>";
 
-    else if (assuntoEscolhido === "Latitude e longitude") {
-
-        texto =
-        "<h3>🌎 Latitude e longitude</h3>" +
-        "<p>Latitude indica a posição ao norte ou ao sul do Equador.</p>" +
-        "<p>Longitude indica a posição a leste ou oeste do Meridiano de Greenwich.</p>";
-
-    }
-
-    else if (assuntoEscolhido === "Sistema Solar") {
-
-        texto =
-        "<h3>🪐 Sistema Solar</h3>" +
-        "<p>O Sistema Solar é formado pelo Sol e pelos corpos celestes que orbitam ao seu redor.</p>" +
-        "<p>Entre os planetas estão Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano e Netuno.</p>";
-
-    }
-
-    else {
-
-        texto =
-        "<h3>📚 " + assuntoEscolhido + "</h3>" +
-        "<p>Você está estudando <strong>" +
-        assuntoEscolhido +
-        "</strong> na matéria de <strong>" +
-        materiaEscolhida +
-        "</strong>.</p>" +
-        "<p>Este conteúdo é destinado ao " +
-        anoEscolhido +
-        ".</p>" +
-        "<p>Leia o assunto, faça exercícios e depois tente o quiz para ganhar XP!</p>";
-
-    }
-
-    conteudo.innerHTML = texto;
-
-    ganharXP(10);
+    ganharXP(5);
 
 }
 
 
-/* =========================
+/* ==================================================
    EXERCÍCIOS
-========================= */
+================================================== */
 
 function mostrarExercicios() {
 
-    tituloConteudo.textContent =
-        "✏️ Exercícios — " + assunto.value;
-
-    conteudo.innerHTML =
-
-        "<h3>Questão 1</h3>" +
-
-        "<div class='question'>" +
-        "<p>Quanto é 5 + 5?</p>" +
-
-        "<button onclick='responder(this, true)'>10</button>" +
-        "<button onclick='responder(this, false)'>15</button>" +
-        "<button onclick='responder(this, false)'>20</button>" +
-
-        "<div class='answer-result'></div>" +
-        "</div>" +
-
-
-        "<h3>Questão 2</h3>" +
-
-        "<div class='question'>" +
-        "<p>Quanto é 10 × 2?</p>" +
-
-        "<button onclick='responder(this, true)'>20</button>" +
-        "<button onclick='responder(this, false)'>12</button>" +
-        "<button onclick='responder(this, false)'>30</button>" +
-
-        "<div class='answer-result'></div>" +
-        "</div>";
-
-}
-
-
-/* =========================
-   RESPONDER
-========================= */
-
-function responder(botao, correto) {
-
-    const questao =
-        botao.parentElement;
-
-    const resultado =
-        questao.querySelector(".answer-result");
-
-    if (questao.dataset.respondida === "sim") {
-        return;
-    }
-
-    questao.dataset.respondida = "sim";
-
-    if (correto) {
-
-        resultado.textContent =
-            "✅ Acertou! +10 XP";
-
-        ganharXP(10);
-
-    } else {
-
-        resultado.textContent =
-            "❌ Essa não foi a resposta correta.";
-
-    }
-
-}
-
-
-/* =========================
-   QUIZ
-========================= */
-
-function mostrarQuiz() {
+    const tema = assunto.value;
 
     tituloConteudo.textContent =
-        "🧠 Quiz — " + assunto.value;
-
-    conteudo.innerHTML =
-
-        "<h3>Você está pronto?</h3>" +
-
-        "<div class='question'>" +
-
-        "<p><strong>Quanto é 100 ÷ 10?</strong></p>" +
-
-        "<button onclick='responder(this, true)'>10</button>" +
-
-        "<button onclick='responder(this, false)'>5</button>" +
-
-        "<button onclick='responder(this, false)'>20</button>" +
-
-        "<div class='answer-result'></div>" +
-
-        "</div>";
-
-}
+        "✏️ Exercícios — " + tema;
 
 
-/* =========================
-   SIMULADO
-========================= */
-
-function mostrarSimulado() {
-
-    tituloConteudo.textContent =
-        "🎯 Simulado";
-
-    conteudo.innerHTML =
-
-        "<h3>Simulado EstudaFácil</h3>" +
-
-        "<div class='question'>" +
-        "<p>1. Quanto é 7 + 8?</p>" +
-        "<button onclick='responder(this, true)'>15</button>" +
-        "<button onclick='responder(this, false)'>14</button>" +
-        "<button onclick='responder(this, false)'>16</button>" +
-        "<div class='answer-result'></div>" +
-        "</div>" +
+    let html = "";
 
 
-        "<div class='question'>" +
-        "<p>2. Qual planeta é conhecido como planeta vermelho?</p>" +
-        "<button onclick='responder(this, true)'>Marte</button>" +
-        "<button onclick='responder(this, false)'>Terra</button>" +
-        "<button onclick='responder(this, false)'>Júpiter</button>" +
-        "<div class='answer-result'></div>" +
-        "</div>" +
+    if (tema === "Multiplicação e divisão") {
 
+        html =
 
-        "<div class='question'>" +
-        "<p>3. Qual é a capital do Brasil?</p>" +
-        "<button onclick='responder(this, true)'>Brasília</button>" +
-        "<button onclick='responder(this, false)'>São Paulo</button>" +
-        "<button onclick='responder(this, false)'>Rio de Janeiro</button>" +
-        "<div class='answer-result'></div>" +
-        "</div>";
+        criarQuestao(
+            "Quanto é 6 × 4?",
+            ["24", "20", "18"],
+            0
+        ) +
 
-}
+        criarQuestao(
+            "Quanto é 36 ÷ 6?",
+            ["5", "6", "7"],
+            1
+        ) +
 
-
-/* =========================
-   PESQUISA
-========================= */
-
-function pesquisar() {
-
-    const texto =
-        document.getElementById("pesquisa")
-        .value
-        .toLowerCase()
-        .trim();
-
-    if (texto === "") {
-
-        alert("Digite um assunto para pesquisar.");
-
-        return;
-    }
-
-    for (const materiaNome in assuntos) {
-
-        const lista =
-            assuntos[materiaNome];
-
-        for (let i = 0; i < lista.length; i++) {
-
-            if (
-                lista[i]
-                .toLowerCase()
-                .includes(texto)
-            ) {
-
-                materia.value = materiaNome;
-
-                carregarAssuntos();
-
-                assunto.value = lista[i];
-
-                mostrarLicao();
-
-                return;
-            }
-
-        }
-
-    }
-
-    tituloConteudo.textContent =
-        "🔎 Pesquisa";
-
-    conteudo.innerHTML =
-        "<p>❌ Assunto não encontrado.</p>" +
-        "<p>Tente pesquisar outro termo.</p>";
-
-}
-
-
-/* =========================
-   MODO ESCURO
-========================= */
-
-function modoEscuro() {
-
-    document.body.classList.toggle("dark");
-
-    const ativado =
-        document.body.classList.contains("dark");
-
-    localStorage.setItem(
-        "estudaDark",
-        ativado
-    );
-
-}
-
-
-/* =========================
-   LIMPAR PROGRESSO
-========================= */
-
-function zerarProgresso() {
-
-    const confirmar =
-        confirm(
-            "Tem certeza que deseja apagar seu XP e sua sequência?"
+        criarQuestao(
+            "Quanto é 8 × 7?",
+            ["54", "56", "64"],
+            1
         );
 
-    if (!confirmar) {
-        return;
     }
 
-    xp = 0;
 
-    sequencia = 0;
+    else if (tema === "Frações") {
 
-    localStorage.removeItem("estudaXP");
+        html =
 
-    localStorage.removeItem("estudaSequencia");
+        criarQuestao(
+            "Qual é o numerador da fração 3/5?",
+            ["3", "5", "8"],
+            0
+        ) +
 
-    atualizarProgresso();
+        criarQuestao(
+            "Qual é o denominador da fração 2/7?",
+            ["2", "5", "7"],
+            2
+        ) +
 
-}
+        criarQuestao(
+            "Qual fração representa uma metade?",
+            ["1/2", "1/3", "2/3"],
+            0
+        );
 
-
-/* =========================
-   INICIAR
-========================= */
-
-materia.addEventListener(
-    "change",
-    carregarAssuntos
-);
-
-
-carregarAssuntos();
-
-atualizarProgresso();
+    }
 
 
-if (
-    localStorage.getItem("estudaDark")
-    === "true"
-) {
+    else if (tema === "Porcentagem") {
 
-    document.body.classList.add("dark");
+        html =
 
-}
+        criarQuestao(
+            "Quanto é 50% de 100?",
+            ["25", "50", "75"],
+            1
+        ) +
 
-</script>
+        criarQuestao(
+            "Quanto é 10% de 100?",
+            ["5", "10", "20"],
+            1
+        ) +
 
-</body>
-  </html>
+        criarQuestao(
+            "25% corresponde a quantas partes de 100?",
+            ["10", "20", "25"],
+            2
+        );
+
+    }
+
+
+    else if (tema === "Números naturais") {
+
+        html =
+
+        criarQuestao(
+            "Qual destes é um número natural?",
+            ["5", "-5", "1,5"],
+            0
+        ) +
+
+        criarQuestao(
+            "Quanto é 12 + 8?",
+            ["18", "20", "22"],
+            1
+        );
+
+    }
+
+
+    else if (tema === "Verbos") {
+
+        html =
+
+        criarQuestao(
+            "Qual palavra é um verbo?",
+            ["correr", "mesa", "azul"],
+            0
+        ) +
+
+        criarQuestao(
+            "Qual destas palavras indica uma ação?",
+            ["estudar", "caderno", "escola"],
+            0
+        );
+
+    }
+
+
+    else if (tema === "Substantivos") {
+
+        html =
+
+        criarQuestao(
+            "Qual palavra é um substantivo?",
+            ["cachorro", "correr", "bonito"],
+            0
+        ) +
+
+        criarQuestao(
+            "Qual palavra nomeia um lugar?",
+            ["escola", "rápido
