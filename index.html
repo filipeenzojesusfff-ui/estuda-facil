@@ -3,153 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EstudaFácil V8.6</title>
+
+<title>EstudaFácil</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f1f5f9;
-color:#172033;
+*{
+    box-sizing:border-box;
 }
 
-body.escuro{
-background:#101827;
-color:#f8fafc;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#111827;
 }
 
 header{
-background:#2563eb;
-color:white;
-text-align:center;
-padding:22px 15px;
+    background:#2563eb;
+    color:white;
+    padding:20px;
+    text-align:center;
 }
 
-header h1{margin:0 0 8px}
+header h1{
+    margin:0 0 8px;
+}
 
 .container{
-max-width:950px;
-margin:auto;
-padding:15px;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
 }
 
 .card{
-background:white;
-padding:20px;
-margin-bottom:16px;
-border-radius:18px;
-box-shadow:0 4px 15px rgba(0,0,0,.08);
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px #0001;
 }
 
-.escuro .card{background:#1d2939}
-
-label{
-display:block;
-font-weight:bold;
-margin:14px 0 7px;
-}
-
-select,input{
-width:100%;
-padding:14px;
-font-size:16px;
-border:1px solid #cbd5e1;
-border-radius:11px;
-background:white;
-color:#172033;
+select,button{
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    border-radius:10px;
+    border:1px solid #cbd5e1;
+    font-size:16px;
 }
 
 button{
-border:0;
-border-radius:11px;
-padding:14px 18px;
-margin:5px;
-background:#2563eb;
-color:white;
-font-size:16px;
-cursor:pointer;
+    background:#2563eb;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 
-button:active{transform:scale(.98)}
-
-.botoes{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-margin-top:15px;
-}
-
-.info{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-justify-content:center;
-margin-top:15px;
-}
-
-.info div{
-background:#e5edff;
-padding:11px 15px;
-border-radius:10px;
-font-weight:bold;
-}
-
-.escuro .info div{background:#29384f}
-
-.barra{
-height:18px;
-background:#dbe3ed;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progresso{
-height:100%;
-width:0%;
-background:#22c55e;
-transition:.3s;
-}
-
-.explicacao{
-font-size:17px;
-line-height:1.7;
-}
-
-.question{
-border:1px solid #d5dce6;
-border-radius:14px;
-padding:16px;
-margin:16px 0;
-}
-
-.question button{
-display:block;
-width:100%;
-text-align:left;
-margin:7px 0;
+button:hover{
+    opacity:.9;
 }
 
 .resposta{
-font-weight:bold;
-margin-top:10px;
+    background:#e5e7eb;
+    color:#111827;
 }
 
-.pequeno{
-opacity:.7;
-font-size:14px;
+.resposta.certa{
+    background:#22c55e;
+    color:white;
 }
 
-footer{
-text-align:center;
-padding:25px;
-opacity:.7;
+.resposta.errada{
+    background:#ef4444;
+    color:white;
 }
 
-@media(max-width:600px){
-.card{padding:15px}
-.botoes button{width:100%}
+#mensagem{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.progresso{
+    height:18px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+#barra{
+    height:100%;
+    width:0%;
+    background:#22c55e;
+}
+
+.question{
+    margin-top:20px;
+    padding:15px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+}
+
+.dark{
+    background:#111827;
+    color:#f9fafb;
+}
+
+.dark .card{
+    background:#1f2937;
+    color:white;
+}
+
+.dark .resposta{
+    background:#374151;
+    color:white;
 }
 </style>
 </head>
@@ -157,123 +124,80 @@ opacity:.7;
 <body>
 
 <header>
-<h1>📚 EstudaFácil V8.6</h1>
-<p>Aprenda • Pratique • Evolua</p>
+<h1>📚 EstudaFácil</h1>
+<p>Aprenda, pratique e ganhe XP!</p>
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>👤 Meu perfil</h2>
 
-<label>Seu nome</label>
-<input id="nome" placeholder="Digite seu nome">
+<h2>👨‍🎓 Seu progresso</h2>
 
-<div class="info">
-<div>⭐ XP: <span id="xp">0</span></div>
-<div>🏆 Nível: <span id="nivel">1</span></div>
-<div>🔥 Sequência: <span id="sequencia">0</span></div>
+<p>XP: <strong id="xp">0</strong></p>
+
+<p>Nível: <strong id="nivel">1</strong></p>
+
+<div class="progresso">
+<div id="barra"></div>
 </div>
 
-<p>Progresso para o próximo nível:</p>
-
-<div class="barra">
-<div class="progresso" id="barra"></div>
 </div>
-</div>
-
 
 <div class="card">
 
 <h2>📚 Escolha o que estudar</h2>
 
-<label>🎓 Ano escolar</label>
+<label>Matéria:</label>
 
-<select id="ano">
-<option>1º Ano</option>
-<option>2º Ano</option>
-<option>3º Ano</option>
-<option>4º Ano</option>
-<option>5º Ano</option>
-<option selected>6º Ano</option>
-<option>7º Ano</option>
-<option>8º Ano</option>
-<option>9º Ano</option>
-<option>1º Ensino Médio</option>
-<option>2º Ensino Médio</option>
-<option>3º Ensino Médio</option>
+<select id="materia">
+<option value="Matemática">Matemática</option>
+<option value="Português">Português</option>
+<option value="História">História</option>
+<option value="Geografia">Geografia</option>
+<option value="Ciências">Ciências</option>
+<option value="Inglês">Inglês</option>
 </select>
 
-<label>📖 Matéria</label>
+<label>Assunto:</label>
 
-<select id="materia" onchange="carregarAssuntos()">
-<option>Matemática</option>
-<option>Português</option>
-<option>História</option>
-<option>Geografia</option>
-<option>Ciências</option>
-<option>Inglês</option>
-</select>
+<select id="assunto"></select>
 
-<label>📌 Assunto</label>
+<button id="explicacaoBtn">
+📖 Como funciona?
+</button>
 
-<select id="assunto">
-<option>Carregando assuntos...</option>
-</select>
+<button id="exerciciosBtn">
+✏️ Exercícios
+</button>
 
-<div class="botoes">
-<button onclick="mostrarExplicacao()">📖 Explicação</button>
-<button onclick="mostrarExercicios()">✏️ Exercícios</button>
-<button onclick="mostrarQuiz()">🧠 Quiz</button>
-<button onclick="mostrarSimulado()">🎯 Simulado</button>
-<button onclick="modoEscuro()">🌙 Modo escuro</button>
-<button onclick="limparProgresso()">🗑️ Limpar progresso</button>
-</div>
+<button id="quizBtn">
+🧠 Quiz
+</button>
+
+<button id="escuroBtn">
+🌙 Modo escuro
+</button>
 
 </div>
 
-
-<div class="card">
-
-<h2>🔎 Pesquisar</h2>
-
-<input id="pesquisa" placeholder="Digite um assunto...">
-
-<button onclick="pesquisar()">🔎 Pesquisar</button>
-
-<div id="resultadoPesquisa"></div>
-
-</div>
-
-
-<div class="card">
-
-<div id="resultado">
+<div class="card" id="conteudo">
 
 <h2>👋 Bem-vindo!</h2>
 
-<p>
-Escolha uma matéria e um assunto para começar seus estudos.
-</p>
-
-<p>
-💡 Leia a explicação e depois faça os exercícios.
-</p>
+<p>Escolha uma matéria e um assunto para começar.</p>
 
 </div>
 
-</div>
+<div id="mensagem"></div>
 
 </div>
-
-<footer>
-📚 EstudaFácil V8.6
-</footer>
-
 
 <script>
 
-var dados = {
+let xp = Number(localStorage.getItem("xp")) || 0;
+
+const assuntos = {
 
 "Matemática":[
 "Números naturais",
@@ -282,12 +206,12 @@ var dados = {
 "Frações",
 "Números decimais",
 "Porcentagem",
-"Equações",
-"Geometria"
+"Geometria",
+"Equações"
 ],
 
 "Português":[
-"Alfabeto e palavras",
+"Classes de palavras",
 "Substantivos",
 "Adjetivos",
 "Verbos",
@@ -304,17 +228,17 @@ var dados = {
 "Grécia Antiga",
 "Roma Antiga",
 "Idade Média",
-"Brasil Colonial",
-"Independência do Brasil"
+"Idade Moderna",
+"Brasil Colonial"
 ],
 
 "Geografia":[
-"Espaço geográfico",
 "Mapas",
+"Coordenadas geográficas",
 "Continentes",
 "Oceanos",
-"Relevo",
 "Clima",
+"Relevo",
 "População",
 "Urbanização"
 ],
@@ -325,9 +249,9 @@ var dados = {
 "Corpo humano",
 "Sistema digestório",
 "Sistema respiratório",
-"Animais",
-"Plantas",
-"Meio ambiente"
+"Sistema circulatório",
+"Meio ambiente",
+"Planetas"
 ],
 
 "Inglês":[
@@ -343,326 +267,564 @@ var dados = {
 
 };
 
+const explicacoes = {
 
-var explicacoes = {
+"Números naturais":
+"Os números naturais são usados para contar. Exemplos: 0, 1, 2, 3, 4, 5...",
 
-"Números naturais":"Números naturais são usados para contar e ordenar. Exemplos: 0, 1, 2, 3, 4 e 5.",
+"Adição e subtração":
+"Adição é juntar quantidades. Subtração é retirar ou descobrir a diferença entre quantidades.",
 
-"Adição e subtração":"Adição significa juntar quantidades. Subtração significa retirar uma quantidade ou descobrir a diferença entre números.",
+"Multiplicação e divisão":
+"Multiplicação representa várias vezes uma quantidade. Divisão serve para repartir uma quantidade em partes.",
 
-"Multiplicação e divisão":"Multiplicação pode representar uma soma repetida. Divisão é usada para repartir uma quantidade em partes iguais.",
+"Frações":
+"Uma fração representa uma parte de um todo. O número de cima é o numerador e o de baixo é o denominador.",
 
-"Frações":"Uma fração representa uma parte de um todo. O número de cima é o numerador e o de baixo é o denominador.",
+"Números decimais":
+"Números decimais possuem uma parte inteira e uma parte decimal. Exemplo: 2,5.",
 
-"Números decimais":"Números decimais possuem uma parte inteira e uma parte decimal. Exemplos: 2,5 e 3,75.",
+"Porcentagem":
+"Porcentagem representa uma parte de 100. Por exemplo, 50% significa 50 de cada 100.",
 
-"Porcentagem":"Porcentagem representa uma parte de 100. Por exemplo, 50% representa metade.",
+"Geometria":
+"Geometria estuda formas, tamanhos, medidas, ângulos e figuras.",
 
-"Equações":"Uma equação é uma igualdade que pode possuir uma incógnita. Resolver uma equação significa descobrir o valor desconhecido.",
+"Equações":
+"Uma equação é uma igualdade que possui uma ou mais incógnitas.",
 
-"Geometria":"Geometria estuda formas, figuras, medidas, posições e propriedades dos objetos.",
+"Classes de palavras":
+"As classes de palavras organizam as palavras de acordo com sua função na língua.",
 
-"Alfabeto e palavras":"O alfabeto é formado por letras usadas para formar sílabas, palavras e frases.",
+"Substantivos":
+"Substantivos são palavras que dão nome a pessoas, animais, lugares, objetos e ideias.",
 
-"Substantivos":"Substantivos dão nome a pessoas, animais, objetos, lugares, sentimentos e ideias.",
+"Adjetivos":
+"Adjetivos são palavras que caracterizam ou dão qualidades aos substantivos.",
 
-"Adjetivos":"Adjetivos são palavras que caracterizam ou dão qualidades aos substantivos.",
+"Verbos":
+"Verbos indicam ações, estados ou acontecimentos.",
 
-"Verbos":"Verbos indicam ações, estados ou acontecimentos. Exemplos: estudar, correr e brincar.",
+"Pronomes":
+"Pronomes podem substituir ou acompanhar substantivos.",
 
-"Pronomes":"Pronomes podem substituir ou acompanhar substantivos. Exemplos: eu, você, ele, ela, nós e eles.",
+"Pontuação":
+"A pontuação ajuda a organizar as frases e indicar pausas e intenções.",
 
-"Pontuação":"Os sinais de pontuação ajudam a organizar as frases. Exemplos: ponto final, vírgula, interrogação e exclamação.",
+"Interpretação de texto":
+"Interpretar um texto significa compreender suas informações e ideias.",
 
-"Interpretação de texto":"Interpretar um texto significa compreender suas informações, ideias principais e sua mensagem.",
+"Produção de texto":
+"Produzir um texto significa organizar ideias para comunicar uma mensagem.",
 
-"Produção de texto":"Produzir um texto significa organizar ideias em frases e parágrafos com sentido.",
+"Pré-História":
+"A Pré-História é o período anterior ao surgimento da escrita.",
 
-"Pré-História":"A Pré-História corresponde ao período anterior ao surgimento da escrita.",
+"Antiguidade":
+"A Antiguidade inclui grandes civilizações antigas, como Egito, Grécia e Roma.",
 
-"Antiguidade":"A Antiguidade foi marcada pelo desenvolvimento de grandes civilizações, como Egito, Grécia e Roma.",
+"Egito Antigo":
+"O Egito Antigo se desenvolveu principalmente às margens do rio Nilo.",
 
-"Egito Antigo":"O Egito Antigo desenvolveu-se às margens do rio Nilo. O rio foi muito importante para a agricultura.",
+"Grécia Antiga":
+"A Grécia Antiga ficou conhecida por sua cultura, filosofia e cidades-Estado.",
 
-"Grécia Antiga":"A Grécia Antiga era formada por várias cidades-Estado. Atenas e Esparta foram importantes.",
+"Roma Antiga":
+"Roma foi uma das grandes civilizações da Antiguidade.",
 
-"Roma Antiga":"Roma surgiu na Península Itálica e cresceu até formar um grande império.",
+"Idade Média":
+"A Idade Média ocorreu entre a Antiguidade e a Idade Moderna.",
 
-"Idade Média":"A Idade Média foi um período da história europeia entre a Antiguidade e a Idade Moderna.",
+"Idade Moderna":
+"A Idade Moderna foi marcada por grandes transformações políticas, econômicas e culturais.",
 
-"Brasil Colonial":"O Brasil Colonial foi o período em que o território brasileiro esteve sob domínio português.",
+"Brasil Colonial":
+"O Brasil Colonial foi o período em que o território brasileiro esteve sob domínio português.",
 
-"Independência do Brasil":"A Independência do Brasil foi declarada em 1822 e marcou a separação política entre Brasil e Portugal.",
+"Mapas":
+"Mapas representam lugares e ajudam a localizar diferentes pontos da superfície terrestre.",
 
-"Espaço geográfico":"O espaço geográfico é formado pelas relações entre sociedade e natureza e pelas transformações feitas pelas pessoas.",
+"Coordenadas geográficas":
+"Latitude e longitude são usadas para localizar pontos na Terra.",
 
-"Mapas":"Mapas são representações de lugares. Eles podem mostrar países, cidades, rios, estradas e outras informações.",
+"Continentes":
+"Os continentes são grandes porções de terra. Exemplos: América, África, Europa e Ásia.",
 
-"Continentes":"Continentes são grandes extensões de terra. Um modelo comum considera América, África, Europa, Ásia, Oceania e Antártica.",
+"Oceanos":
+"Os oceanos são grandes massas de água salgada que cobrem grande parte da Terra.",
 
-"Oceanos":"Oceanos são grandes massas de água salgada que cobrem grande parte da superfície da Terra.",
+"Clima":
+"Clima representa as condições atmosféricas observadas em uma região durante longos períodos.",
 
-"Relevo":"Relevo é o conjunto das formas da superfície terrestre, como montanhas, planaltos e planícies.",
+"Relevo":
+"Relevo é o conjunto das formas da superfície terrestre.",
 
-"Clima":"Clima é o conjunto das condições atmosféricas observadas em uma região durante longos períodos.",
+"População":
+"População é o conjunto de pessoas que vivem em determinado lugar.",
 
-"População":"População é o conjunto de pessoas que vivem em determinado lugar.",
+"Urbanização":
+"Urbanização é o crescimento das cidades e da população urbana.",
 
-"Urbanização":"Urbanização é o processo de crescimento das cidades e aumento da população urbana.",
+"Seres vivos":
+"Seres vivos são organismos que possuem características como nascimento, crescimento e reprodução.",
 
-"Seres vivos":"Seres vivos apresentam características como organização, crescimento, metabolismo e reprodução.",
+"Células":
+"A célula é a unidade básica dos seres vivos.",
 
-"Células":"A célula é a unidade básica dos seres vivos. Alguns organismos possuem uma célula e outros possuem muitas.",
+"Corpo humano":
+"O corpo humano é formado por vários sistemas que trabalham juntos.",
 
-"Corpo humano":"O corpo humano possui vários sistemas que trabalham juntos para manter o organismo funcionando.",
+"Sistema digestório":
+"O sistema digestório participa da digestão dos alimentos e da absorção de nutrientes.",
 
-"Sistema digestório":"O sistema digestório participa da digestão dos alimentos e da absorção de nutrientes.",
+"Sistema respiratório":
+"O sistema respiratório permite a entrada de oxigênio e a eliminação de gás carbônico.",
 
-"Sistema respiratório":"O sistema respiratório participa da entrada de oxigênio e da eliminação de gás carbônico.",
+"Sistema circulatório":
+"O sistema circulatório transporta sangue, oxigênio e nutrientes pelo corpo.",
 
-"Animais":"Animais são seres vivos com diferentes características, formas de alimentação e ambientes.",
+"Meio ambiente":
+"O meio ambiente inclui os seres vivos, os elementos naturais e o espaço onde eles vivem.",
 
-"Plantas":"Plantas são seres vivos capazes de realizar fotossíntese e possuem grande importância nos ecossistemas.",
+"Planetas":
+"Planetas são corpos celestes que orbitam estrelas. No nosso Sistema Solar existem oito planetas.",
 
-"Meio ambiente":"O meio ambiente envolve seres vivos, elementos naturais e as relações entre eles.",
+"Greetings":
+"Greetings são cumprimentos em inglês, como Hello, Hi e Good morning.",
 
-"Greetings":"Greetings significa cumprimentos. Hello significa olá e Good morning significa bom dia.",
+"Numbers":
+"Numbers são números em inglês. Por exemplo: one, two, three e four.",
 
-"Numbers":"Numbers significa números. One é 1, two é 2, three é 3, four é 4 e five é 5.",
+"Colors":
+"Colors são cores em inglês, como red, blue, green e yellow.",
 
-"Colors":"Colors significa cores. Red é vermelho, blue é azul, green é verde e yellow é amarelo.",
+"Family":
+"Family significa família. Exemplos: mother, father, brother e sister.",
 
-"Family":"Family significa família. Mother é mãe, father é pai, brother é irmão e sister é irmã.",
+"Days of the week":
+"Os dias da semana em inglês são Monday, Tuesday, Wednesday, Thursday, Friday, Saturday e Sunday.",
 
-"Days of the week":"Os dias da semana são Monday, Tuesday, Wednesday, Thursday, Friday, Saturday e Sunday.",
+"Months":
+"Months significa meses. January é janeiro, February é fevereiro e assim por diante.",
 
-"Months":"Months significa meses. January é janeiro, February é fevereiro, March é março e April é abril.",
+"Verb to be":
+"O verbo to be pode significar ser ou estar. Exemplos: I am, you are, he is.",
 
-"Verb to be":"O verbo to be pode significar ser ou estar. Suas formas principais são am, is e are.",
-
-"Simple Present":"O Simple Present é usado principalmente para falar de hábitos, rotinas e fatos gerais."
-
+"Simple Present":
+"O Simple Present é usado para falar de hábitos, rotinas e fatos."
 };
 
+const exercicios = {
 
-var exercicios = {"Álgebra":[
-["A álgebra utiliza letras para representar:",["Números e valores","Apenas desenhos","Apenas palavras"],0],
-["Se x = 5, quanto vale x + 3?",["8","2","15"],0],
-["A expressão 2x significa:",["2 vezes x","2 + x","x - 2"],0]
+"Números naturais":[
+["Qual número vem depois do 9?",["8","10","11"],1],
+["Quanto é 3 + 4?",["6","7","8"],1],
+["Qual é maior?",["5","2","1"],0]
 ],
 
-"Geometria":[
-["Um triângulo possui quantos lados?",["3","4","5"],0],
-["Um quadrado possui:",["4 lados iguais","3 lados","5 lados"],0],
-["O perímetro é calculado somando:",["Os lados","Os ângulos apenas","As diagonais apenas"],0]
+"Adição e subtração":[
+["Quanto é 8 + 5?",["12","13","14"],1],
+["Quanto é 15 - 7?",["6","8","10"],1],
+["Quanto é 20 - 5?",["10","15","20"],1]
+],
+
+"Multiplicação e divisão":[
+["Quanto é 5 × 2?",["7","10","12"],1],
+["Quanto é 20 ÷ 4?",["4","5","6"],1],
+["Quanto é 3 × 3?",["6","9","12"],1]
 ],
 
 "Frações":[
-["Qual é a metade de 10?",["5","2","10"],0],
-["1/2 representa:",["Uma de duas partes iguais","Duas de uma parte","Uma de três partes"],0],
-["Qual fração é maior?",["3/4","1/4","1/4"],0]
-],
-
-"Decimais":[
-["0,5 corresponde a:",["Meio","Cinco inteiros","Cinquenta inteiros"],0],
-["Quanto é 1,5 + 1?",["2,5","1,6","3,5"],0],
-["Qual número é maior?",["2,5","2,05","2,01"],0]
+["Qual é o numerador de 3/5?",["3","5","8"],0],
+["Qual é o denominador de 2/7?",["2","5","7"],2],
+["1/2 representa qual parte?",["Metade","Dobro","Triplo"],0]
 ],
 
 "Porcentagem":[
-["50% significa:",["Metade","O dobro","Nada"],0],
-["10% de 100 é:",["10","20","50"],0],
-["25% de 100 é:",["25","75","10"],0]
+["50% representa:",["Metade","Dobro","Triplo"],0],
+["10% de 100 é:",["5","10","20"],1],
+["100% representa:",["Tudo","Nada","Metade"],0]
+],
+
+"Geometria":[
+["Quantos lados tem um triângulo?",["2","3","4"],1],
+["Quantos lados tem um quadrado?",["3","4","5"],1],
+["Um círculo possui lados retos?",["Sim","Não","Sempre"],1]
 ],
 
 "Equações":[
-["Se x + 5 = 10, x vale:",["5","15","10"],0],
-["Se x - 3 = 7, x vale:",["10","4","7"],0],
-["Se 2x = 10, x vale:",["5","20","2"],0]
-],
-
-"Medidas":[
-["1 metro possui:",["100 centímetros","10 centímetros","1000 centímetros"],0],
-["1 quilograma possui:",["1000 gramas","100 gramas","10 gramas"],0],
-["1 litro possui:",["1000 mililitros","100 mililitros","10 mililitros"],0]
-],
-
-"Probabilidade":[
-["A probabilidade mede:",["A chance de algo acontecer","O tamanho de um objeto","A distância"],0],
-["Ao jogar uma moeda, há quantos resultados possíveis?",["2","3","4"],0],
-["Um dado comum possui quantas faces?",["6","4","8"],0]
-],
-
-/* PORTUGUÊS */
-
-"Alfabeto e sílabas":[
-["Quantas letras existem no alfabeto português?",["26","20","30"],0],
-["A palavra 'casa' possui quantas sílabas?",["2","3","4"],0],
-["A divisão silábica de 'bola' é:",["bo-la","bol-a","b-ola"],0]
+["x + 2 = 5. Quanto vale x?",["2","3","4"],1],
+["x - 3 = 4. Quanto vale x?",["6","7","8"],1],
+["2x = 10. Quanto vale x?",["4","5","6"],1]
 ],
 
 "Substantivos":[
-["Substantivo é uma palavra que nomeia:",["Seres, objetos e lugares","Apenas ações","Apenas características"],0],
-["Qual é um substantivo?",["Casa","Correr","Bonito"],0],
-["'Maria' é um substantivo:",["Próprio","Comum","Verbo"],0]
+["Qual é um substantivo?",["Casa","Bonito","Correr"],0],
+["Qual palavra nomeia um animal?",["Cachorro","Rápido","Correr"],0],
+["Qual é um substantivo?",["Escola","Bonita","Estudar"],0]
 ],
 
 "Adjetivos":[
-["Adjetivo indica:",["Característica","Ação","Lugar"],0],
-["Em 'casa bonita', 'bonita' é:",["Adjetivo","Substantivo","Verbo"],0],
-["Qual palavra é um adjetivo?",["Grande","Correr","Escola"],0]
+["Qual é um adjetivo?",["Bonito","Casa","Correr"],0],
+["'Grande' é:",["Adjetivo","Verbo","Substantivo"],0],
+["'Inteligente' pode ser:",["Adjetivo","Número","Verbo"],0]
 ],
 
 "Verbos":[
-["Verbo geralmente indica:",["Ação ou estado","Objeto","Lugar"],0],
-["Qual palavra é um verbo?",["Correr","Casa","Azul"],0],
-["Em 'João estudou', 'estudou' é:",["Verbo","Substantivo","Adjetivo"],0]
+["Qual é um verbo?",["Correr","Casa","Azul"],0],
+["'Estudar' indica:",["Ação","Objeto","Lugar"],0],
+["Qual é um verbo?",["Comer","Mesa","Bonito"],0]
 ],
 
 "Pontuação":[
-["Qual sinal termina normalmente uma frase afirmativa?",[".","?","!"],0],
-["Qual sinal é usado em perguntas?",["?","!",","],0],
-["A vírgula pode ajudar a:",["Separar elementos","Terminar sempre o texto","Indicar uma pergunta"],0]
+["Qual sinal termina uma pergunta?",[".","?","!"],1],
+["Qual sinal indica uma exclamação?",["!","?","."],0],
+["Qual sinal normalmente termina uma frase afirmativa?",[".","?","!"],0]
 ],
 
 "Interpretação de texto":[
-["Interpretar um texto significa:",["Compreender seu sentido","Copiar todas as palavras","Ignorar o texto"],0],
-["Para entender um texto devemos:",["Ler com atenção","Ler apenas o título","Pular todas as frases"],0],
-["O título pode ajudar a identificar:",["O assunto do texto","O número da página","O tamanho da letra"],0]
+["Interpretar um texto significa:",["Compreendê-lo","Apagá-lo","Ignorá-lo"],0],
+["Para entender um texto devemos:",["Ler com atenção","Pular tudo","Não ler"],0],
+["O título pode ajudar a descobrir:",["O assunto","A idade do autor","O preço"],0]
 ],
-
-"Produção de texto":[
-["Um texto deve apresentar ideias:",["Organizadas","Aleatórias","Sem sentido"],0],
-["Parágrafos ajudam a:",["Organizar ideias","Apagar palavras","Mudar o idioma"],0],
-["Antes de escrever é importante:",["Pensar nas ideias","Não pensar","Apagar tudo"],0]
-],
-
-"Literatura":[
-["Literatura utiliza a linguagem para:",["Criar obras e expressar ideias","Fazer cálculos","Medir objetos"],0],
-["Um poema é um exemplo de:",["Texto literário","Conta matemática","Mapa"],0],
-["Histórias podem apresentar:",["Personagens","Apenas números","Somente fórmulas"],0]
-],
-
-/* HISTÓRIA */
 
 "Pré-História":[
-["A Pré-História vem:",["Antes da escrita","Depois da escrita","Depois da Idade Média"],0],
-["Os primeiros seres humanos utilizavam:",["Ferramentas simples","Computadores","Máquinas modernas"],0],
-["A agricultura contribuiu para:",["A formação de comunidades","O fim das cidades","A criação da internet"],0]
+["A Pré-História ocorreu antes do:",["Surgimento da escrita","Século XXI","Brasil"],0],
+["Os seres humanos pré-históricos usavam:",["Ferramentas","Celulares","Computadores"],0],
+["A pintura rupestre era feita em:",["Paredes de cavernas","Celulares","Livros digitais"],0]
 ],
 
-"Antiguidade":[
-["A Antiguidade inclui civilizações como:",["Egípcia e Grega","Brasileira e Canadense","Moderna e Contemporânea"],0],
-["O Egito Antigo se desenvolveu próximo ao rio:",["Nilo","Amazonas","Mississipi"],0],
-["A Grécia Antiga ficou conhecida por:",["Cidades-Estado","Internet","Automóveis"],0]
+"Egito Antigo":[
+["O Egito Antigo se desenvolveu perto do rio:",["Nilo","Amazonas","Tigre"],0],
+["Os governantes do Egito eram chamados de:",["Faraós","Cônsules","Presidentes"],0],
+["As pirâmides estão relacionadas ao:",["Egito Antigo","Brasil Colonial","Idade Média"],0]
 ],
 
-"Idade Média":[
-["A Idade Média ocorreu entre:",["Antiguidade e Idade Moderna","Idade Moderna e Contemporânea","Pré-História e Antiguidade"],0],
-["O feudalismo foi característico de parte da:",["Europa medieval","América atual","Ásia moderna"],0],
-["Os castelos eram comuns na:",["Europa medieval","Antártica","América pré-colombiana"],0]
-],
-
-"Idade Moderna":[
-["A Idade Moderna veio depois da:",["Idade Média","Idade Contemporânea","Pré-História"],0],
-["As Grandes Navegações ocorreram principalmente na:",["Idade Moderna","Pré-História","Antiguidade"],0],
-["O Renascimento valorizou muito:",["Artes e conhecimentos","Somente guerras","Somente agricultura"],0]
-],
-
-"Idade Contemporânea":[
-["A Idade Contemporânea começou após:",["Revolução Francesa","Descobrimento do Brasil","Queda de Roma"],0],
-["A Revolução Industrial trouxe:",["Mudanças na produção","Fim da tecnologia","Fim das cidades"],0],
-["A Idade Contemporânea é a:",["Atual era histórica","Primeira era","Era anterior à escrita"],0]
-],
-
-"Brasil Colônia":[
-["O Brasil foi colonizado por:",["Portugal","Espanha","França"],0],
-["A colonização portuguesa começou no século:",["XVI","X","XX"],0],
-["A economia colonial utilizou muito:",["Agricultura e exploração de recursos","Computadores","Indústria automobilística"],0]
-],
-
-"Independência do Brasil":[
-["A Independência do Brasil ocorreu em:",["1822","1500","1889"],0],
-["A independência foi declarada por:",["Dom Pedro","Tiradentes","Getúlio Vargas"],0],
-["O Brasil deixou de ser colônia de:",["Portugal","Espanha","Inglaterra"],0]
-],
-
-"República":[
-["A República brasileira começou em:",["1889","1822","1500"],0],
-["A Proclamação da República ocorreu em:",["15 de novembro","7 de setembro","21 de abril"],0],
-["A República substituiu:",["A Monarquia","A democracia","A colônia"],0]
-],
-
-/* GEOGRAFIA */
-
-"Espaço geográfico":[
-["Espaço geográfico é formado pela relação entre:",["Sociedade e natureza","Somente animais","Somente oceanos"],0],
-["As cidades fazem parte do:",["Espaço geográfico","Espaço sideral","Fundo do oceano"],0],
-["O ser humano transforma o espaço por meio de:",["Suas atividades","Somente terremotos","Somente chuvas"],0]
+"Grécia Antiga":[
+["A Grécia Antiga ficou conhecida pela:",["Filosofia","Internet","Eletricidade"],0],
+["Atenas era uma cidade da:",["Grécia Antiga","Roma Moderna","América"],0],
+["Os Jogos Olímpicos têm origem relacionada à:",["Grécia Antiga","África Medieval","Ásia Moderna"],0]
 ],
 
 "Mapas":[
-["Mapas representam:",["Espaços e lugares","Somente animais","Somente pessoas"],0],
-["A legenda de um mapa serve para:",["Explicar símbolos","Mostrar o clima apenas","Medir pessoas"],0],
-["O título de um mapa informa:",["Seu tema","Sua idade","Seu peso"],0]
+["Mapas servem para:",["Representar lugares","Cozinhar","Medir temperatura"],0],
+["Um mapa pode mostrar:",["Cidades","Somente animais","Somente pessoas"],0],
+["A legenda de um mapa ajuda a:",["Entender símbolos","Apagar o mapa","Mudar o clima"],0]
 ],
 
 "Coordenadas geográficas":[
-["As coordenadas geográficas utilizam:",["Latitude e longitude","Peso e altura","Velocidade e tempo"],0],
-["A latitude indica posições em relação ao:",["Equador","Meridiano de Greenwich","Oceano"],0],
-["A longitude é medida em relação ao:",["Meridiano de Greenwich","Equador","Trópico de Câncer"],0]
-],
-
-"Clima":[
-["Clima é o comportamento da atmosfera observado durante:",["Longo período","Apenas um segundo","Uma única hora"],0],
-["Um elemento do clima é:",["Temperatura","População","Economia"],0],
-["A chuva faz parte das condições:",["Atmosféricas","Econômicas","Políticas"],0]
-],
-
-"Relevo":[
-["Relevo corresponde às:",["Formas da superfície terrestre","Águas dos oceanos","Construções humanas"],0],
-["Montanhas são formas de:",["Relevo","Clima","Vegetação"],0],
-["Planícies apresentam geralmente:",["Terrenos mais planos","Grandes montanhas","Somente água"],0]
-],
-
-"Vegetação":[
-["Vegetação é formada principalmente por:",["Plantas","Rochas","Animais"],0],
-["A Floresta Amazônica está principalmente:",["Na América do Sul","Na Europa","Na África do Sul"],0],
-["A vegetação depende de fatores como:",["Clima e solo","Internet","Moeda"],0]
-],
-
-"População":[
-["População é o conjunto de:",["Pessoas de um lugar","Animais de um lugar","Rios de um lugar"],0],
-["Densidade demográfica relaciona população com:",["Área","Temperatura","Altitude apenas"],0],
-["Migração é:",["Deslocamento de pessoas","Movimento das placas apenas","Mudança do clima"],0]
-],
-
-"Globalização":[
-["Globalização aumenta a integração entre:",["Países e pessoas","Somente cidades pequenas","Somente florestas"],0],
-["A internet facilita:",["Comunicação mundial","Isolamento total","Fim do comércio"],0],
-["O comércio internacional ocorre entre:",["Diferentes países","Somente bairros","Somente escolas"],0]
-],
-
-/* CIÊNCIAS */
-
-"Células":[
-["A célula é:",["Unidade básica dos seres vivos","Um órgão","Um planeta"],0],
-["As células podem formar:",["Tecidos","Montanhas","Oceanos"],0],
-["O núcleo celular contém:",["Material genético","Água do mar","Pedras"],0]
+["Latitude e longitude servem para:",["Localizar lugares","Medir peso","Contar pessoas"],0],
+["A latitude é medida em relação ao:",["Equador","Polo Norte somente","Oceano"],0],
+["A longitude é relacionada ao:",["Meridiano de Greenwich","Equador","Trópico"],0]
 ],
 
 "Seres vivos":[
-["Seres vivos realizam processos como:",["Nutrição e reprodução","Somente movimento","Somente respiração"],0],
-["Animais são:",["Seres vivos","Objetos","Minerais"],0],
-["As plantas são:",["Seres vivos","Objetos inanimados","Rochas"],0]
+["Qual é um ser vivo?",["Cachorro","Pedra","Cadeira"],0],
+["Seres vivos podem:",["Nascer e crescer","Ser sempre imóveis","Ser objetos"],0],
+["Uma planta é:",["Ser vivo","Objeto","Mineral"],0]
 ],
 
-"Ecossistemas":[
-["Um ecossistema inclui:",["Seres vivos e ambiente","Somente animais","Somente plantas"],0],
-["Os seres vivos de um ecossistema:",["Interagem entre si e com o ambiente","Vivem sempre isolados","Não dependem do ambiente"],0],
-["Água, solo e ar são componentes:",["Abióticos","Animais","Plantas"],0]
+"Células":[
+["A célula é:",["Unidade básica dos seres vivos","Um planeta","Um órgão"],0],
+["Animais possuem:",["Células","Somente água","Nenhuma célula"],0],
+["Plantas possuem:",["Células","Computadores","Rodas"],0]
 ],
 
-"Cadeia alimentar":[
-["Na cadeia alimentar, plantas geralmente são:",["Produtoras","Consumidoras secundárias","Decompositoras"],0],
-["Animais que comem plantas são:",["Herbívoros","Car um
+"Sistema digestório":[
+["O sistema digestório está relacionado à:",["Digestão","Audição","Visão"],0],
+["A digestão começa na:",["Boca","Mão","Orelha"],0],
+["O estômago participa da:",["Digestão","Respiração","Audição"],0]
+],
+
+"Sistema respiratório":[
+["O sistema respiratório está relacionado à:",["Respiração","Digestão","Audição"],0],
+["Um gás importante para o organismo é o:",["Oxigênio","Hélio","Nitrogênio líquido"],0],
+["Usamos os pulmões para:",["Respirar","Caminhar","Ouvir"],0]
+],
+
+"Planetas":[
+["Quantos planetas existem no Sistema Solar?",["7","8","9"],1],
+["A Terra é um:",["Planeta","Cometa","Satélite"],0],
+["O planeta mais próximo do Sol é:",["Mercúrio","Terra","Marte"],0]
+],
+
+"Greetings":[
+["Como dizer 'Olá' em inglês?",["Hello","Goodbye","Thanks"],0],
+["'Hi' significa:",["Oi","Tchau","Obrigado"],0],
+["'Good morning' significa:",["Bom dia","Boa noite","Até logo"],0]
+],
+
+"Numbers":[
+["Como se diz 1 em inglês?",["One","Two","Three"],0],
+["Como se diz 5?",["Four","Five","Six"],1],
+["Como se diz 10?",["Ten","Two","One"],0]
+],
+
+"Colors":[
+["'Red' significa:",["Vermelho","Azul","Verde"],0],
+["'Blue' significa:",["Amarelo","Azul","Roxo"],1],
+["'Green' significa:",["Verde","Preto","Branco"],0]
+],
+
+"Family":[
+["'Mother' significa:",["Mãe","Pai","Irmão"],0],
+["'Father' significa:",["Pai","Mãe","Avó"],0],
+["'Sister' significa:",["Irmã","Irmão","Mãe"],0]
+],
+
+"Days of the week":[
+["'Monday' significa:",["Segunda-feira","Sábado","Domingo"],0],
+["'Sunday' significa:",["Domingo","Sexta-feira","Terça-feira"],0],
+["'Friday' significa:",["Sexta-feira","Quarta-feira","Segunda-feira"],0]
+],
+
+"Months":[
+["'January' significa:",["Janeiro","Junho","Julho"],0],
+["'December' significa:",["Dezembro","Novembro","Março"],0],
+["'March' significa:",["Março","Maio","Agosto"],0]
+],
+
+"Verb to be":[
+["I ___ a student.",["am","is","are"],0],
+["He ___ happy.",["am","is","are"],1],
+["They ___ students.",["am","is","are"],2]
+],
+
+"Simple Present":[
+["I ___ soccer.",["play","plays","playing"],0],
+["She ___ English.",["study","studies","studying"],1],
+["They ___ every day.",["run","runs","running"],0]
+]
+
+};
+
+function atualizar(){
+
+document.getElementById("xp").textContent=xp;
+
+let nivel=Math.floor(xp/100)+1;
+
+document.getElementById("nivel").textContent=nivel;
+
+let progresso=xp%100;
+
+document.getElementById("barra").style.width=progresso+"%";
+
+localStorage.setItem("xp",xp);
+
+}
+
+function carregarAssuntos(){
+
+let materia=document.getElementById("materia").value;
+
+let select=document.getElementById("assunto");
+
+select.innerHTML="";
+
+assuntos[materia].forEach(function(nome){
+
+let option=document.createElement("option");
+
+option.value=nome;
+
+option.textContent=nome;
+
+select.appendChild(option);
+
+});
+
+}
+
+function assuntoAtual(){
+
+return document.getElementById("assunto").value;
+
+}
+
+function mostrarExplicacao(){
+
+let assunto=assuntoAtual();
+
+let texto=explicacoes[assunto] || "Estude este assunto com atenção e depois faça os exercícios.";
+
+document.getElementById("conteudo").innerHTML=
+"<h2>📖 "+assunto+"</h2>"+
+"<p>"+texto+"</p>"+
+"<p>Agora você pode fazer os exercícios para praticar.</p>";
+
+}
+
+function mostrarExercicios(){
+
+let assunto=assuntoAtual();
+
+let lista=exercicios[assunto];
+
+if(!lista){
+
+document.getElementById("conteudo").innerHTML=
+"<h2>✏️ Exercícios — "+assunto+"</h2>"+
+"<p>Em breve teremos exercícios para este assunto.</p>";
+
+return;
+
+}
+
+let html="<h2>✏️ Exercícios — "+assunto+"</h2>";
+
+lista.forEach(function(q,index){
+
+html+=
+"<div class='question'>"+
+"<strong>"+(index+1)+". "+q[0]+"</strong>";
+
+q[1].forEach(function(opcao,i){
+
+html+=
+"<button class='resposta' data-questao='"+index+"' data-opcao='"+i+"'>"+
+opcao+
+"</button>";
+
+});
+
+html+="</div>";
+
+});
+
+document.getElementById("conteudo").innerHTML=html;
+
+ativarRespostas(lista);
+
+}
+
+function ativarRespostas(lista){
+
+let botoes=document.querySelectorAll(".resposta");
+
+botoes.forEach(function(botao){
+
+botao.addEventListener("click",function(){
+
+let questao=Number(this.dataset.questao);
+
+let escolhida=Number(this.dataset.opcao);
+
+let correta=lista[questao][2];
+
+let grupo=document.querySelectorAll(
+".resposta[data-questao='"+questao+"']"
+);
+
+grupo.forEach(function(b){
+b.disabled=true;
+});
+
+if(escolhida===correta){
+
+this.classList.add("certa");
+
+xp+=10;
+
+atualizar();
+
+document.getElementById("mensagem").textContent=
+"🎉 Acertou! +10 XP";
+
+}else{
+
+this.classList.add("errada");
+
+grupo[correta].classList.add("certa");
+
+document.getElementById("mensagem").textContent=
+"❌ Errou! A resposta correta ficou verde.";
+
+}
+
+});
+
+});
+
+}
+
+function mostrarQuiz(){
+
+let assunto=assuntoAtual();
+
+let lista=exercicios[assunto];
+
+if(!lista){
+
+document.getElementById("conteudo").innerHTML=
+"<h2>🧠 Quiz</h2>"+
+"<p>Não existem perguntas cadastradas para este assunto ainda.</p>";
+
+return;
+
+}
+
+let html="<h2>🧠 Quiz — "+assunto+"</h2>";
+
+lista.forEach(function(q,index){
+
+html+=
+"<div class='question'>"+
+"<strong>"+q[0]+"</strong>";
+
+q[1].forEach(function(opcao,i){
+
+html+=
+"<button class='resposta' data-questao='"+index+"' data-opcao='"+i+"'>"+
+opcao+
+"</button>";
+
+});
+
+html+="</div>";
+
+});
+
+document.getElementById("conteudo").innerHTML=html;
+
+ativarRespostas(lista);
+
+}
+
+document.getElementById("materia").addEventListener(
+"change",
+carregarAssuntos
+);
+
+document.getElementById("explicacaoBtn").addEventListener(
+"click",
+mostrarExplicacao
+);
+
+document.getElementById("exerciciosBtn").addEventListener(
+"click",
+mostrarExercicios
+);
+
+document.getElementById("quizBtn").addEventListener(
+"click",
+mostrarQuiz
+);
+
+document.getElementById("escuroBtn").addEventListener(
+"click",
+function(){
+
+document.body.classList.toggle("dark");
+
+}
+);
+
+carregarAssuntos();
+
+atualizar();
+
+</script>
+
+</body>
+</html>
