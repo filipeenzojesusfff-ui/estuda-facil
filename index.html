@@ -3,1019 +3,861 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EstudaFácil V10</title>
+
+<title>EstudaFácil</title>
 
 <style>
+
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-    color:#172033;
-}
-
-body.dark{
-    background:#101522;
-    color:#f5f5f5;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f1f5f9;
+color:#172033;
 }
 
 header{
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-    color:white;
-    padding:28px 16px;
-    text-align:center;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+text-align:center;
+padding:30px 15px;
 }
 
 header h1{
-    margin:0 0 8px;
-    font-size:30px;
+font-size:36px;
+margin:0 0 10px;
 }
 
-header p{
-    margin:0;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:18px;
+main{
+max-width:900px;
+margin:auto;
+padding:15px;
 }
 
 .card{
-    background:white;
-    border-radius:18px;
-    padding:20px;
-    margin:16px 0;
-    box-shadow:0 5px 18px rgba(0,0,0,.08);
+background:white;
+border-radius:20px;
+padding:20px;
+margin:18px 0;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-.dark .card{
-    background:#1b2333;
-    color:white;
+h2{
+margin-top:0;
 }
 
 label{
-    display:block;
-    font-weight:bold;
-    margin:16px 0 7px;
-    font-size:18px;
+display:block;
+font-weight:bold;
+margin-top:15px;
+margin-bottom:7px;
 }
 
+input,
 select,
-input{
-    width:100%;
-    padding:15px;
-    border-radius:12px;
-    border:2px solid #d2d7e0;
-    background:white;
-    font-size:17px;
+button{
+width:100%;
+padding:15px;
+font-size:17px;
+border-radius:12px;
 }
 
-.dark select,
-.dark input{
-    background:#252e40;
-    color:white;
-    border-color:#47536a;
+input,
+select{
+border:2px solid #d5dbe5;
+background:white;
 }
 
 button{
-    width:100%;
-    border:0;
-    border-radius:14px;
-    padding:16px;
-    margin:7px 0;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    background:#2563eb;
-    color:white;
+border:none;
+background:#2563eb;
+color:white;
+font-weight:bold;
+margin-top:10px;
+cursor:pointer;
 }
 
-button:hover{
-    opacity:.9;
+button.roxo{
+background:#7c3aed;
 }
 
-.menu button{
-    background:#2563eb;
+button.verde{
+background:#16a34a;
 }
 
-.menu .roxo{
-    background:#7c3aed;
+button.laranja{
+background:#ea580c;
 }
 
-.menu .laranja{
-    background:#f97316;
+button.resposta{
+background:#eef2ff;
+color:#172033;
+text-align:left;
+border:2px solid #dbe3f0;
 }
 
-.menu .verde{
-    background:#16a34a;
+button.certa{
+background:#16a34a !important;
+color:white;
 }
 
-.menu .vermelho{
-    background:#dc2626;
+button.errada{
+background:#dc2626 !important;
+color:white;
 }
 
-.resposta{
-    background:#eef2ff;
-    color:#172033;
-    border:2px solid #d7def5;
-}
-
-.dark .resposta{
-    background:#303a50;
-    color:white;
-}
-
-.resposta.certa{
-    background:#22c55e !important;
-    color:white !important;
-}
-
-.resposta.errada{
-    background:#ef4444 !important;
-    color:white !important;
+.progresso{
+font-size:20px;
+font-weight:bold;
 }
 
 .questao{
-    border-left:6px solid #2563eb;
+border-left:5px solid #2563eb;
 }
 
 .resultado{
-    font-weight:bold;
-    min-height:22px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
 }
 
-.xp{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+.pequeno{
+color:#64748b;
 }
 
-.xp div{
-    flex:1;
-    min-width:130px;
-    background:#eef2ff;
-    padding:14px;
-    border-radius:12px;
-    text-align:center;
-}
-
-.dark .xp div{
-    background:#293348;
-}
-
-#mensagem{
-    text-align:center;
-    font-weight:bold;
-    margin:15px 0;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#667085;
-}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>📚 EstudaFácil</h1>
-    <p>Seu estudo começa aqui 🚀</p>
+
+<h1>📚 EstudaFácil</h1>
+
+<p>Estude • Pratique • Ganhe XP</p>
+
 </header>
 
-<div class="container">
+<main>
 
-    <div class="card">
-        <h2>👋 Bem-vindo!</h2>
-        <p>Escolha seu ano, matéria e assunto para começar a estudar.</p>
+<!-- PERFIL -->
 
-        <label for="ano">📚 Ano</label>
+<div class="card">
 
-        <select id="ano">
-            <option value="">Escolha o ano</option>
-            <option value="6º ano">6º ano</option>
-            <option value="7º ano">7º ano</option>
-            <option value="8º ano">8º ano</option>
-            <option value="9º ano">9º ano</option>
-        </select>
+<h2>👤 Meu perfil</h2>
 
-        <label for="materia">📖 Matéria</label>
+<input
+id="nome"
+type="text"
+placeholder="Digite seu nome"
+>
 
-        <select id="materia">
-            <option value="">Escolha a matéria</option>
-            <option value="Matemática">Matemática</option>
-            <option value="Português">Português</option>
-            <option value="História">História</option>
-            <option value="Geografia">Geografia</option>
-            <option value="Ciências">Ciências</option>
-            <option value="Inglês">Inglês</option>
-            <option value="Educação Física">Educação Física</option>
-            <option value="Artes">Artes</option>
-        </select>
+<p class="progresso">
+⭐ XP: <span id="xp">0</span>
+</p>
 
-        <label for="assunto">📝 Assunto</label>
+<p class="progresso">
+🏅 Nível: <span id="nivel">1</span>
+</p>
 
-        <select id="assunto">
-            <option value="">Escolha primeiro o ano e a matéria</option>
-        </select>
-    </div>
-
-    <div class="card">
-        <h2>⭐ Seu progresso</h2>
-
-        <div class="xp">
-            <div>
-                <strong id="xp">0</strong>
-                <br>XP
-            </div>
-
-            <div>
-                Nível
-                <br>
-                <strong id="nivel">1</strong>
-            </div>
-
-            <div>
-                🏆
-                <br>
-                <strong id="acertosTotal">0</strong>
-                acertos
-            </div>
-        </div>
-    </div>
-
-    <div id="mensagem"></div>
-
-    <div class="card menu">
-
-        <h2>🎯 O que você quer fazer?</h2>
-
-        <button id="explicacao">📖 Explicação</button>
-
-        <button id="exercicios">✏️ Exercícios</button>
-
-        <button id="quiz">🧠 Quiz</button>
-
-        <button id="provinha">📝 Provinha do assunto</button>
-
-        <button id="provaMateria" class="roxo">
-            📋 Prova da matéria
-        </button>
-
-        <button id="desafio" class="verde">
-            🔥 Desafio
-        </button>
-
-        <button id="desafioDificil" class="laranja">
-            💥 Desafio difícil
-        </button>
-
-        <button id="simulado" class="laranja">
-            🎯 Simulado geral
-        </button>
-
-        <button id="modoEscuro">
-            🌙 Modo escuro
-        </button>
-
-        <button id="limpar" class="vermelho">
-            🗑️ Limpar progresso
-        </button>
-
-    </div>
-
-    <div id="conteudo"></div>
+<p id="boasVindas"></p>
 
 </div>
 
-<footer>
-    📚 EstudaFácil — Estudar pode ser simples, divertido e gratuito.
-</footer>
+
+<!-- ESCOLHA -->
+
+<div class="card">
+
+<h2>📚 Escolha o que estudar</h2>
+
+<label>📖 Ano</label>
+
+<select id="ano">
+
+<option value="">Escolha o ano</option>
+
+<option value="6º ano">6º ano</option>
+
+<option value="7º ano">7º ano</option>
+
+<option value="8º ano">8º ano</option>
+
+<option value="9º ano">9º ano</option>
+
+</select>
+
+
+<label>📚 Matéria</label>
+
+<select id="materia">
+
+<option value="">Escolha a matéria</option>
+
+<option value="Matemática">Matemática</option>
+
+<option value="Português">Português</option>
+
+<option value="História">História</option>
+
+<option value="Geografia">Geografia</option>
+
+<option value="Ciências">Ciências</option>
+
+<option value="Inglês">Inglês</option>
+
+<option value="Educação Física">Educação Física</option>
+
+<option value="Artes">Artes</option>
+
+</select>
+
+
+<button id="explicacao">
+
+📖 Explicação da matéria
+
+</button>
+
+
+<button id="simulado" class="roxo">
+
+📝 Simulado — 15 questões
+
+</button>
+
+</div>
+
+
+<!-- CONTEÚDO -->
+
+<div id="conteudo"></div>
+
+</main>
+
 
 <script>
 
-const DADOS = {
+/* =========================
+   PERFIL E XP
+========================= */
 
-"6º ano":{
+let xp = Number(localStorage.getItem("estudaXP") || 0);
 
-"Matemática":[
-"Números naturais",
-"Operações básicas",
-"Frações",
-"Números decimais",
-"Porcentagem",
-"Múltiplos e divisores",
-"Geometria",
-"Medidas"
-],
+let nome = localStorage.getItem("estudaNome") || "";
 
-"Português":[
-"Interpretação de texto",
-"Substantivos",
-"Adjetivos",
-"Verbos",
-"Pronomes",
-"Pontuação",
-"Sinônimos e antônimos",
-"Produção de texto"
-],
+const campoNome = document.getElementById("nome");
 
-"História":[
-"Pré-História",
-"Mesopotâmia",
-"Egito Antigo",
-"Grécia Antiga",
-"Roma Antiga",
-"Idade Média",
-"Feudalismo",
-"Cultura medieval"
-],
+campoNome.value = nome;
 
-"Geografia":[
-"Mapas e localização",
-"Coordenadas geográficas",
-"Relevo",
-"Clima",
-"Vegetação",
-"Água",
-"Paisagem",
-"Território"
-],
 
-"Ciências":[
-"Seres vivos",
-"Células",
-"Corpo humano",
-"Água",
-"Ar",
-"Solo",
-"Ecossistemas",
-"Matéria"
-],
+function atualizarPerfil(){
 
-"Inglês":[
-"Verb to be",
-"Pronomes",
-"Números",
-"Cores",
-"Família",
-"Objetos escolares",
-"Animais",
-"Saudações"
-],
+document.getElementById("xp").textContent = xp;
 
-"Educação Física":[
-"Esportes de marca",
-"Esportes de precisão",
-"Esportes de invasão",
-"Esportes de combate",
-"Atletismo",
-"Futebol",
-"Basquete",
-"Vôlei"
-],
+document.getElementById("nivel").textContent =
+Math.floor(xp / 100) + 1;
 
-"Artes":[
-"Desenho",
-"Cores",
-"Pintura",
-"Escultura",
-"Música",
-"Dança",
-"Teatro",
-"Arte indígena"
-]
+if(nome){
 
-},
+document.getElementById("boasVindas").textContent =
+"Olá, " + nome + "! 👋";
 
-"7º ano":{
+}else{
 
-"Matemática":[
-"Números inteiros",
-"Frações e decimais",
-"Razão e proporção",
-"Porcentagem",
-"Equações",
-"Geometria",
-"Ângulos",
-"Probabilidade"
-],
+document.getElementById("boasVindas").textContent = "";
 
-"Português":[
-"Interpretação de texto",
-"Classes gramaticais",
-"Verbos",
-"Pronomes",
-"Advérbios",
-"Conjunções",
-"Pontuação",
-"Produção de texto"
-],
+}
 
-"História":[
-"Renascimento",
-"Reforma Protestante",
-"Absolutismo",
-"Grandes Navegações",
-"Colonização",
-"Brasil Colonial",
-"Mercantilismo",
-"Escravidão"
-],
+}
 
-"Geografia":[
-"Brasil",
-"Regiões brasileiras",
-"População",
-"Urbanização",
-"Agricultura",
-"Indústria",
-"Recursos naturais",
-"Questões ambientais"
-],
 
-"Ciências":[
-"Ecologia",
-"Cadeias alimentares",
-"Classificação dos seres vivos",
-"Micro-organismos",
-"Plantas",
-"Animais",
-"Saúde",
-"Doenças"
-],
+campoNome.addEventListener("input",function(){
 
-"Inglês":[
-"Simple Present",
-"Present Continuous",
-"Adjetivos",
-"Rotina",
-"Comidas",
-"Profissões",
-"Lugares",
-"Preposições"
-],
+nome = this.value;
 
-"Educação Física":[
-"Handebol",
-"Futsal",
-"Atletismo",
-"Ginástica",
-"Danças",
-"Lutas",
-"Esportes coletivos",
-"Regras esportivas"
-],
+localStorage.setItem("estudaNome",nome);
 
-"Artes":[
-"Arte brasileira",
-"Arte africana",
-"Arte indígena",
-"Fotografia",
-"Cinema",
-"Teatro",
-"Música",
-"Dança"
-]
+atualizarPerfil();
 
-},
+});
 
-"8º ano":{
+
+function ganharXP(valor){
+
+xp += valor;
+
+localStorage.setItem("estudaXP",xp);
+
+atualizarPerfil();
+
+}
+
+
+atualizarPerfil();
+
+
+/* =========================
+   EXPLICAÇÕES
+========================= */
+
+const explicacoes = {
+
+"Matemática":
+
+"Matemática trabalha números, operações, frações, porcentagens, equações, geometria, medidas e resolução de problemas. O mais importante é entender o raciocínio e praticar.",
+
+
+"Português":
+
+"Português trabalha leitura, interpretação de textos, gramática, verbos, substantivos, adjetivos, pontuação, produção de textos e comunicação.",
+
+
+"História":
+
+"História estuda sociedades, culturas e acontecimentos do passado. Também ajuda a entender mudanças, permanências e como diferentes povos construíram suas histórias.",
+
+
+"Geografia":
+
+"Geografia estuda o espaço geográfico, mapas, população, clima, relevo, território, cidades, natureza e a relação entre sociedade e ambiente.",
+
+
+"Ciências":
+
+"Ciências estuda os seres vivos, corpo humano, matéria, energia, Terra, Universo, meio ambiente e fenômenos naturais.",
+
+
+"Inglês":
+
+"Inglês trabalha vocabulário, leitura, compreensão, frases, verbos e comunicação na língua inglesa.",
+
+
+"Educação Física":
+
+"Educação Física trabalha esportes, jogos, movimentos corporais, saúde, capacidades físicas, regras e convivência.",
+
+
+"Artes":
+
+"Artes trabalha desenho, pintura, música, dança, teatro, fotografia, cultura e diferentes formas de expressão."
+
+};
+
+
+/* =========================
+   QUESTÕES
+========================= */
+
+const perguntas = {
+
 
 "Matemática":[
-"Números reais",
-"Potenciação",
-"Radiciação",
-"Expressões algébricas",
-"Equações",
-"Sistemas",
-"Geometria",
-"Probabilidade"
+
+["Quanto é 24 + 18?",["42","40","44","36"],0],
+
+["Quanto é 72 ÷ 8?",["8","9","10","7"],1],
+
+["Quanto é 7 × 6?",["36","42","48","40"],1],
+
+["Qual é a metade de 50?",["20","25","30","15"],1],
+
+["25% de 100 é:",["10","20","25","50"],2],
+
+["Um triângulo possui quantos lados?",["2","3","4","5"],1],
+
+["Quanto é 100 - 37?",["63","67","73","53"],0],
+
+["Qual é um número par?",["17","21","28","35"],2],
+
+["Quanto é 5²?",["10","15","20","25"],3],
+
+["Qual é a raiz quadrada de 49?",["6","7","8","9"],1],
+
+["A soma dos ângulos de um triângulo é:",["90°","180°","270°","360°"],1],
+
+["Se 2x = 18, x vale:",["6","8","9","10"],2],
+
+["50% corresponde a:",["1/2","1/3","1/4","2/3"],0],
+
+["Quanto é 2⁵?",["10","16","32","64"],2],
+
+["Se 2x - 6 = 10, x vale:",["6","7","8","9"],2]
+
 ],
+
 
 "Português":[
-"Interpretação de texto",
-"Figuras de linguagem",
-"Predicado",
-"Tipos de sujeito",
-"Concordância",
-"Regência",
-"Crase",
-"Produção textual"
+
+["Substantivo serve para nomear:",["seres e coisas","somente ações","somente qualidades","somente números"],0],
+
+["Adjetivo serve para:",["caracterizar","contar","dividir","substituir verbos"],0],
+
+["Verbo indica geralmente:",["ação ou estado","objeto","lugar","número"],0],
+
+["Qual sinal encerra uma pergunta?",[".","!","?",";"],2],
+
+["Sinônimo de feliz:",["contente","triste","bravo","cansado"],0],
+
+["Antônimo de alto:",["grande","baixo","largo","forte"],1],
+
+["Parágrafos ajudam a:",["organizar ideias","apagar palavras","mudar idioma","contar letras"],0],
+
+["Pronome pode:",["substituir ou acompanhar um nome","ser sempre verbo","indicar número","ser pontuação"],0],
+
+["Sujeito é:",["de quem se fala ou quem realiza a ação","o ponto final","o adjetivo","o título"],0],
+
+["Casa é:",["substantivo","verbo","adjetivo","pronome"],0],
+
+["Correr é:",["verbo","substantivo","artigo","preposição"],0],
+
+["Texto argumentativo apresenta:",["ideias e argumentos","somente personagens","somente datas","apenas mapas"],0],
+
+["Coesão ajuda a:",["ligar ideias do texto","apagar frases","mudar idioma","contar páginas"],0],
+
+["Tese é:",["a ideia principal defendida","o título sempre","uma pergunta","uma personagem"],0],
+
+["Uma boa redação precisa de:",["organização de ideias","frases aleatórias","nenhuma pontuação","palavras sem relação"],0]
+
 ],
+
 
 "História":[
-"Iluminismo",
-"Revolução Industrial",
-"Revolução Francesa",
-"Independência dos EUA",
-"Independência do Brasil",
-"Primeiro Reinado",
-"Período Regencial",
-"Segundo Reinado"
+
+["História estuda principalmente:",["sociedades e acontecimentos ao longo do tempo","somente mapas","somente animais","somente números"],0],
+
+["Uma fonte histórica pode ser:",["um documento","somente um computador","uma conta","uma fórmula"],0],
+
+["Uma fonte oral pode ser:",["um depoimento","um cálculo","uma fórmula","uma conta"],0],
+
+["Cronologia organiza acontecimentos:",["no tempo","por cor","por peso","por tamanho"],0],
+
+["Um século corresponde a:",["100 anos","10 anos","50 anos","1000 anos"],0],
+
+["Um milênio corresponde a:",["1000 anos","100 anos","10 anos","500 anos"],0],
+
+["Patrimônio cultural pode ser:",["material ou imaterial","somente dinheiro","somente prédios","apenas livros"],0],
+
+["Historiadores usam fontes para:",["investigar o passado","prever o clima","calcular áreas","medir velocidade"],0],
+
+["Sociedades podem apresentar:",["mudanças e permanências","somente mudanças","somente permanências","nenhuma transformação"],0],
+
+["Memória e História:",["podem se relacionar","são sempre iguais","não têm relação","são matemática"],0],
+
+["Uma revolução pode indicar:",["uma mudança profunda","uma caminhada","um cálculo","um mapa"],0],
+
+["Colonização envolve:",["relações entre povos e territórios","somente comércio","somente agricultura","apenas festas"],0],
+
+["A escrita produziu:",["registros de diferentes sociedades","somente mapas","apenas cálculos","somente desenhos"],0],
+
+["Estudar História ajuda a:",["compreender o passado","prever exatamente o futuro","resolver matemática","medir distâncias"],0],
+
+["Historiadores devem analisar fontes:",["criticamente","sem questionar","aleatoriamente","somente pela aparência"],0]
+
 ],
+
 
 "Geografia":[
-"América",
-"África",
-"Ásia",
-"Europa",
-"Oceania",
-"Globalização",
-"Economia mundial",
-"População mundial"
+
+["Geografia estuda:",["o espaço geográfico","somente o passado","somente números","somente idiomas"],0],
+
+["Mapa é:",["uma representação do espaço","uma conta","um texto literário","um som"],0],
+
+["Latitude é medida a partir:",["do Equador","de Greenwich","do Polo Norte","do Trópico"],0],
+
+["Longitude é medida a partir:",["de Greenwich","do Equador","do Polo Sul","do Trópico"],0],
+
+["Clima corresponde:",["a padrões atmosféricos de longo prazo","a uma chuva isolada","a um terremoto","a um rio"],0],
+
+["Tempo atmosférico é:",["a condição da atmosfera em determinado momento","o clima de 100 anos","o relevo","a vegetação"],0],
+
+["Urbanização é:",["crescimento da população urbana","diminuição das cidades","criação de rios","mudança de idioma"],0],
+
+["Migração é:",["deslocamento de pessoas","movimento de placas","mudança de clima","formação de rochas"],0],
+
+["Globalização aumenta:",["conexões entre lugares","isolamento total","distâncias físicas","continentes"],0],
+
+["Relevo inclui:",["montanhas e planaltos","somente rios","somente cidades","somente florestas"],0],
+
+["Vegetação está relacionada:",["às plantas de uma área","às ruas","aos prédios","aos idiomas"],0],
+
+["Território envolve:",["espaço e relações de poder","somente clima","somente animais","apenas relevo"],0],
+
+["Recursos naturais são:",["elementos da natureza usados pelas sociedades","somente máquinas","somente cidades","apenas moedas"],0],
+
+["Desenvolvimento sustentável busca:",["atender necessidades sem comprometer futuras gerações","usar tudo rapidamente","eliminar a natureza","aumentar resíduos"],0],
+
+["População é:",["conjunto de pessoas de um lugar","conjunto de montanhas","conjunto de rios","conjunto de países"],0]
+
 ],
+
 
 "Ciências":[
-"Sistema respiratório",
-"Sistema digestório",
-"Sistema circulatório",
-"Sistema nervoso",
-"Reprodução",
-"Puberdade",
-"Eletricidade",
-"Fontes de energia"
+
+["Célula é:",["unidade básica dos seres vivos","um órgão","um planeta","um tecido"],0],
+
+["Fotossíntese é realizada principalmente por:",["plantas e algas","seres humanos","pedras","metais"],0],
+
+["Sistema respiratório está ligado:",["à troca de gases","à digestão","à audição","à visão"],0],
+
+["Sistema digestório participa:",["da digestão dos alimentos","da circulação","da respiração","da audição"],0],
+
+["O coração faz parte do sistema:",["circulatório","digestório","nervoso","respiratório"],0],
+
+["DNA está relacionado:",["à informação genética","à digestão","ao clima","à eletricidade"],0],
+
+["Ecossistema inclui:",["seres vivos e ambiente","somente animais","somente plantas","apenas água"],0],
+
+["Cadeia alimentar mostra:",["relações de alimentação","somente clima","formação de rochas","movimentos terrestres"],0],
+
+["Água pode ser encontrada:",["em diferentes estados físicos","somente líquida","somente gelo","somente vapor"],0],
+
+["Evaporação é passagem:",["do líquido para o gasoso","do sólido para o líquido","do gasoso para o sólido","do sólido para o gasoso"],0],
+
+["Força pode:",["alterar movimento ou deformar objetos","criar matéria do nada","mudar idioma","produzir plantas"],0],
+
+["Energia elétrica é usada:",["em aparelhos e sistemas elétricos","somente alimentos","somente rios","apenas animais"],0],
+
+["Planetas orbitam:",["estrelas","somente a Lua","montanhas","oceanos"],0],
+
+["A Terra possui:",["atmosfera, água, solo e vida","somente água","somente rochas","apenas ar"],0],
+
+["Método científico envolve:",["observação, hipóteses e testes","adivinhação","opinião sem teste","memorização sem investigação"],0]
+
 ],
+
 
 "Inglês":[
-"Simple Past",
-"Past Continuous",
-"Future",
-"Comparatives",
-"Superlatives",
-"Modal verbs",
-"Vocabulário",
-"Interpretação"
+
+["'Hello' significa:",["Olá","Tchau","Obrigado","Por favor"],0],
+
+["'Good morning' significa:",["Bom dia","Boa noite","Boa tarde","Até logo"],0],
+
+["'I am' significa:",["Eu sou/estou","Você é","Ele é","Nós somos"],0],
+
+["'She' significa:",["ela","ele","eles","nós"],0],
+
+["'He' significa:",["ele","ela","nós","eles"],0],
+
+["'They' significa:",["eles/elas","eu","ele","ela"],0],
+
+["'Book' significa:",["livro","caderno","mesa","caneta"],0],
+
+["'School' significa:",["escola","casa","cidade","família"],0],
+
+["Simple Present é usado para:",["hábitos e fatos gerais","apenas passado","somente futuro","apenas perguntas"],0],
+
+["'Blue' significa:",["azul","verde","vermelho","amarelo"],0],
+
+["'Family' significa:",["família","amigo","professor","cidade"],0],
+
+["'Water' significa:",["água","comida","fogo","terra"],0],
+
+["'Thank you' significa:",["Obrigado(a)","Desculpe","Olá","Até amanhã"],0],
+
+["'Please' significa:",["Por favor","Nunca","Agora","Ontem"],0],
+
+["'School' significa:",["escola","livro","água","família"],0]
+
 ],
+
 
 "Educação Física":[
-"Capacidades físicas",
-"Força",
-"Velocidade",
-"Resistência",
-"Flexibilidade",
-"Esportes olímpicos",
-"Saúde",
-"Qualidade de vida"
+
+["Esporte de marca pode ser medido por:",["tempo ou distância","cor da camisa","torcedores","nome do atleta"],0],
+
+["Esporte de precisão envolve:",["acertar um alvo","marcar gols sempre","correr sempre","dançar sempre"],0],
+
+["Esporte de invasão envolve:",["ocupar espaço adversário para marcar","somente correr","somente saltar","apenas lançar"],0],
+
+["No futebol, o objetivo é:",["marcar gols","fazer cestas","derrubar pinos","acertar alvo"],0],
+
+["No basquete, os pontos são marcados:",["na cesta","no gol","na rede","no chão"],0],
+
+["No vôlei, as equipes são separadas por:",["uma rede","uma parede","um gol","uma linha"],0],
+
+["Alongamento pode ajudar:",["na mobilidade corporal","a substituir toda atividade","a aumentar peso","a eliminar sono"],0],
+
+["Resistência está ligada:",["à manutenção de esforço","somente à força máxima","somente à velocidade","à altura"],0],
+
+["Força é capacidade de:",["produzir tensão muscular","ler rápido","memorizar regras","correr sempre"],0],
+
+["Velocidade está ligada:",["à rapidez de execução","à flexibilidade apenas","à altura","à força apenas"],0],
+
+["Atividade física regular pode contribuir para:",["saúde e bem-estar","sedentarismo","isolamento","desidratação"],0],
+
+["Regras esportivas servem para:",["organizar a prática","impedir competição","mudar o esporte","eliminar equipes"],0],
+
+["Fair play significa:",["respeito e jogo limpo","vencer a qualquer custo","ignorar regras","trapacear"],0],
+
+["Aquecimento prepara:",["o corpo para a atividade","somente o uniforme","a quadra","a torcida"],0],
+
+["Esporte coletivo envolve:",["cooperação entre integrantes da equipe","somente um participante","nenhuma regra","apenas competição individual"],0]
+
 ],
+
 
 "Artes":[
-"Renascimento",
-"Barroco",
-"Modernismo",
-"Arte contemporânea",
-"Perspectiva",
-"Arquitetura",
-"Fotografia",
-"Cinema"
+
+["Desenho usa principalmente:",["linhas e formas","somente sons","apenas movimentos","somente palavras"],0],
+
+["Pintura utiliza:",["pigmentos e superfícies","instrumentos musicais","somente argila","somente dança"],0],
+
+["Escultura é uma arte:",["tridimensional","somente sonora","apenas escrita","somente digital"],0],
+
+["Teatro envolve:",["representação e atuação","somente pintura","apenas fotografia","somente escultura"],0],
+
+["Dança usa:",["movimento corporal","somente tinta","apenas texto","somente argila"],0],
+
+["Música trabalha:",["sons e silêncio","somente cores","apenas formas","somente mapas"],0],
+
+["Fotografia registra:",["imagens","sons","cheiros","sabores"],0],
+
+["Arte pode expressar:",["ideias e sentimentos","somente números","apenas regras","somente datas"],0],
+
+["Cores primárias tradicionais são:",["vermelho, amarelo e azul","verde, roxo e laranja","preto, branco e cinza","rosa, marrom e cinza"],0],
+
+["Perspectiva ajuda a representar:",["profundidade","som","ritmo","texto"],0],
+
+["Grafite é uma forma de:",["arte urbana","dança clássica","música erudita","escultura antiga"],0],
+
+["Cinema combina principalmente:",["imagem, som e narrativa","somente pintura","apenas escultura","somente dança"],0],
+
+["Arte indígena faz parte:",["da diversidade cultural","somente da matemática","apenas da ciência","somente da geografia"],0],
+
+["Arte africana reúne:",["diversas tradições e culturas","uma única tradição","somente pintura europeia","apenas música"],0],
+
+["Arte contemporânea pode:",["usar diferentes materiais e linguagens","usar somente tinta","seguir só regras antigas","ser somente desenho"],0]
+
 ]
 
-},
+};
 
-"9º ano":{
 
-"Matemática":[
-"Notação científica",
-"Produtos notáveis",
-"Fatoração",
-"Equação do 2º grau",
-"Funções",
-"Semelhança",
-"Teorema de Pitágoras",
-"Estatística"
-],
+/* =========================
+   EXPLICAÇÃO
+========================= */
 
-"Português":[
-"Interpretação de texto",
-"Funções da linguagem",
-"Orações",
-"Período composto",
-"Concordância verbal",
-"Concordância nominal",
-"Regência verbal",
-"Redação"
-],
+document.getElementById("explicacao").onclick = function(){
 
-"História":[
-"República Velha",
-"Primeira Guerra Mundial",
-"Revolução Russa",
-"Era Vargas",
-"Segunda Guerra Mundial",
-"Guerra Fria",
-"Ditadura Militar",
-"Redemocratização"
-],
+let ano = document.getElementById("ano").value;
 
-"Geografia":[
-"Globalização",
-"Geopolítica",
-"Blocos econômicos",
-"Industrialização",
-"Urbanização",
-"Desigualdade social",
-"Meio ambiente",
-"Desenvolvimento sustentável"
-],
+let materia = document.getElementById("materia").value;
 
-"Ciências":[
-"Átomos",
-"Elementos químicos",
-"Reações químicas",
-"Genética",
-"Evolução",
-"Física",
-"Movimento",
-"Universo"
-],
+if(!ano || !materia){
 
-"Inglês":[
-"Present Perfect",
-"Past Perfect",
-"Conditionals",
-"Passive Voice",
-"Reported Speech",
-"Relative Pronouns",
-"Reading",
-"Writing"
-],
+document.getElementById("conteudo").innerHTML = `
 
-"Educação Física":[
-"Treinamento físico",
-"Condicionamento",
-"Esporte e sociedade",
-"Esporte e saúde",
-"Nutrição e atividade física",
-"Lesões esportivas",
-"Esporte olímpico",
-"Lazer"
-],
+<div class="card">
 
-"Artes":[
-"Arte moderna",
-"Arte contemporânea",
-"Grafite",
-"Design",
-"Cinema",
-"Fotografia",
-"Arte digital",
-"Cultura brasileira"
-]
+<h2>⚠️ Escolha o ano e a matéria primeiro.</h2>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+document.getElementById("conteudo").innerHTML = `
+
+<div class="card">
+
+<h2>📖 ${materia} — ${ano}</h2>
+
+<p>${explicacoes[materia]}</p>
+
+<h3>🎯 Como estudar</h3>
+
+<p>
+Leia a explicação, tente lembrar o que aprendeu
+e depois faça o simulado de 15 questões.
+</p>
+
+</div>
+
+`;
+
+};
+
+
+/* =========================
+   SIMULADO
+========================= */
+
+document.getElementById("simulado").onclick = function(){
+
+let ano = document.getElementById("ano").value;
+
+let materia = document.getElementById("materia").value;
+
+if(!ano || !materia){
+
+document.getElementById("conteudo").innerHTML = `
+
+<div class="card">
+
+<h2>⚠️ Escolha o ano e a matéria primeiro.</h2>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+let lista = perguntas[materia];
+
+let acertos = 0;
+
+let container = document.getElementById("conteudo");
+
+container.innerHTML = `
+
+<div class="card">
+
+<h2>📝 Simulado de ${materia}</h2>
+
+<p>${ano} • 15 questões</p>
+
+<p>⭐ Cada acerto vale 10 XP.</p>
+
+</div>
+
+`;
+
+
+lista.forEach(function(q,numero){
+
+let card = document.createElement("div");
+
+card.className = "card questao";
+
+let titulo = document.createElement("h3");
+
+titulo.textContent =
+(numero + 1) + ". " + q[0];
+
+card.appendChild(titulo);
+
+
+q[1].forEach(function(opcao,index){
+
+let botao = document.createElement("button");
+
+botao.className = "resposta";
+
+botao.textContent = opcao;
+
+
+botao.onclick = function(){
+
+if(card.dataset.respondida === "sim"){
+return;
+}
+
+card.dataset.respondida = "sim";
+
+
+let botoes =
+card.querySelectorAll("button");
+
+
+botoes.forEach(function(b){
+b.disabled = true;
+});
+
+
+if(index === q[2]){
+
+botao.classList.add("certa");
+
+acertos++;
+
+ganharXP(10);
+
+mensagem.textContent =
+"🎉 Acertou! +10 XP";
+
+}else{
+
+botao.classList.add("errada");
+
+botoes[q[2]].classList.add("certa");
+
+mensagem.textContent =
+"❌ Errou! A resposta correta ficou verde.";
 
 }
 
 };
 
 
-const EXPLICACOES = {
+card.appendChild(botao);
 
-"Números naturais":
-"Números naturais são usados para contar. Exemplos: 0, 1, 2, 3, 4, 5...",
+});
 
-"Operações básicas":
-"As quatro operações básicas são adição, subtração, multiplicação e divisão.",
 
-"Frações":
-"Frações representam partes de um todo. O número de cima é o numerador e o de baixo é o denominador.",
+let mensagem = document.createElement("p");
 
-"Números decimais":
-"Números decimais possuem uma parte inteira e uma parte decimal, como 2,5.",
+mensagem.className = "pequeno";
 
-"Porcentagem":
-"Porcentagem representa uma parte de 100. Por exemplo, 25% significa 25 de cada 100.",
+card.appendChild(mensagem);
 
-"Coordenadas geográficas":
-"Latitude indica a posição ao norte ou ao sul do Equador. Longitude indica a posição a leste ou oeste de Greenwich.",
+container.appendChild(card);
 
-"Relevo":
-"Relevo é o conjunto das formas da superfície terrestre, como montanhas, planaltos e planícies.",
+});
 
-"Clima":
-"Clima é o conjunto das condições atmosféricas de uma região observadas durante longos períodos.",
 
-"Interpretação de texto":
-"Interpretar um texto significa compreender suas informações, ideias, opiniões e mensagens.",
+let final = document.createElement("div");
 
-"Substantivos":
-"Substantivos são palavras que dão nome a pessoas, lugares, objetos, animais, sentimentos e outras coisas.",
+final.className = "card";
 
-"Adjetivos":
-"Adjetivos caracterizam ou dão qualidades aos substantivos.",
+final.innerHTML = `
 
-"Verbos":
-"Verbos indicam ações, estados ou acontecimentos.",
+<h2>🏆 Resultado</h2>
 
-"Pronomes":
-"Pronomes podem substituir ou acompanhar substantivos.",
+<button id="verResultado" class="verde">
+Ver minha nota
+</button>
 
-"Pontuação":
-"Os sinais de pontuação ajudam a organizar as frases e dar sentido ao texto.",
+<div id="resultado"></div>
 
-"Pré-História":
-"É o período anterior ao desenvolvimento da escrita, estudado por meio de diferentes vestígios.",
+`;
 
-"Egito Antigo":
-"A civilização egípcia se desenvolveu principalmente às margens do rio Nilo.",
+container.appendChild(final);
 
-"Grécia Antiga":
-"A Grécia Antiga foi formada por diferentes cidades-Estado e teve grande influência cultural.",
 
-"Roma Antiga":
-"Roma passou por diferentes períodos e construiu um dos grandes impérios da Antiguidade.",
+document.getElementById("verResultado").onclick = function(){
 
-"Renascimento":
-"Movimento cultural europeu que valorizou as artes, a ciência e conhecimentos da Antiguidade.",
+let nota = (acertos / 15) * 10;
 
-"Revolução Industrial":
-"Foi um processo de grandes transformações na produção, nas máquinas, no trabalho e nas cidades.",
+document.getElementById("resultado").innerHTML = `
 
-"Revolução Francesa":
-"Movimento iniciado em 1789 que provocou profundas mudanças políticas e sociais na França.",
+<div class="resultado">
 
-"Independência do Brasil":
-"Processo que levou à separação política do Brasil em relação a Portugal, em 1822.",
+<p>Você acertou ${acertos} de 15!</p>
 
-"Mapas e localização":
-"Mapas são representações do espaço e ajudam a localizar lugares.",
+<p>📊 Nota: ${nota.toFixed(1)} / 10</p>
 
-"População":
-"População é o conjunto de pessoas que vivem em determinado espaço.",
+<p>⭐ XP ganho: ${acertos * 10}</p>
 
-"Urbanização":
-"Urbanização é o crescimento da população e das atividades nas cidades.",
+</div>
 
-"Globalização":
-"Globalização é o aumento das conexões entre diferentes partes do mundo.",
-
-"Seres vivos":
-"Seres vivos apresentam características como metabolismo, crescimento e reprodução.",
-
-"Células":
-"Células são unidades básicas que formam os seres vivos.",
-
-"Corpo humano":
-"O corpo humano possui vários órgãos e sistemas que trabalham de forma integrada.",
-
-"Ecologia":
-"Ecologia estuda as relações entre os seres vivos e o ambiente.",
-
-"Cadeias alimentares":
-"Representam relações de alimentação entre os seres vivos de um ecossistema.",
-
-"Verb to be":
-"O verbo to be pode significar ser ou estar. Exemplos: I am, you are, he is.",
-
-"Simple Present":
-"É usado principalmente para hábitos, rotinas e fatos gerais.",
-
-"Simple Past":
-"É usado para falar sobre acontecimentos que ocorreram no passado.",
-
-"Esportes de marca":
-"São esportes em que o resultado pode ser medido por tempo, distância ou altura.",
-
-"Esportes de precisão":
-"São modalidades em que o objetivo envolve acertar ou aproximar-se de um alvo.",
-
-"Esportes de invasão":
-"São esportes em que equipes ocupam o espaço adversário para tentar marcar pontos.",
-
-"Futebol":
-"É um esporte coletivo em que duas equipes tentam marcar gols.",
-
-"Basquete":
-"É um esporte coletivo cujo objetivo é marcar pontos colocando a bola na cesta.",
-
-"Vôlei":
-"É um esporte coletivo praticado por equipes separadas por uma rede.",
-
-"Desenho":
-"É uma forma de expressão artística baseada em linhas, formas e representações.",
-
-"Cores":
-"As cores podem ser utilizadas para criar contrastes, destacar elementos e transmitir sensações.",
-
-"Pintura":
-"É uma forma de arte que utiliza pigmentos sobre diferentes superfícies.",
-
-"Escultura":
-"É uma arte tridimensional que pode utilizar materiais como pedra, madeira, metal ou argila.",
-
-"Música":
-"É uma forma de expressão artística baseada em sons, ritmo, melodia e outros elementos.",
-
-"Dança":
-"É uma forma de expressão que utiliza movimentos do corpo.",
-
-"Teatro":
-"É uma forma de arte baseada em atuação, personagens, cenas e encenação."
+`;
 
 };
 
-
-const QUESTOES = {
-
-"Números naturais":[
-["Qual destes é um número natural?",["7","-3","2,5"],0],
-["Qual é o sucessor de 9?",["10","8","11"],0],
-["Qual é o antecessor de 20?",["19","21","18"],0],
-["Qual destes números é maior?",["25","15","5"],0]
-],
-
-"Operações básicas":[
-["Quanto é 8 + 7?",["15","14","16"],0],
-["Quanto é 20 - 6?",["14","16","12"],0],
-["Quanto é 6 × 4?",["24","20","18"],0],
-["Quanto é 36 ÷ 6?",["6","5","7"],0]
-],
-
-"Frações":[
-["Qual é o numerador de 3/5?",["3","5","8"],0],
-["Qual é o denominador de 2/7?",["7","2","9"],0],
-["Qual fração representa metade?",["1/2","1/3","2/3"],0]
-],
-
-"Números decimais":[
-["Qual representa cinco décimos?",["0,5","5,0","0,05"],0],
-["Quanto é 1,5 + 2,5?",["4","3","5"],0],
-["Qual é maior?",["2,7","2,3","2,1"],0]
-],
-
-"Porcentagem":[
-["Quanto é 50% de 100?",["50","25","10"],0],
-["Quanto é 10% de 200?",["20","10","30"],0],
-["25% significa:",["25 de 100","5 de 100","75 de 100"],0]
-],
-
-"Coordenadas geográficas":[
-["Latitude é medida em relação ao:",["Equador","Greenwich","Trópico"],0],
-["Longitude é medida em relação ao:",["Meridiano de Greenwich","Equador","Polo Norte"],0],
-["Latitude pode ser indicada por:",["Norte ou Sul","Leste ou Oeste","Somente Leste"],0]
-],
-
-"Verb to be":[
-["Como dizer 'eu sou/estou'?",["I am","I are","I is"],0],
-["Complete: She ___ happy.",["is","are","am"],0],
-["They are significa:",["Eles/elas são ou estão","Ele é","Eu sou"],0]
-],
-
-"Simple Present":[
-["O Simple Present é usado para:",["Hábitos e fatos gerais","Apenas passado","Apenas futuro"],0],
-["Complete: I ___ soccer.",["play","plays","playing"],0],
-["Complete: She ___ English.",["studies","study","studying"],0]
-],
-
-"Esportes de marca":[
-["Qual é um esporte de marca?",["Corrida","Futebol","Xadrez"],0],
-["Em uma corrida pode ser medido:",["Tempo","Cor","Uniforme"],0],
-["No salto em distância mede-se:",["Distância","Número de jogadores","Peso da bola"],0]
-],
-
-"Esportes de precisão":[
-["Qual é um esporte de precisão?",["Tiro ao alvo","Futebol","Corrida"],0],
-["O objetivo envolve:",["Acertar um alvo","Fazer gols","Correr"],0],
-["Precisão está relacionada a:",["Pontaria e controle","Velocidade apenas","Tamanho da equipe"],0]
-],
-
-"Futebol":[
-["Quantas equipes participam de uma partida?",["Duas","Três","Quatro"],0],
-["O objetivo é:",["Marcar gols","Fazer cestas","Acertar um alvo"],0],
-["Quem pode usar as mãos dentro da própria área?",["Goleiro","Atacante","Zagueiro"],0]
-],
-
-"Basquete":[
-["Qual é o objetivo do basquete?",["Marcar pontos na cesta","Marcar gols","Acertar um alvo"],0],
-["A bola deve ser colocada:",["Na cesta","No gol","Fora da quadra"],0]
-],
-
-"Vôlei":[
-["O vôlei é jogado com uma:",["Rede","Trave de futebol","Cesta"],0],
-["As equipes ficam separadas por:",["Uma rede","Uma parede","Um gol"],0]
-]
-
 };
 
+</script>
 
-let xp = Number(localStorage.getItem("estuda_xp") || 0);
-let acertosTotal = Number(localStorage.getItem("estuda_acertos") || 0);
-
-
-function atualizarProgresso(){
-
-    document.getElementById("xp").textContent = xp;
-
-    document.getElementById("nivel").textContent =
-        Math.floor(xp / 100) + 1;
-
-    document.getElementById("acertosTotal").textContent =
-        acertosTotal;
-
-    localStorage.setItem("estuda_xp",xp);
-    localStorage.setItem("estuda_acertos",acertosTotal);
-}
-
-
-function carregarAssuntos(){
-
-    const ano =
-        document.getElementById("ano").value;
-
-    const materia =
-        document.getElementById("materia").value;
-
-    const assunto =
-        document.getElementById("assunto");
-
-    assunto.innerHTML =
-        '<option value="">Escolha um assunto</option>';
-
-    if(!ano || !materia){
-        return;
-    }
-
-    const lista =
-        DADOS[ano][materia];
-
-    lista.forEach(function(item){
-
-        const option =
-            document.createElement("option");
-
-        option.value = item;
-        option.textContent = item;
-
-        assunto.appendChild(option);
-    });
-}
-
-
-function mostrarExplicacao(){
-
-    const assunto =
-        document.getElementById("assunto").value;
-
-    const area =
-        document.getElementById("conteudo");
-
-    if(!assunto){
-
-        area.innerHTML =
-            '<div class="card"><h2>⚠️ Escolha um assunto primeiro.</h2></div>';
-
-        return;
-    }
-
-    const texto =
-        EXPLICACOES[assunto] ||
-        "Este assunto faz parte do conteúdo estudado. Leia, pratique e tente os desafios para aprender melhor.";
-
-    area.innerHTML = `
-        <div class="card">
-            <h2>📖 ${assunto}</h2>
-            <p>${texto}</p>
-
-            <hr>
-
-            <h3>💡 Dica</h3>
-
-            <p>
-                Depois de ler a explicação, faça os exercícios
-                e depois tente a provinha.
-            </p>
-        </div>
-    `;
-}
-
-
-function obterQuestoes(){
-
-    const assunto =
-        document.getElementById("assunto").value;
-
-    if(!assunto){
-        return [];
-    }
-
-    if(QUESTOES[assunto]){
-        return QUESTOES[assunto];
-    }
-
-    return [
-
-        [
-            "Qual é a principal ideia relacionada a " + assunto + "?",
-            [
-                "É um conteúdo estudado nessa matéria",
-                "É uma comida",
-                "É um animal"
-            ],
-            0
-        ],
-
-        [
-            "Estudar " + assunto + " pode ajudar n
+</body>
+</html>
