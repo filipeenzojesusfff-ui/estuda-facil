@@ -2,104 +2,639 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EstudaFácil 🚀</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstudaFácil 📚</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef2ff;color:#172033}header{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:28px 16px;text-align:center}header h1{margin:0;font-size:34px}main{max-width:900px;margin:auto;padding:16px}.card{background:#fff;border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 5px 18px #0001}label{display:block;font-weight:700;margin:12px 0 6px}input,select,button{width:100%;padding:14px;border-radius:12px;font-size:16px}input,select{border:2px solid #dbe2ef;background:#fff}button{border:0;margin-top:10px;background:#2563eb;color:#fff;font-weight:700;cursor:pointer}.purple{background:#7c3aed}.green{background:#16a34a}.muted{color:#64748b;font-size:14px}.xp{font-size:19px;font-weight:700}.box{background:#eff6ff;border-left:5px solid #2563eb;padding:14px;border-radius:10px;line-height:1.6}.question{border-left:5px solid #7c3aed}.answer{background:#f8fafc;color:#172033;border:2px solid #e2e8f0;text-align:left}.answer.correct{background:#16a34a;color:white}.answer.wrong{background:#dc2626;color:white}.result{text-align:center;font-size:20px}.hidden{display:none}.progress{height:12px;background:#e2e8f0;border-radius:10px;overflow:hidden}.bar{height:100%;background:#2563eb;width:0}.tag{display:inline-block;background:#eef2ff;padding:6px 10px;border-radius:999px;margin:3px;font-size:13px}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f1f5f9;
+  color:#172033;
+  transition:.3s;
+}
+
+header{
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:white;
+  padding:25px 15px;
+  text-align:center;
+}
+
+header h1{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+header p{
+  font-size:16px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.materias{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.materia{
+  border:0;
+  padding:15px 8px;
+  border-radius:12px;
+  background:white;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 3px 10px #0001;
+}
+
+.materia.ativa{
+  background:#2563eb;
+  color:white;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 4px 15px #0001;
+}
+
+h2{
+  margin-bottom:10px;
+}
+
+h3{
+  margin:15px 0 8px;
+}
+
+.assuntos{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.assunto{
+  background:#e0e7ff;
+  border:0;
+  padding:10px 13px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.assunto.ativo{
+  background:#7c3aed;
+  color:white;
+}
+
+.explicacao{
+  line-height:1.6;
+  margin-top:15px;
+}
+
+.exemplo{
+  background:#f0fdf4;
+  padding:15px;
+  border-radius:10px;
+  margin-top:12px;
+}
+
+.questao{
+  margin-top:20px;
+  padding:15px;
+  background:#f8fafc;
+  border-radius:12px;
+}
+
+.respostas button{
+  display:block;
+  width:100%;
+  text-align:left;
+  border:1px solid #ddd;
+  background:white;
+  padding:12px;
+  border-radius:9px;
+  margin:7px 0;
+  cursor:pointer;
+}
+
+.respostas button:hover{
+  background:#eef2ff;
+}
+
+#resultado{
+  font-size:20px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+.xp{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 3px 10px #0001;
+}
+
+.dark{
+  background:#111827;
+  color:#f9fafb;
+}
+
+.dark .card,
+.dark .materia,
+.dark .xp{
+  background:#1f2937;
+  color:white;
+}
+
+.dark .respostas button{
+  background:#374151;
+  color:white;
+  border-color:#4b5563;
+}
+
+.dark .questao{
+  background:#111827;
+}
+
+.dark .exemplo{
+  background:#064e3b;
+}
+
+.topo-botoes{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.topo-botoes button{
+  border:0;
+  padding:10px 15px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+@media(min-width:600px){
+  .materias{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
 </style>
 </head>
+
 <body>
-<header><h1>📚 EstudaFácil</h1><p>Aprenda, pratique e ganhe XP!</p></header>
-<main>
-<section class="card">
-<h2>👤 Seu perfil</h2>
-<label for="name">Nome</label><input id="name" placeholder="Digite seu nome">
-<p class="xp">⭐ XP: <span id="xp">0</span></p><p class="xp">🏆 Nível: <span id="level">1</span></p>
-<div class="progress"><div class="bar" id="xpbar"></div></div>
-<p id="hello"></p>
-</section>
-<section class="card">
-<h2>🎯 O que você quer estudar?</h2>
-<label for="year">📖 Ano</label>
-<select id="year"><option value="">Escolha o ano</option><option>6º ano</option><option>7º ano</option><option>8º ano</option><option>9º ano</option></select>
-<label for="subject">📚 Matéria</label>
-<select id="subject"><option value="">Escolha a matéria</option></select>
-<label for="topic">🎯 Assunto</label>
-<select id="topic"><option value="">Escolha o assunto</option></select>
-<button id="study">📖 Ver explicação</button>
-<button id="quiz" class="purple">📝 Simulado de 15 questões</button>
-</section>
-<div id="app"></div>
-</main>
+
+<header>
+  <h1>📚 EstudaFácil</h1>
+  <p>Estude, pratique e aprenda!</p>
+
+  <div class="topo-botoes">
+    <button onclick="alternarTema()">🌙 Modo escuro</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="xp">
+    ⭐ XP: <span id="xp">0</span>
+    &nbsp; | &nbsp;
+    🏆 Nível: <span id="nivel">1</span>
+  </div>
+
+  <div class="card">
+    <h2>📚 Escolha uma matéria</h2>
+
+    <div class="materias">
+
+      <button class="materia ativa" onclick="mudarMateria('matematica',this)">
+        ➗ Matemática
+      </button>
+
+      <button class="materia" onclick="mudarMateria('portugues',this)">
+        📖 Português
+      </button>
+
+      <button class="materia" onclick="mudarMateria('historia',this)">
+        🏛️ História
+      </button>
+
+      <button class="materia" onclick="mudarMateria('geografia',this)">
+        🌎 Geografia
+      </button>
+
+      <button class="materia" onclick="mudarMateria('ciencias',this)">
+        🔬 Ciências
+      </button>
+
+      <button class="materia" onclick="mudarMateria('ingles',this)">
+        🇺🇸 Inglês
+      </button>
+
+      <button class="materia" onclick="mudarMateria('educacao',this)">
+        ⚽ Educação Física
+      </button>
+
+      <button class="materia" onclick="mudarMateria('artes',this)">
+        🎨 Artes
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 id="tituloMateria">➗ Matemática</h2>
+
+    <h3>📚 Assuntos</h3>
+
+    <div class="assuntos" id="listaAssuntos"></div>
+
+    <div class="explicacao">
+      <h3 id="tituloAssunto"></h3>
+      <div id="textoExplicacao"></div>
+      <div class="exemplo" id="exemplo"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📝 Exercício</h2>
+
+    <div class="questao">
+      <h3 id="pergunta"></h3>
+      <div class="respostas" id="respostas"></div>
+      <div id="resultado"></div>
+    </div>
+  </div>
+
+</div>
+
 <script>
-const subjects=["Matemática","Português","História","Geografia","Ciências","Inglês","Educação Física","Artes"];
-const topics={
-"Matemática":["Números e operações","Frações","Decimais","Porcentagem","Geometria","Ângulos","Perímetro e área","Equações","Gráficos","Probabilidade"],
-"Português":["Interpretação de texto","Substantivos","Adjetivos","Verbos","Pronomes","Pontuação","Concordância","Coesão e coerência","Figuras de linguagem","Produção de texto"],
-"História":["Pré-História","Antiguidade","Grécia e Roma","Idade Média","Renascimento","Grandes Navegações","Brasil Colonial","Revolução Francesa","Revolução Industrial","Brasil República"],
-"Geografia":["Mapas e cartografia","Latitude e longitude","Relevo","Clima","Água","População","Urbanização","Agricultura e indústria","Globalização","Meio ambiente"],
-"Ciências":["Células","Sistema respiratório","Sistema digestório","Sistema circulatório","Sistema nervoso","Ecossistemas","Matéria e energia","Genética","Eletricidade","Sistema Solar"],
-"Inglês":["Greetings","Numbers and colors","Family and school","Verb to be","Pronouns","Simple Present","Simple Past","Future","Comparatives","Reading"],
-"Educação Física":["Esportes de marca","Esportes de precisão","Esportes de invasão","Atletismo","Futebol","Vôlei","Basquete","Danças","Lutas","Saúde e movimento"],
-"Artes":["Desenho","Cores","Pintura","Escultura","Música","Dança","Teatro","Fotografia","Cinema","Arte brasileira"]
+
+let xp = Number(localStorage.getItem("estudaXP")) || 0;
+
+let materiaAtual = "matematica";
+
+let assuntoAtual = "";
+
+const dados = {
+
+matematica:{
+  nome:"➗ Matemática",
+  assuntos:{
+    "Operações básicas":{
+      explicacao:"As quatro operações básicas são adição, subtração, multiplicação e divisão.",
+      exemplo:"Exemplo: 25 + 15 = 40"
+    },
+    "Frações":{
+      explicacao:"Frações representam partes de um todo. O número de cima é o numerador e o de baixo é o denominador.",
+      exemplo:"Exemplo: 1/2 significa uma de duas partes iguais."
+    },
+    "Porcentagem":{
+      explicacao:"Porcentagem representa uma parte de 100.",
+      exemplo:"Exemplo: 50% de 100 = 50."
+    },
+    "Geometria":{
+      explicacao:"Geometria estuda formas, medidas, ângulos, perímetros e áreas.",
+      exemplo:"Um quadrado com lado de 5 cm tem perímetro de 20 cm."
+    },
+    "Equações":{
+      explicacao:"Uma equação é uma igualdade que possui um valor desconhecido.",
+      exemplo:"x + 5 = 12 → x = 7."
+    }
+  }
+},
+
+portugues:{
+  nome:"📖 Português",
+  assuntos:{
+    "Substantivos":{
+      explicacao:"Substantivo é a palavra que dá nome a pessoas, animais, lugares, objetos e sentimentos.",
+      exemplo:"Exemplo: casa, cachorro, Brasil, alegria."
+    },
+    "Adjetivos":{
+      explicacao:"Adjetivos são palavras que caracterizam os substantivos.",
+      exemplo:"Exemplo: casa grande, menino inteligente."
+    },
+    "Verbos":{
+      explicacao:"Verbos indicam ações, estados ou acontecimentos.",
+      exemplo:"Exemplo: correr, estudar, brincar."
+    },
+    "Pontuação":{
+      explicacao:"A pontuação ajuda a organizar e dar sentido ao texto.",
+      exemplo:"Exemplo: ponto final (.), vírgula (,) e ponto de interrogação (?)."
+    }
+  }
+},
+
+historia:{
+  nome:"🏛️ História",
+  assuntos:{
+    "Brasil Colonial":{
+      explicacao:"O período colonial foi a época em que o Brasil esteve sob domínio de Portugal.",
+      exemplo:"A colonização portuguesa começou oficialmente em 1500."
+    },
+    "Independência do Brasil":{
+      explicacao:"A Independência do Brasil foi declarada em 7 de setembro de 1822.",
+      exemplo:"O processo foi associado a Dom Pedro."
+    },
+    "Revolução Francesa":{
+      explicacao:"A Revolução Francesa começou em 1789 e provocou grandes mudanças políticas e sociais.",
+      exemplo:"Um dos seus símbolos foi a queda da Bastilha."
+    }
+  }
+},
+
+geografia:{
+  nome:"🌎 Geografia",
+  assuntos:{
+    "Mapas":{
+      explicacao:"Mapas são representações reduzidas de lugares da superfície terrestre.",
+      exemplo:"Mapas podem mostrar países, cidades, rios e relevo."
+    },
+    "Clima":{
+      explicacao:"Clima é o conjunto das condições atmosféricas observadas durante longos períodos.",
+      exemplo:"Brasil possui diferentes tipos de clima."
+    },
+    "Relevo":{
+      explicacao:"Relevo é o conjunto das diferentes formas da superfície terrestre.",
+      exemplo:"Montanhas, planaltos e planícies são formas de relevo."
+    }
+  }
+},
+
+ciencias:{
+  nome:"🔬 Ciências",
+  assuntos:{
+    "Sistema respiratório":{
+      explicacao:"O sistema respiratório é responsável pelas trocas gasosas entre o organismo e o ambiente.",
+      exemplo:"Ele envolve órgãos como nariz, faringe, laringe, traqueia e pulmões."
+    },
+    "Corpo humano":{
+      explicacao:"O corpo humano é formado por vários sistemas que trabalham juntos.",
+      exemplo:"Sistema digestório, respiratório, circulatório e nervoso."
+    },
+    "Sistema Solar":{
+      explicacao:"O Sistema Solar é formado pelo Sol e pelos corpos celestes que orbitam ao seu redor.",
+      exemplo:"A Terra é um dos planetas do Sistema Solar."
+    }
+  }
+},
+
+ingles:{
+  nome:"🇺🇸 Inglês",
+  assuntos:{
+    "Verb to be":{
+      explicacao:"O verbo to be pode significar ser ou estar.",
+      exemplo:"I am = eu sou / eu estou."
+    },
+    "Números":{
+      explicacao:"Os números em inglês possuem nomes próprios.",
+      exemplo:"One = 1, two = 2, three = 3."
+    },
+    "Cores":{
+      explicacao:"Algumas cores em inglês são: red, blue, green e yellow.",
+      exemplo:"Blue = azul."
+    }
+  }
+},
+
+educacao:{
+  nome:"⚽ Educação Física",
+  assuntos:{
+    "Esportes de invasão":{
+      explicacao:"São esportes em que equipes tentam ocupar o espaço adversário para marcar pontos.",
+      exemplo:"Futebol, basquete e handebol."
+    },
+    "Esportes de precisão":{
+      explicacao:"São esportes em que a precisão para atingir um alvo é importante.",
+      exemplo:"Tiro ao alvo e bocha."
+    },
+    "Esportes de marca":{
+      explicacao:"São esportes em que o resultado pode ser medido por tempo, distância ou altura.",
+      exemplo:"Corridas, saltos e arremessos."
+    }
+  }
+},
+
+artes:{
+  nome:"🎨 Artes",
+  assuntos:{
+    "Cores":{
+      explicacao:"As cores são elementos importantes para criar diferentes efeitos visuais.",
+      exemplo:"Cores primárias: vermelho, amarelo e azul."
+    },
+    "Desenho":{
+      explicacao:"O desenho utiliza linhas, formas e outros elementos para representar ideias ou objetos.",
+      exemplo:"Um desenho pode ser realista ou imaginário."
+    },
+    "Música":{
+      explicacao:"A música utiliza sons, ritmos e melodias para criar uma expressão artística.",
+      exemplo:"Instrumentos musicais produzem diferentes sons."
+    }
+  }
+}
+
 };
-const yearTopics={
-"6º ano":{},"7º ano":{},"8º ano":{},"9º ano":{}
-};
-for(const y of Object.keys(yearTopics)) for(const s of subjects) yearTopics[y][s]=topics[s].slice();
-// Acrescenta assuntos mais avançados sem quebrar a estrutura.
-yearTopics["7º ano"]["Matemática"].push("Razão e proporção");
-yearTopics["8º ano"]["Matemática"].push("Potenciação","Radiciação");
-yearTopics["9º ano"]["Matemática"].push("Funções","Teorema de Pitágoras");
-yearTopics["7º ano"]["Ciências"].push("Plantas e animais");
-yearTopics["8º ano"]["Ciências"].push("Reprodução","Genética");
-yearTopics["9º ano"]["Ciências"].push("DNA","Evolução","Átomos e reações");
-const explanations={
-"Geometria":["Geometria estuda formas, medidas, posições e figuras.","Um quadrado com lado de 5 cm tem perímetro de 20 cm."],
-"Frações":["Frações representam partes de um todo. O número de cima é o numerador e o de baixo é o denominador.","1/2 significa uma de duas partes iguais."],
-"Porcentagem":["Porcentagem representa uma quantidade em relação a 100.","50% de 100 é 50."],
-"Sistema respiratório":["O sistema respiratório permite a entrada de oxigênio e a eliminação de gás carbônico. Os pulmões participam das trocas gasosas.","Ao inspirar, o ar entra pelas vias respiratórias e chega aos pulmões."],
-"Sistema circulatório":["O sistema circulatório transporta sangue e substâncias pelo corpo. O coração bombeia o sangue.","O sangue leva oxigênio e nutrientes aos tecidos."],
-"Sistema digestório":["O sistema digestório participa da digestão e do aproveitamento dos nutrientes dos alimentos.","O alimento passa por diferentes órgãos durante a digestão."],
-"Células":["A célula é a unidade básica dos seres vivos.","Células musculares ajudam na realização de movimentos."],
-"Latitude e longitude":["Latitude indica posições ao norte ou ao sul do Equador; longitude indica posições a leste ou oeste de Greenwich.","Coordenadas geográficas ajudam a localizar lugares no planeta."],
-"Substantivos":["Substantivos nomeiam pessoas, animais, lugares, objetos, sentimentos e ideias.","Casa, escola e amizade são substantivos."],
-"Adjetivos":["Adjetivos caracterizam substantivos.","Em 'casa grande', 'grande' é um adjetivo."],
-"Verbos":["Verbos podem indicar ações, estados ou acontecimentos.","Em 'Ana estudou', 'estudou' é um verbo."],
-"Verb to be":["O verbo to be pode significar ser ou estar; no presente usamos am, is e are.","I am a student = Eu sou estudante."],
-"Simple Present":["O Simple Present é usado para hábitos, rotinas e fatos gerais.","I study every day = Eu estudo todos os dias."],
-"Esportes de marca":["São esportes em que resultados podem ser comparados por tempo, distância ou altura.","Corrida é um exemplo."],
-"Esportes de precisão":["O objetivo envolve acertar um alvo ou alcançar determinada precisão.","Tiro ao alvo é um exemplo."],
-"Esportes de invasão":["Equipes ocupam o espaço adversário para tentar marcar pontos.","Futebol e basquete são exemplos."],
-"Desenho":["Desenho usa linhas, formas e outros elementos visuais para representar ou expressar ideias.","Um desenho pode representar uma paisagem."],
-"Pintura":["Pintura usa cores e materiais sobre uma superfície.","Uma paisagem pode ser pintada com diferentes cores."],
-"Música":["Música organiza sons, ritmos, melodias e silêncios.","Uma música pode combinar vários instrumentos."]
-};
-const special={
-"Geometria":[
-["Quantos lados tem um triângulo?",["2","3","4","5"],1],["Quantos lados tem um quadrado?",["3","4","5","6"],1],["Um ângulo de 90° é:",["Agudo","Reto","Obtuso","Raso"],1],["Perímetro mede o:",["Contorno","Peso","Tempo","Volume"],0],["Área mede principalmente:",["Superfície","Temperatura","Tempo","Peso"],0],["Quantos vértices tem um triângulo?",["2","3","4","5"],1],["Um ângulo menor que 90° é:",["Agudo","Reto","Obtuso","Raso"],0],["Um ângulo maior que 90° e menor que 180° é:",["Agudo","Reto","Obtuso","Nulo"],2],["Um quadrado de lado 3 cm tem perímetro:",["6 cm","9 cm","12 cm","15 cm"],2],["Qual figura não possui lados retos?",["Quadrado","Triângulo","Círculo","Retângulo"],2],["Qual figura tem 4 lados?",["Triângulo","Retângulo","Círculo","Pentágono"],1],["Geometria estuda:",["Formas e medidas","Somente história","Somente música","Somente idiomas"],0],["Um quadrado tem quantos lados iguais?",["2","3","4","5"],2],["Um retângulo tem quantos vértices?",["2","3","4","5"],2],["Um círculo possui:",["Lados retos","Circunferência","Três vértices","Quatro lados"],1]
-],
-"Sistema respiratório":[
-["Qual é a principal função do sistema respiratório?",["Trocas gasosas","Digestão","Visão","Audição"],0],["Qual órgão é essencial nas trocas gasosas?",["Pulmões","Estômago","Fígado","Coração"],0],["Qual gás é importante para a respiração celular?",["Oxigênio","Hélio","Neônio","Metano"],0],["Qual gás é eliminado em maior quantidade na expiração?",["Gás carbônico","Hélio","Neônio","Hidrogênio"],0],["Na inspiração, o ar:",["Entra","Sai","Para no estômago","Desaparece"],0],["Na expiração, o ar:",["Sai","Entra","Vai para o estômago","Para no coração"],0],["As trocas gasosas ocorrem principalmente nos:",["Alvéolos","Ossos","Dentes","Músculos"],0],["O diafragma participa da:",["Respiração","Visão","Audição","Digestão"],0],["Os brônquios fazem parte das:",["Vias respiratórias","Articulações","Veias","Ossos"],0],["Os pulmões ficam principalmente no:",["Tórax","Crânio","Braço","Abdômen inferior"],0],["O ar pode entrar pelo:",["Nariz","Estômago","Coração","Fígado"],0],["O sistema respiratório trabalha junto ao:",["Sistema circulatório","Cabelo","Sistema ósseo apenas","Sistema digestório apenas"],0],["Uma forma de cuidar do sistema respiratório é:",["Evitar fumaça","Respirar fumaça","Fumar","Evitar respirar"],0],["As células precisam de oxigênio para:",["Processos de obtenção de energia","Formar vidro","Produzir plástico","Enxergar"],0],["O principal gás utilizado na respiração é:",["Oxigênio","Nitrogênio puro como combustível","Hélio","Neônio"],0]
-],
-"Frações":[
-["Na fração 3/5, o 3 é o:",["Numerador","Denominador","Quociente","Divisor"],0],["Na fração 3/5, o 5 é o:",["Numerador","Denominador","Quociente","Divisor"],1],["1/2 representa:",["Uma de duas partes iguais","Duas de uma parte","Três partes","Cinco partes"],0],["Qual é uma fração?",["3/4","35","8","100"],0],["2/4 é equivalente a:",["1/2","1/4","3/4","4/4"],0],["O denominador indica:",["Em quantas partes o todo foi dividido","Quantas partes foram escolhidas","A soma","O resultado"],0],["O numerador indica:",["Quantas partes foram consideradas","O total de partes","A diferença","O divisor"],0],["3/3 é igual a:",["1","2","3","0"],0],["4/4 é igual a:",["1","2","4","0"],0],["Qual é maior?",["1/2","1/4","1/8","1/10"],0],["3 partes de 8 iguais correspondem a:",["3/8","5/8","3/5","8/3"],0],["5/10 pode ser simplificada para:",["1/2","2/5","5/5","10/5"],0],["2/3 significa:",["2 partes de 3 iguais","3 partes de 2","2+3","3-2"],0],["Uma fração pode representar:",["Parte de um todo","Somente números inteiros","Somente medidas","Somente porcentagens"],0],["1/4 significa:",["Uma parte de quatro iguais","Quatro partes de uma","Uma mais quatro","Quatro menos um"],0]
-]
-};
-function genericQuestions(topic){const arr=[];const templates=["Qual alternativa está relacionada a %TOPIC%?","Por que estudar %TOPIC% é importante?","Qual é uma boa forma de aprender %TOPIC%?","Um exemplo ajuda a compreender %TOPIC% porque:","Ao errar uma questão sobre %TOPIC%, é melhor:"];const answers=[["O conteúdo estudado","Somente futebol","Somente música","Nenhuma"],["Ajuda a compreender o conteúdo","Impede o aprendizado","Não serve para nada","Apaga o conteúdo"],["Estudar e praticar","Não revisar","Não fazer exercícios","Ignorar dúvidas"],["Torna a ideia mais concreta","Apaga o conteúdo","Impede a revisão","Não tem função"],["Ver o erro e aprender com ele","Desistir","Apagar o estudo","Parar de praticar"]];for(let i=0;i<15;i++){arr.push([templates[i%templates.length].replaceAll("%TOPIC%",topic),answers[i%answers.length],0]);}return arr;}
-function questions(topic){return special[topic]||genericQuestions(topic)}
-const year=document.getElementById("year"),subject=document.getElementById("subject"),topic=document.getElementById("topic"),app=document.getElementById("app");
-function resetSelect(el,text,disabled=false){el.innerHTML="<option value=\"\">"+text+"</option>";el.disabled=disabled;}
-year.addEventListener("change",()=>{resetSelect(subject,"Escolha a matéria",!year.value);resetSelect(topic,"Escolha primeiro a matéria",true);if(year.value){subjects.forEach(s=>{const o=document.createElement("option");o.value=s;o.textContent=s;subject.appendChild(o)})}app.innerHTML=""});
-subject.addEventListener("change",()=>{resetSelect(topic,"Escolha o assunto",!subject.value);if(subject.value&&year.value){yearTopics[year.value][subject.value].forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=t;topic.appendChild(o)})}app.innerHTML=""});
-let xp=Number(localStorage.getItem("ef_xp")||0),name=localStorage.getItem("ef_name")||"";
-const nameEl=document.getElementById("name");nameEl.value=name;nameEl.addEventListener("input",()=>{name=nameEl.value;localStorage.setItem("ef_name",name);updateProfile()});
-function updateProfile(){document.getElementById("xp").textContent=xp;const level=Math.floor(xp/100)+1;document.getElementById("level").textContent=level;document.getElementById("xpbar").style.width=(xp%100)+"%";document.getElementById("hello").textContent=name?"Olá, "+name+"! 👋":""}
-function addXP(n){xp+=n;localStorage.setItem("ef_xp",xp);updateProfile()}updateProfile();
-function valid(){if(!year.value){app.innerHTML='<div class="card"><b>⚠️ Escolha o ano primeiro.</b></div>';return false}if(!subject.value){app.innerHTML='<div class="card"><b>⚠️ Escolha a matéria.</b></div>';return false}if(!topic.value){app.innerHTML='<div class="card"><b>⚠️ Escolha o assunto.</b></div>';return false}return true}
-document.getElementById("study").addEventListener("click",()=>{if(!valid())return;const info=explanations[topic.value]||["Este assunto faz parte do conteúdo de estudo. Leia, revise e pratique.","Um bom método é ler a explicação, observar o exemplo e depois fazer exercícios."];app.innerHTML=`<section class="card"><h2>📖 ${topic.value}</h2><p class="muted">${year.value} • ${subject.value}</p><div class="box"><h3>O que é?</h3><p>${info[0]}</p></div><div class="box"><h3>💡 Exemplo</h3><p>${info[1]}</p></div><button id="goQuiz" class="purple">📝 Fazer simulado</button></section>`;document.getElementById("goQuiz").onclick=()=>startQuiz()});
-document.getElementById("quiz").addEventListener("click",()=>{if(valid())startQuiz()});
-function startQuiz(){const qs=questions(topic.value);let correct=0,answered=0;app.innerHTML=`<section class="card"><h2>📝 Simulado</h2><p><b>${topic.value}</b> • ${year.value}</p><p class="muted">15 questões • +10 XP por acerto</p></section>`;qs.forEach((q,i)=>{const card=document.createElement("section");card.className="card question";const h=document.createElement("h3");h.textContent=(i+1)+". "+q[0];card.appendChild(h);q[1].forEach((a,j)=>{const b=document.createElement("button");b.className="answer";b.textContent=a;b.onclick=()=>{if(card.dataset.done)return;card.dataset.done="1";answered++;card.querySelectorAll("button").forEach(x=>x.disabled=true);if(j===q[2]){b.classList.add("correct");correct++;addXP(10)}else{b.classList.add("wrong");card.querySelectorAll("button")[q[2]].classList.add("correct")}};card.appendChild(b)});app.appendChild(card)});const result=document.createElement("section");result.className="card result";result.id="result";result.innerHTML="<h2>🏆 Resultado</h2><p>Responda as 15 questões para ver sua nota.</p>";app.appendChild(result);const observer=new MutationObserver(()=>{if(answered===15){const grade=correct/15*10;result.innerHTML=`<h2>🏆 Simulado concluído!</h2><p>Você acertou <b>${correct}/15</b>.</p><p>📊 Nota: <b>${grade.toFixed(1)}/10</b></p><p>⭐ XP ganho: <b>${correct*10}</b></p>`;observer.disconnect()}});observer.observe(app,{subtree:true,attributes:true,attributeFilter:["data-done"]});window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"})}
+
+function atualizarXP(){
+  document.getElementById("xp").textContent = xp;
+  document.getElementById("nivel").textContent =
+    Math.floor(xp/100)+1;
+
+  localStorage.setItem("estudaXP",xp);
+}
+
+function mudarMateria(materia,botao){
+
+  materiaAtual = materia;
+
+  document.querySelectorAll(".materia")
+  .forEach(b => b.classList.remove("ativa"));
+
+  botao.classList.add("ativa");
+
+  document.getElementById("tituloMateria").textContent =
+    dados[materia].nome;
+
+  carregarAssuntos();
+
+}
+
+function carregarAssuntos(){
+
+  const lista =
+    document.getElementById("listaAssuntos");
+
+  lista.innerHTML="";
+
+  const assuntos =
+    dados[materiaAtual].assuntos;
+
+  Object.keys(assuntos).forEach((nome,i)=>{
+
+    const botao=document.createElement("button");
+
+    botao.className="assunto";
+
+    botao.textContent=nome;
+
+    botao.onclick=()=>selecionarAssunto(nome,botao);
+
+    lista.appendChild(botao);
+
+    if(i===0){
+      selecionarAssunto(nome,botao);
+    }
+
+  });
+
+}
+
+function selecionarAssunto(nome,botao){
+
+  assuntoAtual=nome;
+
+  document.querySelectorAll(".assunto")
+  .forEach(b=>b.classList.remove("ativo"));
+
+  botao.classList.add("ativo");
+
+  const assunto =
+    dados[materiaAtual].assuntos[nome];
+
+  document.getElementById("tituloAssunto").textContent =
+    "💡 "+nome;
+
+  document.getElementById("textoExplicacao").textContent =
+    assunto.explicacao;
+
+  document.getElementById("exemplo").textContent =
+    "📌 "+assunto.exemplo;
+
+  carregarQuestao();
+
+}
+
+function carregarQuestao(){
+
+  const perguntas = {
+
+    "Frações":{
+      pergunta:"Qual é a metade de 10?",
+      respostas:["2","5","10","20"],
+      correta:1
+    },
+
+    "Porcentagem":{
+      pergunta:"Quanto é 50% de 100?",
+      respostas:["10","25","50","75"],
+      correta:2
+    },
+
+    "Geometria":{
+      pergunta:"Um quadrado possui quantos lados?",
+      respostas:["3","4","5","6"],
+      correta:1
+    },
+
+    "Sistema respiratório":{
+      pergunta:"Qual órgão é responsável pelas principais trocas gasosas?",
+      respostas:["Estômago","Pulmões","Coração","Fígado"],
+      correta:1
+    },
+
+    "Verb to be":{
+      pergunta:"Qual significa 'I am'?",
+      respostas:["Eu tenho","Eu sou/estou","Eu vou","Eu faço"],
+      correta:1
+    },
+
+    "Substantivos":{
+      pergunta:"Qual palavra é um substantivo?",
+      respostas:["Bonito","Correr","Casa","Rapidamente"],
+      correta:2
+    }
+
+  };
+
+  const q = perguntas[assuntoAtual] || {
+    pergunta:"Qual é uma característica importante deste assunto?",
+    respostas:[
+      "Ele pode ser estudado e aprendido",
+      "Não pode ser estudado",
+      "Não existe",
+      "Nenhuma das opções"
+    ],
+    correta:0
+  };
+
+  document.getElementById("pergunta").textContent =
+    q.pergunta;
+
+  const area=document.getElementById("respostas");
+
+  area.innerHTML="";
+
+  document.getElementById("resultado").textContent="";
+
+  q.respostas.forEach((resposta,i)=>{
+
+    const botao=document.createElement("button");
+
+    botao.textContent=resposta;
+
+    botao.onclick=()=>responder(i,q.correta);
+
+    area.appendChild(botao);
+
+  });
+
+}
+
+function responder(escolha,correta){
+
+  const resultado=document.getElementById("resultado");
+
+  if(escolha===correta){
+
+    resultado.textContent="✅ Acertou! +10 XP";
+
+    xp+=10;
+
+    atualizarXP();
+
+  }else{
+
+    resultado.textContent="❌ Errou! Tente novamente.";
+
+  }
+
+}
+
+function alternarTema(){
+
+  document.body.classList.toggle("dark");
+
+}
+
+atualizarXP();
+
+carregarAssuntos();
+
 </script>
+
 </body>
 </html>
